@@ -72,9 +72,6 @@ if ( ! function_exists( 'alx_setup' ) ) {
 		// Enable post format support
 		add_theme_support( 'post-formats', array( 'audio', 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
 
-		// Declare WooCommerce support
-		add_theme_support( 'woocommerce' );
-
 		// Thumbnail sizes
 		add_image_size( 'thumb-small', 160, 160, true );
 		add_image_size( 'thumb-medium', 520, 245, true );
@@ -97,10 +94,10 @@ if ( ! function_exists( 'alx_sidebars' ) ) {
 
 	function alx_sidebars() {
 		register_sidebar(array( 'name' => 'Primary','id' => 'primary','description' => "Normal full width sidebar", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
-		if ( ot_get_option('footer-widgets') >= '1' ) { register_sidebar(array( 'name' => 'Footer 1','id' => 'footer-1', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>')); }
-		if ( ot_get_option('footer-widgets') >= '2' ) { register_sidebar(array( 'name' => 'Footer 2','id' => 'footer-2', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>')); }
-		if ( ot_get_option('footer-widgets') >= '3' ) { register_sidebar(array( 'name' => 'Footer 3','id' => 'footer-3', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>')); }
-		if ( ot_get_option('footer-widgets') >= '4' ) { register_sidebar(array( 'name' => 'Footer 4','id' => 'footer-4', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>')); }
+		register_sidebar(array( 'name' => 'Footer 1','id' => 'footer-1', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
+		register_sidebar(array( 'name' => 'Footer 2','id' => 'footer-2', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
+		register_sidebar(array( 'name' => 'Footer 3','id' => 'footer-3', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
+		register_sidebar(array( 'name' => 'Footer 4','id' => 'footer-4', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
 	}
 
 }
@@ -125,8 +122,7 @@ if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
 		wp_enqueue_style( 'style', get_stylesheet_uri() );
-		if ( ot_get_option('responsive') != 'off' ) { wp_enqueue_style( 'responsive', get_template_directory_uri().'/responsive.css' ); }
-//		if ( ot_get_option('custom') == 'on' ) { wp_enqueue_style( 'custom', get_template_directory_uri().'/custom.css' ); }
+		wp_enqueue_style( 'responsive', get_template_directory_uri().'/responsive.css' );
 		wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 	}
 
@@ -139,9 +135,9 @@ add_action( 'wp_enqueue_scripts', 'alx_styles' );
 if ( ! function_exists( 'alx_custom_sidebars' ) ) {
 
 	function alx_custom_sidebars() {
-		if ( !ot_get_option('sidebar-areas') =='' ) {
 
-			$sidebars = ot_get_option('sidebar-areas', array());
+		$sidebars = get_option( 'sidebar-areas' );
+
 
 			if ( !empty( $sidebars ) ) {
 				foreach( $sidebars as $sidebar ) {
@@ -151,7 +147,7 @@ if ( ! function_exists( 'alx_custom_sidebars' ) ) {
 				}
 			}
 		}
-	}
+
 
 }
 add_action( 'widgets_init', 'alx_custom_sidebars' );
@@ -180,7 +176,6 @@ if ( ! function_exists( 'alx_layout_class' ) ) {
 			// Get if set and not set to inherit
 			if ( isset($meta) && !empty($meta) && $meta != 'inherit' ) { $layout = $meta; }
 			// Else check for page-global / single-global
-			elseif ( is_single() && ( ot_get_option('layout-single') !='inherit' ) ) $layout = ot_get_option('layout-single',''.$default.'');
 			elseif ( is_page() && ( ot_get_option('layout-page') !='inherit' ) ) $layout = ot_get_option('layout-page',''.$default.'');
 			// Else get global option
 			else $layout = ot_get_option('layout-global',''.$default.'');
@@ -235,43 +230,6 @@ if ( ! function_exists( 'alx_sidebar_primary' ) ) {
 	}
 
 }
-
-
-/*  Social links
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_social_links' ) ) {
-
-	function alx_social_links() {
-		if ( !ot_get_option('social-links') =='' ) {
-			$links = ot_get_option('social-links', array());
-			if ( !empty( $links ) ) {
-				echo '<ul class="social-links">';
-				foreach( $links as $item ) {
-
-					// Build each separate html-section only if set
-					if ( isset($item['title']) && !empty($item['title']) )
-					{ $title = 'title="' .$item['title']. '"'; } else $title = '';
-					if ( isset($item['social-link']) && !empty($item['social-link']) )
-					{ $link = 'href="' .$item['social-link']. '"'; } else $link = '';
-					if ( isset($item['social-target'][0]) && !empty($item['social-target'][0]) )
-					{ $target = 'target="' .$item['social-target'][0]. '"'; } else $target = '';
-					if ( isset($item['social-icon']) && !empty($item['social-icon']) )
-					{ $icon = 'class="fa ' .$item['social-icon']. '"'; } else $icon = '';
-					if ( isset($item['social-color']) && !empty($item['social-color']) )
-					{ $color = 'style="color: ' .$item['social-color']. ';"'; } else $color = '';
-
-					// Put them together
-					if ( isset($item['title']) && !empty($item['title']) && isset($item['social-icon']) && !empty($item['social-icon']) && ($item['social-icon'] !='fa-') ) {
-						echo '<li><a rel="nofollow" class="social-tooltip" '.$title.' '.$link.' '.$target.'><i '.$icon.' '.$color.'></i></a></li>';
-					}
-				}
-				echo '</ul>';
-			}
-		}
-	}
-
-}
-
 
 /*  Site name/logo
 /* ------------------------------------ */
@@ -427,7 +385,7 @@ if ( ! function_exists( 'alx_favicon' ) ) {
 	}
 
 }
-add_filter( 'wp_head', 'alx_favicon' );
+//add_filter( 'wp_head', 'alx_favicon' );
 
 
 /*  Tracking code

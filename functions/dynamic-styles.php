@@ -24,8 +24,8 @@ if ( ! function_exists( 'alx_hex2rgb' ) ) {
 		if ( !$array ) { $rgb = implode(",", $rgb); }
 		return $rgb;
 	}
-	
-}	
+
+}
 
 
 /*  Google fonts
@@ -48,9 +48,9 @@ if ( ! function_exists( 'alx_google_fonts' ) ) {
 			if ( ot_get_option( 'font' ) == 'pt-serif-cyr' ) { echo '<link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">'. "\n"; }
 		}
 	}
-	
+
 }
-add_action( 'wp_head', 'alx_google_fonts', 2 );
+//add_action( 'wp_head', 'alx_google_fonts', 2 );
 
 
 /*  Dynamic css output
@@ -59,30 +59,30 @@ if ( ! function_exists( 'alx_dynamic_css' ) ) {
 
 	function alx_dynamic_css() {
 		if ( ot_get_option('dynamic-styles') != 'off' ) {
-		
+
 			// rgb values
 			$color_1 = ot_get_option('color-1');
 			$color_1_rgb = alx_hex2rgb($color_1);
-			
+
 			// start output
 			$styles = '<style type="text/css">'."\n";
-			$styles .= '/* Dynamic CSS: For no styles in head, copy and put the css below in your custom.css or child theme\'s style.css, disable dynamic styles */'."\n";		
-			
+			$styles .= '/* Dynamic CSS: For no styles in head, copy and put the css below in your custom.css or child theme\'s style.css, disable dynamic styles */'."\n";
+
 			// google fonts
 			if ( ot_get_option( 'font' ) == 'titillium-web' ) { $styles .= 'body { font-family: "Titillium Web", Arial, sans-serif; }'."\n"; }
 			if ( ot_get_option( 'font' ) == 'droid-serif' ) { $styles .= 'body { font-family: "Droid Serif", sans-serif; }'."\n"; }
 			if ( ot_get_option( 'font' ) == 'source-sans-pro' ) { $styles .= 'body { font-family: "Source Sans Pro", Arial, sans-serif; }'."\n"; }
 			if ( ot_get_option( 'font' ) == 'lato' ) { $styles .= 'body { font-family: "Lato", Arial, sans-serif; }'."\n"; }
-			if ( ( ot_get_option( 'font' ) == 'ubuntu' ) || ( ot_get_option( 'font' ) == 'ubuntu-cyr' ) ) { $styles .= 'body { font-family: "Ubuntu", Arial, sans-serif; }'."\n"; }	
-			if ( ( ot_get_option( 'font' ) == 'roboto-condensed' ) || ( ot_get_option( 'font' ) == 'roboto-condensed-cyr' ) ) { $styles .= 'body { font-family: "Roboto Condensed", Arial, sans-serif; }'."\n"; }			
+			if ( ( ot_get_option( 'font' ) == 'ubuntu' ) || ( ot_get_option( 'font' ) == 'ubuntu-cyr' ) ) { $styles .= 'body { font-family: "Ubuntu", Arial, sans-serif; }'."\n"; }
+			if ( ( ot_get_option( 'font' ) == 'roboto-condensed' ) || ( ot_get_option( 'font' ) == 'roboto-condensed-cyr' ) ) { $styles .= 'body { font-family: "Roboto Condensed", Arial, sans-serif; }'."\n"; }
 			if ( ( ot_get_option( 'font' ) == 'open-sans' ) || ( ot_get_option( 'font' ) == 'open-sans-cyr' ) )	{ $styles .= 'body { font-family: "Open Sans", Arial, sans-serif; }'."\n"; }
 			if ( ( ot_get_option( 'font' ) == 'pt-serif' ) || ( ot_get_option( 'font' ) == 'pt-serif-cyr' ) ) { $styles .= 'body { font-family: "PT Serif", serif; }'."\n"; }
 			if ( ot_get_option( 'font' ) == 'arial' ) { $styles .= 'body { font-family: Arial, sans-serif; }'."\n"; }
 			if ( ot_get_option( 'font' ) == 'georgia' ) { $styles .= 'body { font-family: Georgia, serif; }'."\n"; }
-			
+
 			// container width
-			if ( ot_get_option('container-width') != '1380' ) {			
-				if ( ot_get_option( 'boxed' ) ) { 
+			if ( ot_get_option('container-width') != '1380' ) {
+				if ( ot_get_option( 'boxed' ) ) {
 					$styles .= '.boxed #wrapper, .container { max-width: '.ot_get_option('container-width').'px; }'."\n";
 				}
 				else {
@@ -140,7 +140,7 @@ a,
 .themeform textarea:focus,
 .comment-tabs li.active a { border-color: '.ot_get_option('color-accent').'; }		
 				'."\n";
-			}		
+			}
 			// topbar color
 			if ( ot_get_option('color-topbar') != '#222222' ) {
 				$styles .= '
@@ -239,7 +239,7 @@ a,
 			}
 			// body background
 			if ( ot_get_option('body-background') != '' ) {
-				
+
 				$body_background = ot_get_option('body-background');
 				$body_color = $body_background['background-color'];
 				$body_image = $body_background['background-image'];
@@ -247,7 +247,7 @@ a,
 				$body_attachment = $body_background['background-attachment'];
 				$body_repeat = $body_background['background-repeat'];
 				$body_size = $body_background['background-size'];
-				
+
 				if ( $body_image && $body_size == "" ) {
 					$styles .= 'body { background: '.$body_color.' url('.$body_image.') '.$body_attachment.' '.$body_position.' '.$body_repeat.'; }'."\n";
 				} elseif ( $body_image && $body_size != "" ) {
@@ -258,13 +258,13 @@ a,
 					$styles .= '';
 				}
 			}
-			
+
 			$styles .= '</style>'."\n";
 			// end output
-			
-			echo $styles;		
+
+			echo $styles;
 		}
 	}
-	
+
 }
 add_action( 'wp_head', 'alx_dynamic_css', 100 );

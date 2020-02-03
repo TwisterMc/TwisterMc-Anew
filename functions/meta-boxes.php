@@ -5,7 +5,7 @@
 add_action( 'admin_init', '_custom_meta_boxes' );
 
 function _custom_meta_boxes() {
-  
+
 /*  Custom meta boxes
 /* ------------------------------------ */
 $page_options = array(
@@ -221,15 +221,4 @@ $post_format_video = array(
 		)
 	)
 );
-
-/*  Register meta boxes
-/* ------------------------------------ */
-	ot_register_meta_box( $page_options );
-	ot_register_meta_box( $post_format_audio );
-	ot_register_meta_box( $post_format_chat );
-	ot_register_meta_box( $post_format_gallery );
-	ot_register_meta_box( $post_format_link );
-	ot_register_meta_box( $post_format_quote );
-	ot_register_meta_box( $post_format_video );
-	ot_register_meta_box( $post_options );
 }
