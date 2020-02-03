@@ -3,7 +3,7 @@
 <style>
     .page-id-43229 .main {
         padding-right: 0px;
-        background-image: none; 
+        background-image: none;
     }
 
     .bbulider {
@@ -29,28 +29,28 @@
 <?php // I know. I know. This is not the right place to put css. ?>
 
 <section class="content bbulider">
-	
+
 	<div class="pad group">
-		
+
 		<?php while ( have_posts() ): the_post(); ?>
-		
+
 			<article <?php post_class('group'); ?>>
-								
-				<h1 class="page-title-single"><?php echo alx_page_title(); ?></h1>
-				
+
+				<h1 class="page-title-single"><?php the_title(); ?></h1>
+
 				<div class="entry themeform">
 					<?php the_content(); ?>
 					<div class="clear"></div>
 				</div><!--/.entry-->
-				
+
 			</article>
-			
+
 			<?php if ( ot_get_option('page-comments') == 'on' ) { comments_template('/comments.php',true); } ?>
-			
+
 		<?php endwhile; ?>
-		
+
 	</div><!--/.pad-->
-	
+
 </section><!--/.content-->
 
 <?php get_footer(); ?>

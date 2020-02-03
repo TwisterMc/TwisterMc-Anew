@@ -1,17 +1,17 @@
 <?php get_header(); ?>
 
 <section class="content">
-	
+
 	<div class="pad group">
-		
+
 		<?php while ( have_posts() ): the_post(); ?>
-		
+
 			<article <?php post_class('group'); ?>>
-				
+
 				<?php get_template_part('inc/page-image'); ?>
-				
-				<h1 class="page-title-single"><?php echo alx_page_title(); ?></h1>
-				
+
+				<h1 class="page-title-single"><?php the_title(); ?></h1>
+
 				<div class="entry themeform">
 					<?php the_content(); ?>
 					<?php // Loop through all the creations
@@ -20,7 +20,7 @@
                             <div class="creation <?php if($count&1) { echo 'odd'; } else { echo 'even'; } ?> <?php if (get_sub_field('active') == 1) { echo 'active'; } ?>">
                                 <div class="creation_title">
                                     <a href="<?php the_sub_field('link'); ?>">
-                                        <img src="<?php the_sub_field('icon'); ?>" alt="<?php the_sub_field('name'); ?>" height="35" width="32" /> 
+                                        <img src="<?php the_sub_field('icon'); ?>" alt="<?php the_sub_field('name'); ?>" height="35" width="32" />
                                         <?php the_sub_field('name'); ?>
                                     </a>
                                 </div>
@@ -31,15 +31,15 @@
                         <?php endif; ?>
 					<div class="clear"></div>
 				</div><!--/.entry-->
-				
+
 			</article>
-			
+
 			<?php if ( ot_get_option('page-comments') != '' ) { comments_template('/comments.php',true); } ?>
-			
+
 		<?php endwhile; ?>
-		
+
 	</div><!--/.pad-->
-	
+
 </section><!--/.content-->
 
 <?php get_sidebar(); ?>

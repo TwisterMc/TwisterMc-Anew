@@ -7,17 +7,17 @@ Template Name: Mac Plugin
 <?php get_header(); ?>
 
 <section class="content">
-	
+
 	<div class="pad group">
-		
+
 		<?php while ( have_posts() ): the_post(); ?>
-		
+
 			<article <?php post_class('group'); ?>>
-				
+
 				<?php get_template_part('inc/page-image'); ?>
-				
-				<h1 class="page-title-single"><?php echo alx_page_title(); ?></h1>
-				
+
+				<h1 class="page-title-single"><?php the_title(); ?></h1>
+
 				<div class="entry themeform">
 					<?php the_content(); ?>
 
@@ -32,9 +32,9 @@ Template Name: Mac Plugin
 That's it!  If your Wordpress theme template is including the wp_meta function, you'll see the 'Made on a Mac' button show up there.  If it doesn't show after activation, then your theme probably don't have that function call.  Don't worry, we can do it the advanced way.
 <br /><br />
 <strong>Advanced</strong> Put the following code in the theme's template where you want the button to show up:<br> <span class="htmlcode">
-&lt;? 
-if (function_exists('Made_on_a_Mac')) { 
-	Made_on_a_Mac(); 
+&lt;?
+if (function_exists('Made_on_a_Mac')) {
+	Made_on_a_Mac();
 } ?&gt;
 </span><br />
 <br />
@@ -45,15 +45,15 @@ That's it for now.  Enjoy!
 
 					<div class="clear"></div>
 				</div><!--/.entry-->
-				
+
 			</article>
-			
+
 			<?php if ( ot_get_option('page-comments') != '' ) { comments_template('/comments.php',true); } ?>
-			
+
 		<?php endwhile; ?>
-		
+
 	</div><!--/.pad-->
-	
+
 </section><!--/.content-->
 
 <?php get_sidebar(); ?>
