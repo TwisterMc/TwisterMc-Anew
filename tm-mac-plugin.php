@@ -48,8 +48,12 @@ That's it for now.  Enjoy!
 
 			</article>
 
-			<?php if ( ot_get_option('page-comments') != '' ) { comments_template('/comments.php',true); } ?>
-
+			<?php
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) {
+				comments_template('/comments.php', true);
+			}
+			?>
 		<?php endwhile; ?>
 
 	</div><!--/.pad-->
