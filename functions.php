@@ -677,3 +677,124 @@ function alx_deregister_styles() {
 	wp_deregister_style( 'wp-pagenavi' );
 }
 add_action( 'wp_print_styles', 'alx_deregister_styles', 100 );
+
+
+/* ------------------------------------------------------------------------- *
+ *  Custom functions
+/* ------------------------------------------------------------------------- */
+
+// enqueue custom scripts
+function twistermc_scripts() {
+	//wp_enqueue_script( 'clicky', '//static.getclicky.com/js', array(), '1.0.0', true );
+	//wp_enqueue_script( 'custom_js', get_template_directory_uri() . '-child/js/tmc_scripts.js', '1.0.0', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'twistermc_scripts' );
+
+// add custom code to the footer
+function twistermc_footer_additions() {
+	//echo '<script defer="defer" type="text/javascript">clicky.init(249092);</script><noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/249092ns.gif" /></p></noscript>';
+	//echo "<script defer='defer' type='text/javascript'>var _merchantSettings=_merchantSettings || [];_merchantSettings.push(['AT', '11laKD']);(function(){var autolink=document.createElement('script');autolink.type='text/javascript';autolink.async=true; autolink.src='//autolinkmaker.itunes.apple.com/js/itunes_autolinkmaker.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(autolink, s);})();</script>";
+}
+
+//add_action('wp_footer', 'twistermc_footer_additions', 100);
+
+// add custom code to the header
+function twistermc_head_additions() {
+	echo '<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">';
+	echo '<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">';
+	echo '<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">';
+	echo '<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">';
+	echo '<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">';
+	echo '<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">';
+	echo '<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">';
+	echo '<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">';
+	echo '<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">';
+	echo '<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">';
+	echo '<link rel="icon" type="image/png" href="/favicons/favicon-194x194.png" sizes="194x194">';
+	echo '<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">';
+	echo '<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">';
+	echo '<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">';
+	echo '<link rel="manifest" href="/favicons/manifest.json">';
+	echo '<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#3F8EBC">';
+	echo '<meta name="msapplication-TileColor" content="#da532c">';
+	echo '<meta name="msapplication-TileImage" content="/mstile-144x144.png">';
+	echo '<meta name="theme-color" content="#ffffff">';
+	echo '<meta name="twitter:site" content="@TwisterMc"/>';
+	echo '<meta name="twitter:domain" content="Blog on a Stick"/>';
+	echo '<meta name="twitter:creator" content="@twistermc"/>';
+	echo '<meta property="fb:admins" content="500138493"/>';
+	$format = get_post_format();
+	if ( $format === 'image' ) {
+		echo( '<meta name="twitter:card" content="photo">' );
+	} else {
+		echo( '<meta name="twitter:card" content="summary"/>' );
+	}
+	// $postDate = get_the_date('Y');
+	// echo ('<script type="text/javascript">var postDate = ' . $postDate . '</script>');
+	// if ( is_single() ) {
+	//     $topSense = 1;
+	// } else {
+	//     $topSense = 0;
+	// }
+	// echo ('<script type="text/javascript">var showSense = ' . $topSense . '</script>');
+}
+
+add_action( 'wp_head', 'twistermc_head_additions', 100 );
+
+// //* Disable Pingbacks */
+// add_filter( 'xmlrpc_methods', 'remove_xmlrpc_pingback_ping' );
+// function remove_xmlrpc_pingback_ping( $methods ) {
+//    unset( $methods['pingback.ping'] );
+//    return $methods;
+// }
+
+// Make the categoires box bigger in the admin.
+//add_action('admin_head', 'admin_taller_categories_box');
+
+// function admin_taller_categories_box() {
+//   echo '<style>
+//     .categorydiv div.tabs-panel {
+//       max-height: 500px;
+//     }
+//   </style>';
+// }
+
+// add_filter( 'jetpack_sso_bypass_login_forward_wpcom', '__return_true' );
+
+
+// auto set featured image
+function tmc_autoset_featured() {
+	global $post;
+	$already_has_thumb = has_post_thumbnail( $post->ID );
+	if ( ! $already_has_thumb ) {
+		$attached_image = get_children( "post_parent=$post->ID&post_type=attachment&post_mime_type=image&numberposts=1" );
+		if ( $attached_image ) {
+			foreach ( $attached_image as $attachment_id => $attachment ) {
+				set_post_thumbnail( $post->ID, $attachment_id );
+			}
+		}
+	}
+}
+
+add_action( 'the_post', 'tmc_autoset_featured' );
+add_action( 'save_post', 'tmc_autoset_featured' );
+add_action( 'draft_to_publish', 'tmc_autoset_featured' );
+add_action( 'new_to_publish', 'tmc_autoset_featured' );
+add_action( 'pending_to_publish', 'tmc_autoset_featured' );
+add_action( 'future_to_publish', 'tmc_autoset_featured' );
+
+/**
+ * Disable Ads appearing below the post content.
+ */
+
+function wordads_disable_inpost_pages() {
+	$tmc_pfx_date = get_the_date( 'Y' );
+
+	if ( is_front_page() || is_page() || $tmc_pfx_date > 2017 ) {
+		add_filter( 'wordads_inpost_disable', '__return_true' );
+	}
+	add_filter( 'wordads_header_disable', '__return_true' );
+}
+
+add_action( 'wp_head', 'wordads_disable_inpost_pages', 10 );
