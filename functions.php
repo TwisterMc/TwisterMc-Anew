@@ -249,26 +249,6 @@ if ( ! function_exists( 'tmc_site_title' ) ) {
 }
 
 
-/*  Page title
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_page_title' ) ) {
-
-	function alx_page_title() {
-		global $post;
-
-		$heading = get_post_meta($post->ID,'_heading',true);
-		$subheading = get_post_meta($post->ID,'_subheading',true);
-		$title = $heading?$heading:the_title();
-		if($subheading) {
-			$title = $title.' <span>'.$subheading.'</span>';
-		}
-
-		return $title;
-	}
-
-}
-
-
 /*  Get images attached to post
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_post_images' ) ) {
@@ -322,40 +302,13 @@ if ( ! function_exists( 'alx_body_class' ) ) {
 
 	function alx_body_class( $classes ) {
 		$classes[] = alx_layout_class();
-		if ( ot_get_option( 'boxed' ) != 'on' ) { $classes[] = 'full-width'; }
-		if ( ot_get_option( 'boxed' ) == 'on' ) { $classes[] = 'boxed'; }
-		if ( has_nav_menu('topbar') ) { $classes[] = 'topbar-enabled'; }
-		if ( ot_get_option('mobile-sidebar-hide') != 'on' ) { $classes[] = 'mobile-sidebar-hide'; }
-		if ( ot_get_option('light-header-text') ) { $classes[] = 'light-header-text'; }
+		$classes[] = 'topbar-enabled';
+		$classes[] = 'light-header-text';
 		return $classes;
 	}
 
 }
 add_filter( 'body_class', 'alx_body_class' );
-
-
-/*  Site title
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_wp_title' ) ) {
-
-	function alx_wp_title( $title ) {
-		// Do not filter for RSS feed / if SEO plugin installed
-		if ( is_feed() || class_exists('All_in_One_SEO_Pack') || class_exists('HeadSpace_Plugin') || class_exists('Platinum_SEO_Pack') || class_exists('wpSEO') || defined('WPSEO_VERSION') )
-			return $title;
-		if ( is_front_page() ) {
-			$title = get_bloginfo('name').' - '.get_bloginfo('description');
-		}
-		if ( is_front_page() && get_bloginfo('description') == '' ) {
-			$title = get_bloginfo('name');
-		}
-		if ( !is_front_page() ) {
-			$title .= ' - '.get_bloginfo('name');
-		}
-		return $title;
-	}
-
-}
-//add_filter( 'wp_title', 'alx_wp_title' );
 
 
 /*  Custom rss feed
@@ -479,11 +432,6 @@ if ( ! function_exists( 'alx_thumbnail_upscale' ) ) {
 add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
 
 
-/*  Add shortcode support to text widget
-/* ------------------------------------ */
-// add_filter( 'widget_text', 'do_shortcode' );
-
-
 /*  Browser detection body_class() output
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_browser_body_class' ) ) {
@@ -541,84 +489,6 @@ if ( ! function_exists( 'alx_html_js_class' ) ) {
 
 }
 add_action( 'wp_head', 'alx_html_js_class', 1 );
-
-
-/*  IE js header
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_ie_js_header' ) ) {
-
-	function alx_ie_js_header () {
-		$html = '';
-		echo '<!--[if lt IE 9]>'. "\n";
-		echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/html5.js' ) . '"></script>'. "\n";
-		echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/selectivizr.js' ) . '"></script>'. "\n";
-		echo '<![endif]-->'. "\n";
-		echo $html;
-	}
-
-}
-//add_action( 'wp_head', 'alx_ie_js_header' );
-
-
-/*  IE js footer
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_ie_js_footer' ) ) {
-
-	function alx_ie_js_footer () {
-		$html = '';
-		echo '<!--[if lt IE 9]>'. "\n";
-		echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/respond.js' ) . '"></script>'. "\n";
-		echo '<![endif]-->'. "\n";
-		echo $html;
-	}
-
-}
-//add_action( 'wp_footer', 'alx_ie_js_footer', 20 );
-
-
-/*  TGM plugin activation
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_plugins' ) ) {
-
-	function alx_plugins() {
-
-		// Add the following plugins
-		$plugins = array(
-			array(
-				'name' 				=> 'Regenerate Thumbnails',
-				'slug' 				=> 'regenerate-thumbnails',
-				'required'			=> false,
-				'force_activation' 	=> false,
-				'force_deactivation'=> false,
-			),
-			array(
-				'name' 				=> 'WP-PageNavi',
-				'slug' 				=> 'wp-pagenavi',
-				'required'			=> false,
-				'force_activation' 	=> false,
-				'force_deactivation'=> false,
-			),
-			array(
-				'name' 				=> 'Responsive Lightbox',
-				'slug' 				=> 'light',
-				'source'			=> get_template_directory() . '/functions/plugins/light.zip',
-				'required'			=> false,
-				'force_activation' 	=> false,
-				'force_deactivation'=> false,
-			),
-			array(
-				'name' 				=> 'Contact Form 7',
-				'slug' 				=> 'contact-form-7',
-				'required'			=> false,
-				'force_activation' 	=> false,
-				'force_deactivation'=> false,
-			)
-		);
-		tgmpa( $plugins );
-	}
-
-}
-//add_action( 'tgmpa_register', 'alx_plugins' );
 
 
 /*  WP-PageNavi support - @devinsays (via GitHub)
