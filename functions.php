@@ -279,19 +279,15 @@ if ( ! function_exists( 'alx_social_links' ) ) {
 
 /*  Site name/logo
 /* ------------------------------------ */
-if ( ! function_exists( 'alx_site_title' ) ) {
+if ( ! function_exists( 'tmc_site_title' ) ) {
 
-	function alx_site_title() {
+	function tmc_site_title() {
 
 		$logo = '<img src="'.ot_get_option('custom-logo').'" alt="'.get_bloginfo('name').'">';
 
 		$link = '<a href="'.home_url('/').'" rel="home">'.$logo.'</a>';
 
-		if ( is_front_page() || is_home() ) {
-			$sitename = '<h1 class="site-title">'.$link.'</h1>'."\n";
-		} else {
-			$sitename = '<p class="site-title">'.$link.'</p>'."\n";
-		}
+		$sitename = '<p class="site-title">'.$link.'</p>'."\n";
 
 		return $sitename;
 	}

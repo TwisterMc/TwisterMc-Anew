@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
 
 <head>
@@ -18,14 +18,14 @@
 <div id="wrapper">
 
 	<header id="header" role="banner">
-	
+
 		<?php if (has_nav_menu('topbar')): ?>
 			<nav class="nav-container group" id="nav-topbar" role="navigation">
 				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
 				<div class="nav-text"><!-- put your mobile menu text here --></div>
 				<div class="nav-wrap container"><?php wp_nav_menu(array('theme_location'=>'topbar','menu_class'=>'nav container-inner group','container'=>'','menu_id' => '','fallback_cb'=> false)); ?></div>
-				
-				<div class="container">	
+
+				<div class="container">
 					<div class="toggle-search"><i class="fa fa-search"></i></div>
 					<div class="search-expand">
 						<div class="search-expand-inner">
@@ -33,26 +33,20 @@
 						</div>
 					</div>
 				</div><!--/.container-->
-				
+
 			</nav><!--/#nav-topbar-->
 		<?php endif; ?>
-		
+
 		<div class="container">
 			<?php if ( ot_get_option('header-image') == '' ): ?>
 			<div class="pad group">
-				<?php echo alx_site_title(); ?>
-				<?php if ( ot_get_option('site-description') != 'off' ): ?><p class="site-description"><?php bloginfo( 'description' ); ?></p><?php endif; ?>
-				<?php alx_social_links() ; ?>
+				<?php echo tmc_site_title(); ?>
+				<h1 class="site-description"><?php bloginfo( 'description' ); ?></h1>
 			</div>
 			<?php endif; ?>
-			<?php if ( ot_get_option('header-image') ): ?>
-				<a href="<?php echo home_url('/'); ?>" rel="home">
-					<img class="site-image" src="<?php echo ot_get_option('header-image'); ?>" alt="<?php get_bloginfo('name'); ?>">
-				</a>
-			<?php endif; ?>
 		</div><!--/.container-->
-		
+
 	</header><!--/#header-->
-	
+
 	<div id="page" class="container">
 		<div class="main group">
