@@ -6,6 +6,22 @@
 // Use a child theme instead of placing custom functions here
 // http://codex.wordpress.org/Child_Themes
 
+//Remove JQuery migrate
+function remove_jquery_migrate($scripts)
+{
+	if (!is_admin() && isset($scripts->registered['jquery'])) {
+		$script = $scripts->registered['jquery'];
+
+		if ($script->deps) { // Check whether the script has any dependencies
+			$script->deps = array_diff($script->deps, array(
+				'jquery-migrate'
+			));
+		}
+	}
+}
+
+add_action('wp_default_scripts', 'remove_jquery_migrate');
+
 
 /* ------------------------------------------------------------------------- *
  *  OptionTree framework integration: Use in theme mode
