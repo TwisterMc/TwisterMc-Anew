@@ -38,12 +38,10 @@
 		<?php endif; ?>
 
 		<div class="container">
-			<?php if ( ot_get_option('header-image') == '' ): ?>
 			<div class="pad group">
 				<?php echo tmc_site_title(); ?>
 				<h1 class="site-description"><?php bloginfo( 'description' ); ?></h1>
 			</div>
-			<?php endif; ?>
 		</div><!--/.container-->
 
 	</header><!--/#header-->
