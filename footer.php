@@ -26,7 +26,6 @@
 						echo '</div>';
 					endif;
 				?>
-				</div>
 			</div><!--/.pad-->
 		</section><!--/#footer-widgets-->
 
