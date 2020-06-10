@@ -1235,6 +1235,7 @@ Extra Things
 
 @font-face {
 	font-family: 'titillium_webregular';
+	font-display: auto;
 	src: url('fonts/titilliumweb-regular-webfont.woff2') format('woff2'),
 	url('fonts/titilliumweb-regular-webfont.woff') format('woff');
 	font-weight: normal;
