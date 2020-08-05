@@ -140,7 +140,7 @@ add_action( 'wp_enqueue_scripts', 'alx_scripts' );
 if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
-		wp_enqueue_style( 'style', get_stylesheet_uri() );
+		wp_enqueue_style( 'style', get_stylesheet_uri(), array(), '1.0.0', false );
 		wp_enqueue_style( 'responsive', get_template_directory_uri().'/responsive.css' );
 		wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 	}
