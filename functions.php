@@ -637,3 +637,15 @@ function wordads_disable_inpost_pages() {
 }
 
 add_action( 'wp_head', 'wordads_disable_inpost_pages', 10 );
+
+function jetpackme_related_posts_time_restriction( $date_range ) {
+	$date_range = array(
+		'from' => 1420070400,
+		'to'   => time(),
+	);
+
+	return $date_range;
+
+}
+add_filter( 'jetpack_relatedposts_filter_date_range', 'jetpackme_related_posts_time_restriction' );
+
