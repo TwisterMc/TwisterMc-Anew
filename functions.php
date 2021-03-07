@@ -32,6 +32,13 @@ add_filter( 'ot_show_new_layout', '__return_false' );
 add_filter( 'ot_theme_mode', '__return_true' );
 load_template( get_template_directory() . '/option-tree/ot-loader.php' );
 
+/** JetPack Add Image To Tweet **/
+add_filter(
+	'jetpack_publicize_options', function( $option ) {
+		$option['attach_media'] = true;
+		return $option;
+	}
+);
 
 /* ------------------------------------------------------------------------- *
  *  Load theme files
@@ -648,4 +655,3 @@ function jetpackme_related_posts_time_restriction( $date_range ) {
 
 }
 add_filter( 'jetpack_relatedposts_filter_date_range', 'jetpackme_related_posts_time_restriction' );
-
