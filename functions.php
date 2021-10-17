@@ -149,22 +149,13 @@ if ( ! function_exists( 'alx_styles' ) ) {
 	function alx_styles() {
 		wp_enqueue_style( 'style', get_stylesheet_uri(), array(), '1.0.0', false );
 		wp_enqueue_style( 'responsive', get_template_directory_uri().'/responsive.css' );
-		wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/fonts/font-awesome.min.css');
+
+		//wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 	}
 
 }
 add_action( 'wp_enqueue_scripts', 'alx_styles' );
-
-/** Defer Scripts */
-function add_custom_attr( $tag, $handle, $src ) {
-    $scriptArr = array( 'font-awesome', 'font-awesome-css' );
-
-    if ( in_array( $handle, $scriptArr ) ) {
-    $tag = str_replace( 'src=', 'sync="false" src=', $tag );
-    }
-    return $tag;
-}
-add_filter( 'script_loader_tag', 'add_custom_attr', 10, 3 );
 
 
 /*  Register custom sidebars
