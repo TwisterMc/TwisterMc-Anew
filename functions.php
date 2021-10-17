@@ -501,7 +501,7 @@ if ( ! function_exists( 'alx_browser_body_class' ) ) {
 	}
 
 }
-add_filter( 'body_class', 'alx_browser_body_class' );
+//add_filter( 'body_class', 'alx_browser_body_class' );
 
 
 /* ------------------------------------------------------------------------- *
