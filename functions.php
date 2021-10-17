@@ -155,6 +155,17 @@ if ( ! function_exists( 'alx_styles' ) ) {
 }
 add_action( 'wp_enqueue_scripts', 'alx_styles' );
 
+/** Defer Scripts */
+function add_custom_attr( $tag, $handle, $src ) {
+    $scriptArr = array( 'font-awesome', 'font-awesome-css' );
+
+    if ( in_array( $handle, $scriptArr ) ) {
+    $tag = str_replace( 'src=', 'sync="false" src=', $tag );
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'add_custom_attr', 10, 3 );
+
 
 /*  Register custom sidebars
 /* ------------------------------------ */
@@ -263,7 +274,7 @@ if ( ! function_exists( 'tmc_site_title' ) ) {
 
 	function tmc_site_title() {
 
-		$logo = '<img src="'.ot_get_option('custom-logo').'" alt="'.get_bloginfo('name').'">';
+		$logo = '<img src="'.ot_get_option('custom-logo').'" alt="'.get_bloginfo('name').'" height="60" width="50">';
 
 		$link = '<a href="'.home_url('/').'" rel="home">'.$logo.'</a>';
 
@@ -535,7 +546,7 @@ function twistermc_scripts() {
 	//wp_enqueue_script( 'custom_js', get_template_directory_uri() . '-child/js/tmc_scripts.js', '1.0.0', true );
 }
 
-add_action( 'wp_enqueue_scripts', 'twistermc_scripts' );
+//add_action( 'wp_enqueue_scripts', 'twistermc_scripts' );
 
 // add custom code to the footer
 function twistermc_footer_additions() {
