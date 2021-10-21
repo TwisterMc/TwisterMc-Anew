@@ -186,13 +186,13 @@
 	
 	/* text */
 	.post-title,
-	.page-title-single { font-size: 16px; letter-spacing: 0; }
+	.page-title-single { font-size: 18px; letter-spacing: 0; }
 	
 	/* header */
 	.site-title { font-size: 32px; }
 	
 	/* blog */
-	.post-meta { font-size: 12px; }
+	.post-meta { font-size: 16px; }
 	.format-quote .post-format blockquote,
 	.format-link .post-format p,
 	.format-status .entry  { font-size: 16px; }
