@@ -72,7 +72,7 @@ strong { font-weight: 600; }
 
 /*  base : font awesome square size
 /* ------------------------------------ */
-.fa { text-align: center; width: 1em; }
+.fa { display: inline-block; text-align: center; width: 1em; }
 
 /*  base : fonts
 /* ------------------------------------ */
@@ -117,7 +117,7 @@ input, textarea, button, select, label { font-family: inherit; }
 
 .themeform.searchform div { position: relative; }
 .themeform.searchform div input { line-height: 20px; padding-left: 26px; }
-.themeform.searchform div:after { color: #ccc; content: "\f002"; font-family: FontAwesome; font-size: 14px; left: 10px; line-height: 24px; position: absolute; top: 5px; }
+.themeform.searchform div:after { color: #ccc; content: "\f179"; font-family: dashicons; font-size: 20px; left: 5px; position: absolute; top: 5px; }
 
 /*  base : entry
 /* ------------------------------------ */
@@ -251,11 +251,6 @@ h1, h2, h3, h4, h5, h6 { color: #444; font-weight: 600; -ms-word-wrap: break-wor
 box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1); cursor: pointer; display: none; height: 50px; text-align: center; width: 100%; }
 .sidebar-toggle i { color: #fff; font-size: 38px; padding: 5px 0; }
 .s1-expand .s1 {-moz-transition: width .2s ease; -webkit-transition: width .2s ease; transition: width .2s ease; }
-
-/* toggle icon */
-.icon-sidebar-toggle:before { font-family: FontAwesome; }
-.col-2cl .s1 .icon-sidebar-toggle:before { content: "\f100"; }
-.col-2cr .s1 .icon-sidebar-toggle:before { content: "\f101"; }
 
 /* sidebar primary */
 .s1 { width: 340px; z-index: 2; }
@@ -443,13 +438,13 @@ transform: rotate(60deg) translate(-48px, -11px); }
 	.nav li a { color: #ccc; display: block; line-height: 20px; }
 	/* dropdown arrows */
 	.nav li > a:after { content: "\f0da"; float: right; opacity: 0.5; }
-	.nav > li > a:after {content: "\f0d7"; float: none; font-size: 16px; line-height: 1.2em; margin-left: 6px; }
+	.nav > li > a:after {content: "\f140"; font-family: dashicons; font-size: 16px; }
 	.nav li > a:only-child:after {content: ""; margin: 0; }
 	#footer .nav li > a:after { content: "\f0da"; }
 	#footer .nav > li > a:after { content: "\f0d8"; }
 	#footer .nav li > a:only-child:after { content: ""; }
 	/* level 1 */
-	.nav > li { border-right: 1px solid #999; display: inline-block; font-size: 14px; font-weight: 600; position: relative; text-transform: uppercase; }
+	.nav > li { border-right: 1px solid #999; display: inline-block; font-size: 16px; font-weight: 600; position: relative; text-transform: uppercase; }
 	.nav > li > a { padding: 15px 14px; }
 	.nav > li > a:hover,
 	.nav > li:hover > a { background: #777; }
@@ -711,7 +706,7 @@ box-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.05); margin-bottom:
 -webkit-border-radius: 2px; border-radius: 2px; color: #888; margin-bottom: 40px; padding: 15px 15px 10px 115px; position: relative; }
 .author-bio:before { border-bottom: 10px solid #e5e5e5; border-left: 10px solid transparent; border-right: 10px solid transparent; content:''; display: inline-block; left: 50%; margin-left: -10px; position: absolute; top: -10px; }
 .author-bio .bio-avatar { float: left; height: auto; margin: 0 0 8px -100px; position: relative; width: 80px; }
-.author-bio .bio-avatar:after { background: #e8554e; -webkit-border-radius: 100%; border-radius: 100%; bottom: 0; color: #fff; content: "\f040"; font-family: FontAwesome; font-size: 14px; font-style: normal; line-height: 14px; padding: 6px 6px; position: absolute; right: 0; text-align: center; width: 14px; }
+.author-bio .bio-avatar:after { background: #e8554e; -webkit-border-radius: 100%; border-radius: 100%; bottom: 0; color: #fff; content: "\f464"; font-family: dashicons; font-size: 14px; font-style: normal; line-height: 14px; padding: 6px 6px; position: absolute; right: 0; text-align: center; width: 14px; }
 .author-bio .bio-avatar img { -webkit-border-radius: 100%; border-radius: 100%; display: block; height: auto; width: 100%; }
 .author-bio p { margin-bottom: 8px; }
 .author-bio .bio-name { color: #444; font-weight: 600; margin-bottom: 4px; }
@@ -757,7 +752,8 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 
 .post-deco { background: #e5e5e5; height: 5px; margin-bottom: 10px; position: relative; width: 100%; }
 .post-deco .hex { background: #e5e5e5; left: 50%; margin-left: -19px; position: absolute; right: 50%; top: -8px; }
-.post-deco .hex .fa:before { content: "\f040"; }
+.post-deco  .hex .fa { font-size: 20px; }
+.post-deco .hex .fa:before { content: "\f464"; font-family: dashicons; }
 
 /*  post format : common
 /* ------------------------------------ */
@@ -769,19 +765,23 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 /* ------------------------------------ */
 .format-image .hex,
 .format-image .post-deco { background: #7eb66f; }
-.format-image .hex .fa:before { content: "\f030"; }
+.format-image .hex .fa { font-size: 20px; }
+.fa-camera:before, .format-image .hex .fa:before { content: "\f129"; font-family: dashicons; }
+
 
 /*  post format : video
 /* ------------------------------------ */
 .format-video .hex,
 .format-video .post-deco { background: #e8554e; }
-.format-video .hex .fa:before { content: "\f03d"; }
+.format-video .hex .fa { font-size: 20px; }
+.format-video .hex .fa:before { content: "\f236"; font-family: dashicons; }
 
 /*  post format : quote
 /* ------------------------------------ */
 .format-quote .hex,
 .format-quote .post-deco { background: #e7ba3a; }
-.format-quote .hex .fa:before { content: "\f10d"; }
+.format-quote .hex .fa { font-size: 20px; }
+.fa-quote-left:before, .format-quote .hex .fa:before { content: "\f122"; font-family: dashicons; }
 .format-quote .format-container { background: #f8eac4; }
 
 .format-quote .post-title { display: none; }
@@ -792,29 +792,23 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 /* ------------------------------------ */
 .format-link .hex,
 .format-link .post-deco { background: #e8554e; }
-.format-link .hex .fa:before { content: "\f0c1"; }
+.format-link .hex .fa { font-size: 20px; }
+.fa-link:before, .format-link .hex .fa:before { content: "\f103"; font-family: dashicons; }
 .format-link .format-container { background: #fadddc; }
+.fa-external-link:before { content: "\f504"; font-family: dashicons; }
 
 .format-link .post-title { display: none; }
 .format-link .post-format p { font-size: 22px; font-style: italic; font-weight: 400; line-height: 1.4em; margin-bottom: 10px; }
 .format-link .post-format a { color: #e8554e!important; display: block; }
 .format-link .post-format a:hover { color: #444!important; }
 
-/*  post format : chat
-/* ------------------------------------ */
-.format-chat .hex,
-.format-chat .post-deco { background: #69bac8; }
-.format-chat .hex .fa:before { content: "\f0e6"; }
-.format-chat .format-container { background: #d2eaee; }
-
-.format-chat .post-title { display: none; }
-.format-chat .post-format p { font-style: italic; }
-
 /*  post format : status
 /* ------------------------------------ */
 .format-status .hex,
 .format-status .post-deco { background: #ffa500; }
-.format-status .hex .fa:before { content: "\f0a1"; }
+.format-status .hex .fa { font-size: 20px; }
+.fa-bullhorn:before,
+.format-status .hex .fa:before { content: "\f130"; font-family: dashicons; }
 
 .format-status .post-title { display: none; }
 .format-status .entry { font-size: 22px; line-height: 1.8em; }
@@ -827,7 +821,8 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 /* ------------------------------------ */
 .format-gallery .hex,
 .format-gallery .post-deco { background: #7eb66f; }
-.format-gallery .hex .fa:before { content: "\f03e"; }
+.format-gallery .hex .fa { font-size: 20px; }
+.fa-picture-o:before, .format-gallery .hex .fa:before { content: "\f161"; font-family: dashicons; }
 
 .format-gallery .post-format .flexslider { overflow: hidden; }
 .format-gallery .post-format .flexslider .slides { background: #262626; overflow: hidden; position: relative; }
@@ -838,7 +833,9 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 /* ------------------------------------ */
 .format-audio .hex,
 .format-audio .post-deco { background: #69bac8; }
-.format-audio .hex .fa:before { content: "\f025"; }
+.format-audio .hex .fa { font-size: 20px; }
+.fa-headphones:before,
+.format-audio .hex .fa:before { content: "\f127"; font-family: dashicons; }
 
 .format-audio .post-format a,
 .format-audio .post-format i { font-size: 16px; line-height: 22px; }
@@ -1021,7 +1018,7 @@ border-bottom-right-radius: 0; }
 .commentlist .fn, .pinglist .ping-link { color: #444; font-size: 13px; font-style: normal; font-weight: 600; }
 .commentlist .says { display: none; }
 .commentlist .avatar { -webkit-border-radius: 100%; border-radius: 100%; height: 48px; left: -60px; position: absolute; top: 0; width: 48px; }
-.commentlist .comment-meta:before, .pinglist .ping-meta:before { color: #ccc; content: "\f017"; font-family: FontAwesome; font-size: 10px; margin-right: 3px; vertical-align: 4%; }
+.commentlist .comment-meta:before, .pinglist .ping-meta:before { color: #ccc; content: "\f464"; font-family: dashicons; font-size: 10px; margin-right: 3px; vertical-align: 4%; }
 .commentlist .comment-meta a, .pinglist .ping-meta { color: #333; }
 .commentlist .reply { font-size: 13px; line-height: 16px; }
 .commentlist .reply a { color: #333; }
@@ -1040,7 +1037,7 @@ border-bottom-right-radius: 0; }
 
 /* post author & admin comment */
 .commentlist li.bypostauthor > .comment-body:after,
-.commentlist li.comment-author-admin > .comment-body:after { background: #e8554e; color: #fff; content: "\f040"; display: block; font-family: FontAwesome; font-style: normal; line-height: 12px; position: absolute; text-align: center; width: 12px; }
+.commentlist li.comment-author-admin > .comment-body:after { background: #e8554e; color: #fff; content: "\f464"; display: block; font-family: dashicons; font-style: normal; line-height: 12px; position: absolute; text-align: center; width: 12px; }
 .commentlist li.comment-author-admin > .comment-body:after { content: "\f005"; /* star for admin */ }
 .commentlist li.bypostauthor > .comment-body:after,
 .commentlist li.comment-author-admin > .comment-body:after { -webkit-border-radius: 100%; border-radius: 100%; font-size: 10px; left: -28px; padding: 3px; top: 32px; }
@@ -1495,4 +1492,65 @@ Gutenberg
 
 .wp-block-image {
 	text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+Icons (extra)
+------------------------------------------------------------------------ */
+.icon-sidebar-toggle:before {
+	content: "\f341"; font-family: dashicons;
+	font-size: 20px;
+}
+
+.col-2cl.s1-expand .s1 .icon-sidebar-toggle:before {
+	content: "\f345"; font-family: dashicons;
+}
+
+.fa-clock-o:before {
+	content: "\f469"; font-family: dashicons;
+}
+
+.fa-comment:before {
+	content: "\f101"; font-family: dashicons;
+}
+
+.fa-chevron-left:before {
+	content: "\f341"; font-family: dashicons;
+}
+
+.fa-chevron-right:before {
+	content: "\f345"; font-family: dashicons;
+}
+
+.fa-search:before {
+	content: "\f179"; font-family: dashicons;
+	font-size: 20px;
+}
+
+.fa-twitter:before {
+	content: "\f301"; font-family: dashicons;
+}
+
+.fa-rss:before {
+	content: "\f303"; font-family: dashicons;
+}
+
+.fa-angle-up:before {
+	content: "\f343"; font-family: dashicons;
+}
+
+.fa-bars:before {
+	content: "\f228"; font-family: dashicons;
+}
+
+.fa-star:before {
+	content: "\f155"; font-family: dashicons;
+}
+
+.fa-comments-o:before {
+	content: "\f101"; font-family: dashicons;
+}
+
+.fa-share:before {
+	content: "\f103"; font-family: dashicons;
 }

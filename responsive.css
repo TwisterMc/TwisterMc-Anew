@@ -20,10 +20,6 @@
 	.s1-expand .s1 .post-nav { display: block; min-width: 340px; }
 	.s1-collapse .s1 .sidebar-content,
 	.s1-collapse .s1 .sidebar .post-nav { display: none; }
-	
-	/* s1 toggle icon */
-	.col-2cl.s1-expand .s1 .icon-sidebar-toggle:before { content: "\f101"; }
-	.col-2cr.s1-expand .s1 .icon-sidebar-toggle:before { content: "\f100"; }
 
 	/* 2 column, content right */
 	.col-2cr .main { background-image: url(img/sidebar/s-left-collapse.png); padding-left: 50px; }
