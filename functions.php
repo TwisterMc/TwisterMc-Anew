@@ -150,6 +150,7 @@ if ( ! function_exists( 'alx_styles' ) ) {
 		// wp_enqueue_style( 'style', get_stylesheet_uri(), array(), '1.0.0', false );
 		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.1', false );
 		wp_enqueue_style( 'responsive', get_template_directory_uri() . '/responsive.css', array(), '1.0.1', false );
+		wp_enqueue_style( 'dashicons' );
 		// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome.min.css', array(), '1.0.1', false );
 
 		//wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
