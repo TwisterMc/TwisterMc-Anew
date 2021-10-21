@@ -86,17 +86,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-/*  Dropdown menu animation
-/* ------------------------------------ */
-	$('.nav ul.sub-menu').hide();
-	$('.nav li').hover( 
-		function() {
-			$(this).children('ul.sub-menu').slideDown('fast');
-		}, 
-		function() {
-			$(this).children('ul.sub-menu').hide();
-		}
-	);
+
 	
 /*  Mobile menu smooth toggle height
 /* ------------------------------------ */	
