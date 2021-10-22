@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 
-<section class="content">
+<section class="content" role="main">
+<a id="mainContent" href="" aria-label="Skip to content" tabindex="-1" class="isVisuallyHidden">Main Content</a>
+
 	
 	<div class="pad group">
 		<?php if ( have_posts() ) : ?>

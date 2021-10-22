@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <section class="content">
-<a id="mainContent" href="" role="heading" tabindex="-1" class="isVisuallyHidden" aria-level="2">Main Content</a>
+<a id="mainContent" href="" aria-label="Skip to content" tabindex="-1" class="isVisuallyHidden">Main Content</a>
 
 	<div class="pad group">
 	

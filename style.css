@@ -99,14 +99,14 @@ input, textarea, button, select, label { font-family: inherit; }
 .themeform input[type="text"],
 .themeform input[type="password"],
 .themeform input[type="email"],
-.themeform textarea { background: #fff; border: 2px solid #ddd; color: #777; display: block; max-width: 100%; padding: 7px 8px; }
+.themeform textarea { background: #fff; border: 2px solid #ddd; color: #444; display: block; max-width: 100%; padding: 7px 8px; }
 .themeform input[type="text"]:focus,
 .themeform input[type="password"]:focus,
 .themeform input[type="email"]:focus,
 .themeform textarea:focus { border-color: #e8554e; -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.1); box-shadow: 0 0 3px rgba(0,0,0,0.1); color: #444; }
 .themeform label .required { color: #e8554e; }
 .themeform input[type="submit"],
-.themeform button[type="submit"] { background: #e8554e; border: none; -webkit-border-radius: 3px; border-radius: 3px; color: #fff; cursor: pointer; display: inline-block; font-weight: 600; padding: 8px 14px; }
+.themeform button[type="submit"] { background: #34769c; border: none; -webkit-border-radius: 3px; border-radius: 3px; color: #fff; cursor: pointer; display: inline-block; font-weight: 600; padding: 8px 14px; }
 .themeform input[type="submit"]:hover,
 .themeform button[type="submit"]:hover { background: #444; }
 
@@ -133,7 +133,7 @@ input, textarea, button, select, label { font-family: inherit; }
 .entry ol ul ol li { list-style: decimal; }
 .entry dt { font-weight: 600;}
 .entry address { margin-bottom: 1em; }
-.entry blockquote { color: #777; font-style: italic; margin: 0 0 20px 0; padding-left: 50px; position: relative; }
+.entry blockquote { color: #444; font-style: italic; margin: 0 0 20px 0; padding-left: 50px; position: relative; }
 .entry blockquote p { margin-bottom: 0.75em; }
 .entry blockquote:before { color: #ccc; content: "\f10d"; font-family: FontAwesome; font-size: 32px; font-style: normal; left: 0; position: absolute; text-align: center; top: 0; }
 .entry blockquote.twitter-tweet:before { content: "\f099"; }
@@ -896,7 +896,7 @@ border-bottom-right-radius: 0; }
 #reply-title { margin-bottom: 20px; }
 li #reply-title { border-top: 0; font-size: 0; height: 0; margin: 0!important; padding: 0; }
 #cancel-comment-reply-link { bottom: 26px; color: #999; display: block; font-size: 12px; position: absolute; right: 20px; }
-#cancel-comment-reply-link:hover { color: #777; }
+#cancel-comment-reply-link:hover { color: #444; }
 #commentform { background: #e5e5e5; border-bottom: 1px solid #fbfbfb;
 -webkit-border-radius: 4px; border-radius: 4px; margin-bottom: 20px; padding: 10px 20px 20px; }
 #commentform p.comment-form-author { float: left; width: 48%; }
@@ -920,7 +920,7 @@ li #reply-title { border-top: 0; font-size: 0; height: 0; margin: 0!important; p
 /* ------------------------------------ */
 .wp-pagenavi { float: none; font-weight: 600; line-height: 20px; margin-right: -2px; text-align: right; text-align: center; }
 .wp-pagenavi a,
-.wp-pagenavi span { color: #999; display: inline; font-size: 16px; margin: 0 2px; padding: 7px 8px; }
+.wp-pagenavi span { color: #444; display: inline; font-size: 16px; margin: 0 2px; padding: 7px 8px; }
 .wp-pagenavi span.pages { border: none!important; display: block; font-size: 17px; font-weight: 300; margin-bottom: 1em!important; }
 .wp-pagenavi span.extend { border: none!important; border-bottom: 3px solid transparent; border-top: 1px solid transparent; }
 .wp-pagenavi span.current { color: #444; }
@@ -928,7 +928,7 @@ li #reply-title { border-top: 0; font-size: 0; height: 0; margin: 0!important; p
 .wp-pagenavi a { border: none; border-bottom: 3px solid #ddd; border-top: 1px solid #f1f1f1; }
 .wp-pagenavi a:hover,
 .wp-pagenavi a:active,
-.wp-pagenavi span.current { border-bottom: 3px solid #3b8dbd; }
+.wp-pagenavi span.current { border-bottom: 3px solid #34769c; }
 
 
 /*  shortcode : highlights
@@ -1010,8 +1010,8 @@ Extra Things
 /* Global */
 body { font-family: 'titillium_webregular', Arial, sans-serif; }
 
-::selection { background-color: #3b8dbd; }
-::-moz-selection { background-color: #3b8dbd; }
+::selection { background-color: #34769c; }
+::-moz-selection { background-color: #34769c; }
 
 
 
@@ -1025,17 +1025,17 @@ a:hover {
 .more-link,
 .post-tags a:hover,
 .author-bio .bio-avatar:after,
-.commentlist li.bypostauthor > .comment-body:after { background-color: #3b8dbd; }
+.commentlist li.bypostauthor > .comment-body:after { background-color: #34769c; }
 
 .alx-tabs-nav li.active a,
 .wp-pagenavi a:hover,
-.wp-pagenavi a:active { border-bottom-color: #3b8dbd!important; }
+.wp-pagenavi a:active { border-bottom-color: #34769c!important; }
 
 .themeform input[type="text"]:focus,
 .themeform input[type="password"]:focus,
 .themeform input[type="email"]:focus,
 .themeform textarea:focus,
-.comment-tabs li.active a { border-color: #3b8dbd; }
+.comment-tabs li.active a { border-color: #34769c; }
 
 
 .search-expand,
@@ -1044,7 +1044,7 @@ a:hover {
 	#nav-topbar .nav ul { background-color: #26272b; }
 }
 
-#header, .boxed #header { background-color: #3b8dbd; }
+#header, .boxed #header { background-color: #34769c; }
 #footer-bottom { background-color: #33363b; }
 
 .site-title a img { max-height: 60px; }

@@ -6,7 +6,7 @@
 	<div class="pad group">
 
 	<?php while ( have_posts() ): the_post(); ?>
-	<a id="mainContent" href="" role="heading" tabindex="-1" class="isVisuallyHidden" aria-level="2">Main Content</a>
+	<a id="mainContent" href="" aria-label="Skip to content" tabindex="-1" class="isVisuallyHidden">Main Content</a>
 
 
 		<article <?php post_class(); ?>>
@@ -26,7 +26,7 @@
 				<div class="post-deco">
 					<div class="hex hex-small">
 						<div class="hex-inner"><i class="fa"></i></div>
-						<?php if ( $format != false ) :?><a href="<?php echo get_post_format_link($format); ?>"></a><?php endif; ?>
+						<?php if ( $format != false ) :?><a href="<?php echo get_post_format_link($format); ?>"><?php echo $format; ?> Post Format Archive</a><?php endif; ?>
 						<div class="corner-1"></div>
 						<div class="corner-2"></div>
 					</div>

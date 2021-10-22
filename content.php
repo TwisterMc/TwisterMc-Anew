@@ -19,7 +19,7 @@
 		<div class="post-deco">
 			<div class="hex hex-small">
 				<div class="hex-inner"><i class="fa"></i></div>
-				<?php if ( $format != false ) :?><a href="<?php echo get_post_format_link($format); ?>"></a><?php endif; ?>
+				<?php if ( $format != false ) :?><a href="<?php echo get_post_format_link($format); ?>"><?php echo $format; ?> Post Format Archive</a><?php endif; ?>
 				<div class="corner-1"></div>
 				<div class="corner-2"></div>
 			</div>
