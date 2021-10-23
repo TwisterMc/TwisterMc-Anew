@@ -31,28 +31,7 @@
 }
 
 
-/* ------------------------------------------------------------------------- *
- *  Tablet (Portrait) : 800px > 720px
-/* ------------------------------------------------------------------------- */
-@media only screen and (min-width: 720px) and (max-width: 800px) {
-	
-	/* layout */
-	.pad,
-	.pad.post-content,
-	.pad.format-container { padding: 30px 30px 20px; }
-	
-	.grid { margin-right: 2.9%; }
-	.one-half { width: 48.5%; }
-	.one-third { width: 31.4%; }
-	.two-third { width: 65.65%; }
-	.one-fourth { width: 22.8%; }
-	.three-fourth { width: 74.1%; }
-	.one-fifth { width: 17.6%; }
-	.two-fifth { width: 38.5%; }
-	.three-fifth { width: 59%; }
-	.four-fifth { width: 79.5%; }
-	
-}
+
 
 
 /* ------------------------------------------------------------------------- *

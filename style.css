@@ -563,7 +563,7 @@ box-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.05); margin-bottom:
 .post-title i { font-style: italic; }
 .post-title a { color: #222; }
 .post-title.pad,
-.post-meta.pad { align-items: center; display: flex; padding-bottom: 0; padding-top: 0; }
+.post-meta.pad { align-items: center; display: flex; flex-wrap: wrap; padding-bottom: 0; padding-top: 0; }
 .post-meta { margin-bottom: 15px; text-transform: uppercase; }
 .post-meta a:hover { color: black; }
 .post-meta i { margin-right: 4px; }
