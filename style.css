@@ -499,13 +499,6 @@ transform: rotate(60deg) translate(-48px, -11px); }
 #nav-topbar .nav-toggle { background: transparent; color: #fff; }
 #nav-topbar .nav-text { color: #fff; }
 
-@media only screen and (min-width: 1025px) {
-	/* fixed nav */
-	.full-width.topbar-enabled #header { padding-top: 50px; }
-	.full-width #nav-topbar.nav-container { left: 0; position: fixed; right: 0; top: 0; width: 100%; z-index: 999; }
-	.full-width.admin-bar #nav-topbar.nav-container { top: 32px; }
-}
-
 #nav-topbar .nav li a {
 	text-decoration: none;
 }
