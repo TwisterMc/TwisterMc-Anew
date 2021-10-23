@@ -38,11 +38,25 @@ table { border-collapse: collapse; border-spacing: 0; }
 /* ------------------------------------------------------------------------- *
  *  Base Styles
 /* ------------------------------------------------------------------------- */
-body { background: #f2f2f2; color: #333; font-size: 16px; line-height: 1.6em; }
-::selection { background: #e8554e; color: #fff; }
-::-moz-selection { background: #e8554e; color: #fff; }
-.content a { text-decoration: underline; }
-a:hover { color: #444; }
+@font-face {
+	font-display: swap;
+	font-family: 'titillium_webregular';
+	font-style: normal;
+	font-weight: normal;
+	src: url('fonts/titilliumweb-regular-webfont.woff2') format('woff2'),
+	url('fonts/titilliumweb-regular-webfont.woff') format('woff');
+
+}
+
+body { background: #f2f2f2; color: #333; font-family: 'titillium_webregular', Arial, sans-serif; font-size: 16px; line-height: 1.6em; }
+
+::selection { background-color: #34769c; color: #fff; }
+::-moz-selection { background-color: #34769c;  color: #fff; }
+
+a:hover {
+	color: #444;
+	text-decoration: underline;
+}
 img { height: auto; max-width: 100%; }
 a,
 a:before,
@@ -305,7 +319,6 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.03); col
 /*  common : pagination
 /* ------------------------------------ */
 .pagination { margin-bottom: 15px; }
-.pagination a { font-size: 18px; font-weight: 600; }
 
 /*  common : thumb icon
 /* ------------------------------------ */
@@ -467,7 +480,7 @@ transform: rotate(60deg) translate(-48px, -11px); }
 .site-title { float: left; font-size: 42px; font-weight: 900; line-height: 80px; padding: 10px 0; }
 .site-title a { color: #fff; display: block; max-width: 100%; }
 .site-title a img { display: block; height: auto; margin: 0 auto; max-height: 80px; max-width: 100%; padding: 0; }
-.site-description { color: #fff; float: left; font-size: 18px; font-style: italic; line-height: 80px; margin-left: 20px; padding: 10px 0; }
+.site-description { color: #fff; float: left; font-style: italic; line-height: 80px; margin-left: 20px; padding: 10px 0; }
 .site-image { display: block; margin: 0 auto; max-height: 400px; }
 
 /*  header : search
@@ -789,7 +802,7 @@ border-bottom-right-radius: 0; }
 .alx-posts .post-item-title { margin: 2px 0; -ms-word-wrap: break-word; word-wrap: break-word; }
 .alx-tab .tab-item-date,
 .alx-tab .tab-item-name,
-.alx-posts .post-item-date  { font-size: 13px; text-transform: uppercase; }
+.alx-posts .post-item-date  { text-transform: uppercase; }
 .alx-tab li:hover .tab-item-thumbnail,
 .alx-tab li:hover .tab-item-avatar,
 .alx-posts li:hover .post-item-thumbnail { opacity: 0.75; }
@@ -918,10 +931,10 @@ li #reply-title { border-top: 0; font-size: 0; height: 0; margin: 0!important; p
 
 /*  plugin : wp-pagenavi
 /* ------------------------------------ */
-.wp-pagenavi { float: none; font-weight: 600; line-height: 20px; margin-right: -2px; text-align: right; text-align: center; }
+.wp-pagenavi { float: none; margin-right: -2px; text-align: center; }
 .wp-pagenavi a,
-.wp-pagenavi span { color: #444; display: inline; font-size: 16px; margin: 0 2px; padding: 7px 8px; }
-.wp-pagenavi span.pages { border: none!important; display: block; font-size: 17px; font-weight: 300; margin-bottom: 1em!important; }
+.wp-pagenavi span { color: #444; display: inline; margin: 0 2px; padding: 7px 8px; }
+.wp-pagenavi span.pages { border: none!important; display: block; margin-bottom: 1em!important; }
 .wp-pagenavi span.extend { border: none!important; border-bottom: 3px solid transparent; border-top: 1px solid transparent; }
 .wp-pagenavi span.current { color: #444; }
 
@@ -929,6 +942,7 @@ li #reply-title { border-top: 0; font-size: 0; height: 0; margin: 0!important; p
 .wp-pagenavi a:hover,
 .wp-pagenavi a:active,
 .wp-pagenavi span.current { border-bottom: 3px solid #34769c; }
+.alx-tabs-nav li.active a { border-bottom-color: #34769c!important; }
 
 
 /*  shortcode : highlights
@@ -997,27 +1011,7 @@ Extra Things
  *  Theme customization starts here
 /* ------------------------------------------------------------------------- */
 
-@font-face {
-	font-display: swap;
-	font-family: 'titillium_webregular';
-	font-style: normal;
-	font-weight: normal;
-	src: url('fonts/titilliumweb-regular-webfont.woff2') format('woff2'),
-	url('fonts/titilliumweb-regular-webfont.woff') format('woff');
-
-}
-
 /* Global */
-body { font-family: 'titillium_webregular', Arial, sans-serif; }
-
-::selection { background-color: #34769c; }
-::-moz-selection { background-color: #34769c; }
-
-
-
-a:hover {
-	text-decoration: underline;
-}
 
 .themeform input[type="submit"],
 .themeform button[type="submit"],
@@ -1027,9 +1021,7 @@ a:hover {
 .author-bio .bio-avatar:after,
 .commentlist li.bypostauthor > .comment-body:after { background-color: #34769c; }
 
-.alx-tabs-nav li.active a,
-.wp-pagenavi a:hover,
-.wp-pagenavi a:active { border-bottom-color: #34769c!important; }
+
 
 .themeform input[type="text"]:focus,
 .themeform input[type="password"]:focus,
@@ -1061,8 +1053,6 @@ a:hover {
 .entry img {
 	border-radius: 5px;
 }
-
-/*body { background:  url(#)   ; }*/
 
 .creation {
 	float: left;
@@ -1133,13 +1123,6 @@ Notification Banners
 	background-color: #FFBABA;
 	color: #D8000C;
 }
-
-
-/* Tablet - 800px, 768px & 720px */
-@media only screen and (min-width: 720px) and (max-width: 800px) {
-	.mystyle {}
-}
-
 
 /* Mobile - 480px & 320px */
 @media only screen and (max-width: 719px) {

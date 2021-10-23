@@ -21,11 +21,7 @@
 	.s1-collapse .s1 .sidebar-content,
 	.s1-collapse .s1 .sidebar .post-nav { display: none; }
 
-	/* 2 column, content right */
-	.col-2cr .main { background-image: url(img/sidebar/s-left-collapse.png); padding-left: 50px; }
-	.col-2cr .s1 { margin-left: -50px; }
-	.col-2cr.s1-expand .s1 { -webkit-box-shadow: 3px 0 3px rgba(0,0,0,0.05); box-shadow: 3px 0 3px rgba(0,0,0,0.05); left: 0; }
-	
+		
 	/* 2 column, content left */
 	.col-2cl .main { background-image: url(img/sidebar/s-right-collapse.png); padding-right: 50px; }
 	.col-2cl .s1 { margin-right: -50px; }
