@@ -82,7 +82,6 @@
 	.pad.post-content,
 	.pad.format-container { padding: 20px 20px 10px; }
 	.content { padding-top: 20px; }
-	.entry { font-size: 16px; line-height: 1.6em; }
 	
 
 	/* header */
@@ -146,7 +145,7 @@
 	
 	/* text */
 	.post-title,
-	.page-title-single { font-size: 20px; }
+	.page-title-single { font-size: 24px; }
 	
 	
 
