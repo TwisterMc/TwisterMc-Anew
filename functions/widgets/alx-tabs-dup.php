@@ -105,20 +105,7 @@ class AlxTabs extends WP_Widget {
 					</div>
 
 					<div class="tab-item-inner group">
-						<?php
-						$categories = wp_get_post_categories( $recent["ID"] );
-						$cats = array();
-
-						foreach($categories as $c){
-							$cat = get_category( $c );
-							$cats[] = array( 'name' => $cat->name, 'slug' => $cat->slug );
-						}
-
-						foreach( $cats as $category ) { ?>
-							<p class="tab-item-category">
-								<a rel="category tag" href="/category/<?php echo $category['slug']; ?>" title="<?php echo $category['name']; ?>"><?php echo $category['name']; ?></a>
-							</p>
-							<? } ?>
+						
 						<p class="tab-item-title"><a href="<?php the_permalink($recent["ID"]); ?>" rel="bookmark" title="<?php echo $recent["post_title"]; ?>"><?php echo $recent["post_title"]; ?></a></p>
 					</div>
 

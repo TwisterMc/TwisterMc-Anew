@@ -102,7 +102,6 @@ class AlxTabs extends WP_Widget {
 					<?php } ?>
 					
 					<div class="tab-item-inner group">
-						<?php if($instance['tabs_category']) { ?><p class="tab-item-category"><?php the_category(' / '); ?></p><?php } ?>
 						<p class="tab-item-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
 						<?php if($instance['tabs_date']) { ?><p class="tab-item-date"><?php the_time('j M, Y'); ?></p><?php } ?>
 					</div>
@@ -152,7 +151,6 @@ class AlxTabs extends WP_Widget {
 					<?php } ?>
 					
 					<div class="tab-item-inner group">
-						<?php if($instance['tabs_category']) { ?><p class="tab-item-category"><?php the_category(' / '); ?></p><?php } ?>
 						<p class="tab-item-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
 						<?php if($instance['tabs_date']) { ?><p class="tab-item-date"><?php the_time('j M, Y'); ?></p><?php } ?>
 					</div>
