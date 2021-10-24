@@ -6,7 +6,7 @@
 	<div class="pad group">
 
 	<?php while ( have_posts() ): the_post(); ?>
-	<a id="mainContent" href="" aria-label="Skip to content" tabindex="-1" class="isVisuallyHidden">Main Content</a>
+	<a id="mainContent" role="heading" tabindex="-1" class="isVisuallyHidden" aria-level="2">Main Content</a>
 
 
 		<article <?php post_class(); ?>>
