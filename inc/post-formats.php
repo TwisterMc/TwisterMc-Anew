@@ -156,40 +156,9 @@
 	
 <?php endif; ?>
 
-<?php if ( has_post_format( 'quote' ) ): // Quote ?>
 
-	<div class="post-format">
-		<div class="format-container group pad">
-			<blockquote><?php echo isset($meta['_quote'][0])?wpautop($meta['_quote'][0]):''; ?></blockquote>
-			<p class="quote-author"><?php echo (isset($meta['_quote_author'][0])?'&mdash; '.$meta['_quote_author'][0]:''); ?></p>
-		</div>
-	</div>
-	
-<?php endif; ?>
 
-<?php if ( has_post_format( 'chat' ) ): // Chat ?>
 
-	<div class="post-format">
-		<div class="format-container group pad">
-			<blockquote>
-				<?php echo (isset($meta['_chat'][0])?wpautop($meta['_chat'][0]):''); ?>
-			</blockquote>
-		</div>
-	</div>
-	
-<?php endif; ?>
-
-<?php if ( has_post_format( 'link' ) ): // Link ?>
-
-	<div class="post-format">
-		<div class="format-container pad">
-			<p><a href="<?php echo (isset($meta['_link_url'][0])?$meta['_link_url'][0]:'#'); ?>">
-				<?php echo (isset($meta['_link_title'][0])?$meta['_link_title'][0]:get_the_title()); ?> <i class="fa fa-external-link"></i>
-			</a></p>
-		</div>
-	</div>
-	
-<?php endif; ?>
 
 <?php if ( !has_post_format( ) && !is_single() || has_post_format( 'image' ) && !is_single() || has_post_format( 'video' ) && !is_single() ): // Standard & Image ?>
 

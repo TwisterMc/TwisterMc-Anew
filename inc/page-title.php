@@ -38,22 +38,10 @@
 	<?php elseif ( is_year() ): ?>
 		<h1><i class="fa fa-calendar"></i><?php _e('Yearly Archive:','anew'); ?> <span><?php echo get_the_time('Y'); ?></span></h1>
 	
-		<?php elseif ( has_post_format('audio') ): ?>
-			<h1><i class="fa fa-headphones"></i><?php _e('Type:','anew'); ?> <span><?php _e('Audio','anew'); ?></span></h1>
-		<?php elseif ( has_post_format('aside') ): ?>
-			<h1><i class="fa fa-pen"></i><?php _e('Type:','anew'); ?> <span><?php _e('Aside','anew'); ?></span></h1>
-		<?php elseif ( has_post_format('chat') ): ?>
-			<h1><i class="fa fa-comments-o"></i><?php _e('Type:','anew'); ?> <span><?php _e('Chat','anew'); ?></span></h1>
-		<?php elseif ( has_post_format('gallery') ): ?>
-			<h1><i class="fa fa-picture-o"></i><?php _e('Type:','anew'); ?> <span><?php _e('Gallery','anew'); ?></span></h1>
+		
 		<?php elseif ( has_post_format('image') ): ?>
 			<h1><i class="fa fa-camera"></i><?php _e('Type:','anew'); ?> <span><?php _e('Image','anew'); ?></span></h1>
-		<?php elseif ( has_post_format('link') ): ?>
-			<h1><i class="fa fa-link"></i><?php _e('Type:','anew'); ?> <span><?php _e('Link','anew'); ?></span></h1>
-		<?php elseif ( has_post_format('quote') ): ?>
-			<h1><i class="fa fa-quote-left"></i><?php _e('Type:','anew'); ?> <span><?php _e('Quote','anew'); ?></span></h1>
-		<?php elseif ( has_post_format('status') ): ?>
-			<h1><i class="fa fa-bullhorn"></i><?php _e('Type:','anew'); ?> <span><?php _e('Status','anew'); ?></span></h1>
+	
 		<?php elseif ( has_post_format('video') ): ?>
 			<h1><i class="fa fa-video-camera"></i><?php _e('Type:','anew'); ?> <span><?php _e('Video','anew'); ?></span></h1>
 

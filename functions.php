@@ -93,7 +93,7 @@ if ( ! function_exists( 'alx_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 
 		// Enable post format support
-		add_theme_support( 'post-formats', array( 'audio', 'aside', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
+		add_theme_support( 'post-formats', array( 'image', 'video' ) );
 
 		// Enabled new title-tag support
 		add_theme_support( 'title-tag' );

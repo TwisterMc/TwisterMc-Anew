@@ -630,73 +630,6 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 .format-video .hex .fa { font-size: 20px; }
 .format-video .hex .fa:before { content: "\f236"; font-family: dashicons; }
 
-/*  post format : quote
-/* ------------------------------------ */
-.format-quote .hex,
-.format-quote .post-deco { background: #e7ba3a; }
-.format-quote .hex .fa { font-size: 20px; }
-.fa-quote-left:before, .format-quote .hex .fa:before { content: "\f122"; font-family: dashicons; }
-.format-quote .format-container { background: #f8eac4; }
-
-.format-quote .post-title { display: none; }
-.format-quote .post-format blockquote { font-size: 22px; font-style: italic; font-weight: 400; line-height: 1.6em; }
-.format-quote .post-format .quote-author { font-style: italic; }
-
-/*  post format : link
-/* ------------------------------------ */
-.format-link .hex,
-.format-link .post-deco { background: #e8554e; }
-.format-link .hex .fa { font-size: 20px; }
-.fa-link:before, .format-link .hex .fa:before { content: "\f103"; font-family: dashicons; }
-.format-link .format-container { background: #fadddc; }
-.fa-external-link:before { content: "\f504"; font-family: dashicons; }
-
-.format-link .post-title { display: none; }
-.format-link .post-format p { font-size: 22px; font-style: italic; font-weight: 400; line-height: 1.4em; margin-bottom: 10px; }
-.format-link .post-format a { color: #e8554e!important; display: block; }
-.format-link .post-format a:hover { color: #444!important; }
-
-/*  post format : status
-/* ------------------------------------ */
-.format-status .hex,
-.format-status .post-deco { background: #ffa500; }
-.format-status .hex .fa { font-size: 20px; }
-.fa-bullhorn:before,
-.format-status .hex .fa:before { content: "\f130"; font-family: dashicons; }
-
-.format-status .post-title { display: none; }
-.format-status .entry { font-size: 22px; line-height: 1.8em; }
-
-/*  post format : aside
-/* ------------------------------------ */
-.format-aside .post-title { display: none; }
-
-/*  post format : gallery
-/* ------------------------------------ */
-.format-gallery .hex,
-.format-gallery .post-deco { background: #7eb66f; }
-.format-gallery .hex .fa { font-size: 20px; }
-.fa-picture-o:before, .format-gallery .hex .fa:before { content: "\f161"; font-family: dashicons; }
-
-.format-gallery .post-format .flexslider { overflow: hidden; }
-.format-gallery .post-format .flexslider .slides { background: #262626; overflow: hidden; position: relative; }
-.format-gallery .post-format .flexslider .slides img { -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.6); box-shadow: 0 0 30px rgba(0,0,0,0.6); max-height: 405px; max-width: 100%; width: auto; }
-.format-gallery .post-format .flex-direction-nav a:before { color: #fff; }
-
-/*  post format : audio
-/* ------------------------------------ */
-.format-audio .hex,
-.format-audio .post-deco { background: #69bac8; }
-.format-audio .hex .fa { font-size: 20px; }
-.fa-headphones:before,
-.format-audio .hex .fa:before { content: "\f127"; font-family: dashicons; }
-
-.format-audio .post-format a,
-.format-audio .post-format i { font-size: 16px; line-height: 22px; }
-#page .format-audio .post-format img { -webkit-border-bottom-left-radius: 0; border-bottom-left-radius: 0;
--webkit-border-bottom-right-radius: 0;
-border-bottom-right-radius: 0; }
-
 /* ------------------------------------------------------------------------- *
  *  Widgets
 /* ------------------------------------------------------------------------- */
@@ -1054,18 +987,6 @@ Extra Things
 
 .video-container {
 	margin-bottom: 20px;
-}
-
-.format-chat .video-container,
-.format-status .video-container {
-	overflow: visible;
-}
-
-.format-link .entry p > a {
-	background-color: #fadddc;
-	color: #e8554e;
-	display: block;
-	padding: 10px;
 }
 
 /* ---------------------------------------------------------------------
