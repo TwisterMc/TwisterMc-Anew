@@ -14,9 +14,7 @@
 			<h1 class="post-title pad"><?php the_title(); ?></a></h1>
 
 			<ul class="post-meta pad group">
-				<li><?php the_category(' / '); ?></li>
 				<li><i class="fa fa-clock-o"></i><?php the_time('j M, Y'); ?></li>
-				<?php if ( comments_open() ): ?><li><a href="<?php comments_link(); ?>"><i class="fa fa-comment"></i><?php comments_number( '0', '1', '%' ); ?></a></li><?php endif; ?>
 			</ul>
 
 			<div class="post-inner">
@@ -39,7 +37,9 @@
 						<?php wp_link_pages(array('before'=>'<div class="post-pages">'.__('Pages:','anew'),'after'=>'</div>')); ?>
 					</div><!--/.entry-->
 
-					<?php the_tags('<p class="post-tags"><span>'.__('Tags:','anew').'</span> ','','</p>'); ?>
+					<hr />
+					<div><p class="post-tags">Posted In: <?php the_category(' '); ?></p></div>
+					<?php the_tags('<p class="post-tags"><span>'.__('Tagged With:','anew').'</span> ','','</p>'); ?>
 
 				</div><!--/.post-content-->
 
@@ -48,6 +48,9 @@
 		</article><!--/.post-->
 	<?php endwhile; ?>
 
+	<?php comments_template('/comments.php',true); ?>
+
+
 		<?php if ( is_single() ): ?>
 			<ul class="post-nav group">
 				<li class="next"><?php next_post_link('%link', '<i class="fa fa-chevron-right"></i><strong>'.__('Next', 'anew').'</strong> <span>%title</span>'); ?></li>
@@ -55,7 +58,6 @@
 			</ul>
 		<?php endif; ?>
 
-	<?php comments_template('/comments.php',true); ?>
 
 	</div><!--/.pad-->
 

@@ -562,10 +562,11 @@ box-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.05); margin-bottom:
 
 /*  single : tags
 /* ------------------------------------ */
-.post-tags { margin-bottom: 40px; }
+.post-tags { margin-bottom: 10px; }
+.post-tags:not(:first-child) { margin-bottom: 40px; }
 .post-tags span { color: #999; display: inline-block; margin: 0 7px 0 0; }
 .post-tags a { background: #f2f2f2;
--webkit-border-radius: 2px; border-radius: 2px; color: #999; display: inline-block; font-size: 12px; line-height: 16px; margin: 0 5px 2px 0; padding: 3px 7px; white-space: nowrap; }
+-webkit-border-radius: 2px; border-radius: 4px; display: inline-block; margin: 0 5px 2px 0; padding: 3px 7px; white-space: nowrap; }
 .post-tags a:hover { color: #fff; }
 
 /*  single : post-nav

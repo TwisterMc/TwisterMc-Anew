@@ -7,7 +7,6 @@
 	</h2><!--/.post-title-->
 
 	<ul class="post-meta pad group">
-		<li><?php the_category(' / '); ?></li>
 		<li><i class="fa fa-clock-o"></i><?php the_time('j M, Y'); ?></li>
 	</ul><!--/.post-meta-->
 
