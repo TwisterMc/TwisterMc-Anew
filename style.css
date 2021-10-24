@@ -556,14 +556,6 @@ box-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.05); margin-bottom:
 
 .post-meta li {margin-right: 12px; }
 
-.more-link { display: none; }
-
-.more-link-custom { background: url(img/pattern.png) repeat-x 10px; display: block; font-size: 16px; height: 20px; padding-bottom: 30px; padding-top: 10px; text-align: center; text-transform: uppercase; }
-.more-link-custom span { background: #fff; display: inline-block; margin-top: 6px; padding: 0 20px; }
-.more-link-custom span i { background: #f2f2f2; border: 1px solid transparent; -webkit-border-radius: 4px; border-radius: 4px; display: block; padding: 0 10px;
--webkit-transition: all 0.2s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease; }
-.more-link-custom:hover span i { background: #fff; border: 1px solid #f2f2f2; padding-left: 16px; padding-right: 16px; }
-
 /*  single : post pages
 /* ------------------------------------ */
 .post-pages { font-weight: 600; margin-bottom: 20px; }
@@ -1002,7 +994,6 @@ Extra Things
 .themeform input[type="submit"],
 .themeform button[type="submit"],
 .s1 .sidebar-toggle,
-.more-link,
 .post-tags a:hover,
 .author-bio .bio-avatar:after,
 .commentlist li.bypostauthor > .comment-body:after { background-color: #34769c; }
