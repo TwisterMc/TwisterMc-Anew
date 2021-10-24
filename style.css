@@ -690,15 +690,15 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 .commentlist .comment-meta:before, .pinglist .ping-meta:before { color: #ccc; content: "\f464"; font-family: dashicons; font-size: 10px; margin-right: 3px; vertical-align: 4%; }
 .commentlist .comment-meta a, .pinglist .ping-meta { color: #333; }
 .commentlist .reply { font-size: 16px; line-height: 16px; }
-.commentlist .reply a { color: #333; }
-.commentlist .reply a:hover { color: #444; }
+.commentlist .reply a { background-color: #333; border-radius: 4px; color: #fff; display: inline-block; margin: 0 5px 2px 0; padding: 5px 7px; white-space: nowrap;; }
+.commentlist .reply a:hover { background-color: #34759A; }
 .comment-awaiting-moderation { color: #e8554e; font-style: normal; }
 
 /* pings */
 .pinglist li { padding-left: 0; }
 
 /* comment text */
-.commentlist .comment-body p { clear: both; color: #333; font-size: 16px; margin-bottom: 8px; }
+.commentlist .comment-body p { clear: both; line-height: 1.6; margin-bottom: 10px; }
 .commentlist .comment-body strong { font-weight: bold; }
 .commentlist .comment-body em { font-style: italic; }
 .commentlist .comment-body ol li { list-style: decimal; margin-left: 2em; padding: 0; }
