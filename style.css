@@ -522,7 +522,7 @@ box-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.05); margin-bottom:
 .post-title a { color: #222; }
 .post-title.pad,
 .post-meta.pad { align-items: center; display: flex; flex-wrap: wrap; padding-bottom: 0; padding-top: 0; }
-.post-meta { margin-bottom: 15px; text-transform: uppercase; }
+.post-meta { margin-bottom: 15px;  }
 .post-meta i { margin-right: 4px; }
 
 
@@ -636,7 +636,6 @@ transition-property: background color; -webkit-transition-timing-function: ease-
 .alx-tab .tab-item-thumbnail { float: left; margin-left: -94px; position: relative; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease; }
 .alx-tab .tab-item-title,
 .alx-posts .post-item-title { margin: 2px 0; -ms-word-wrap: break-word; word-wrap: break-word; }
-.alx-tab .tab-item-date,
 .alx-posts .post-item-date  { text-transform: uppercase; }
 .alx-tab .tab-item-title a {color: #444;}
 
