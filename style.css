@@ -142,7 +142,7 @@ input, textarea, button, select, label { font-family: inherit; }
 .entry address { margin-bottom: 1em; }
 .entry blockquote { color: #444; font-style: italic; margin: 0 0 20px 0; padding-left: 50px; position: relative; }
 .entry blockquote p { margin-bottom: 0.75em; }
-.entry blockquote:before { color: #ccc; content: "\f10d"; font-family: FontAwesome; font-size: 32px; font-style: normal; left: 0; position: absolute; text-align: center; top: 0; }
+.entry blockquote:before { color: #ccc; content: "\f122"; font-family: dashicons; font-size: 32px; font-style: normal; left: 0; position: absolute; text-align: center; top: 0; }
 .entry blockquote.twitter-tweet:before { content: "\f099"; }
 .entry code, .entry pre { font-family: Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace; font-size: 11px; }
 .entry pre { background: url(img/pre.png) repeat top; border: 1px solid #ddd; line-height: 19px; margin: 30px 0; overflow-x: auto; overflow-y: hidden; padding: 18px 20px; white-space: pre-wrap; word-wrap: break-word; }
