@@ -402,34 +402,23 @@ transform: rotate(60deg) translate(-48px, -11px); }
 .nav-container {  position: relative; z-index: 99; }
 .nav-toggle { color: #fff; cursor: pointer; display: none; float: right; height: 50px; text-align: center; width: 60px; }
 .nav-toggle i { font-size: 29px; padding: 10px 0; }
-.nav-text { display: none; float: right; font-size: 16px; line-height: 24px; padding: 13px 20px; }
-.nav li > a:after,
-.nav > li > a:after { display: inline-block; }
+
 
 @media only screen and (min-width: 720px) {
 
 	.nav-wrap { height: auto!important; }
 	/* common */
-	.nav { font-size: 0; position: relative; }
-	.nav li a { color: #ccc; display: block; line-height: 20px; }
+	.nav li a { display: block; padding: 15px 14px; }
 	/* dropdown arrows */
-	.nav li > a:after { content: "\f0da"; float: right; opacity: 0.5; }
-	.nav > li > a:after {content: "\f140"; font-family: dashicons; font-size: 16px; }
+	.nav > li > a:after {content: "\f140"; float: right; font-family: dashicons; opacity: 0.5; }
 	.nav li > a:only-child:after {content: ""; margin: 0; }
 	
 	/* level 1 */
-	.nav > li {  display: inline-block; font-size: 16px; position: relative; text-transform: uppercase; }
-	.nav > li > a { padding: 15px 14px; }
+	.nav > li {  display: inline-block; position: relative; text-transform: uppercase; }
 	
 	/* level 2 & 3 */
 	.nav li:hover > ul { display: block; }
-	.nav ul { 
-	-webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.15);
-	box-shadow: 0 2px 2px rgba(0,0,0,0.15); display: none; left: 0; padding: 10px 0; position: absolute; top: 50px; -webkit-transform: translateZ(0); width: 180px; z-index: 2; }
-	.nav ul li { display: block; font-size: 16px; padding: 0; position: relative; }
-	.nav ul li a { padding: 10px 20px; }
-	/* level 3 */
-	.nav ul ul { left: 180px; position: absolute; top: -10px; }
+	.nav ul {  display: none; left: 0; padding: 10px 0; position: absolute; top: 50px; -webkit-transform: translateZ(0); width: 180px; z-index: 2; }
 
 }
 @media only screen and (max-width: 719px) {
@@ -445,21 +434,13 @@ transform: rotate(60deg) translate(-48px, -11px); }
 	transition: height 0.35s ease; }
 	.expand .nav-wrap { height: auto; }
 	/* common */
-	.nav { float: left; width: 100%; }
 	.nav li a { display: block; line-height: 20px; padding: 8px 20px; }
-	.nav li li a { padding-left: 15px; padding-right: 15px; }
 	/* dropdown arrows */
 	.nav li > a:after { content: '\f140'; font-family: dashicons; margin-left: 6px; opacity: 0.5; }
-	.nav > li > a:after { content: '\f140'; font-family: dashicons; font-size: 14px; }
 	.nav li > a:only-child:after { content: ''; }
-	/* level 1 */
-	.nav li > a:hover,
-	.nav li.current_page_item > a,
-	.nav li.current-menu-item > a,
-	.nav li.current-post-parent > a { color: #fff; }
+	
 	/* level 2 & 3 */
 	.nav ul { display: block!important; margin-left: 40px; }
-	.nav ul li a { padding-bottom: 6px; padding-top: 6px; }
 
 }
 
