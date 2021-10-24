@@ -135,7 +135,7 @@ add_action( 'widgets_init', 'alx_sidebars' );
 if ( ! function_exists( 'alx_scripts' ) ) {
 
 	function alx_scripts() {
-		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0.2', true );
+		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0.3', true );
 	}
 
 }
@@ -148,8 +148,8 @@ if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
 		// wp_enqueue_style( 'style', get_stylesheet_uri(), array(), '1.0.0', false );
-		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.2', false );
-		wp_enqueue_style( 'responsive', get_template_directory_uri() . '/responsive.css', array(), '1.0.2', false );
+		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.3', false );
+		wp_enqueue_style( 'responsive', get_template_directory_uri() . '/responsive.css', array(), '1.0.3', false );
 		wp_enqueue_style( 'dashicons' );
 		// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome.min.css', array(), '1.0.1', false );
 
