@@ -467,54 +467,47 @@ transform: rotate(60deg) translate(-48px, -11px); }
 /* ------------------------------------------------------------------------- *
  *  Section: Header
 /* ------------------------------------------------------------------------- */
-#header { border-bottom: 6px solid #e5e5e5; position: relative; }
-#header .pad { padding-bottom: 10px; padding-top: 10px; }
+#header { border-bottom: 6px solid #e5e5e5; }
+#header .pad { align-items: center; display:flex; flex-direction: column; padding-bottom: 10px; padding-top: 10px; }
 
-.site-title { float: left; font-size: 42px; font-weight: 900; line-height: 80px; padding: 10px 0; }
-.site-title a { color: #fff; display: block; max-width: 100%; }
-.site-title a img { display: block; height: auto; margin: 0 auto; max-height: 80px; max-width: 100%; padding: 0; }
-.site-description { color: #fff; float: left; font-style: italic; line-height: 80px; margin-left: 20px; padding: 10px 0; }
-.site-image { display: block; margin: 0 auto; max-height: 400px; }
+.site-title { padding: 10px 0; }
+.site-title a img { display: block;}
+.site-description { color: #fff; font-style: italic; margin-left: 30px;  }
+@media only screen and (min-width: 720px) {
+	#header .pad {
+		flex-direction: unset;
+
+	}
+}
 
 /*  header : search
 /* ------------------------------------ */
 .toggle-search {
- color: #fff; cursor: pointer; display: block; font-size: 18px; line-height: 24px; padding: 13px 20px; position: absolute; right: 0; top: -50px; }
+ color: #fff; cursor: pointer; display: block;  padding: 13px 20px; position: absolute; right: 0; top: -50px; }
 .toggle-search:hover,
-.toggle-search.active { background: rgba(0,0,0,0.15); color: #fff; }
-.search-expand { background: #222; display: none; position: absolute; right: 0; top: 0; width: 340px; }
+.toggle-search.active { background: #34769c; }
+.search-expand { background-color: #26272b; display: none; position: absolute; right: 0; top: 0; width: 340px; }
 .search-expand-inner { background: rgba(0,0,0,0.15); padding: 15px; }
-.search-expand .themeform input { border: 2px solid #e2e2e2; border-radius: 0; width: 100%; }
+.search-expand input { width: 100%; }
+
+@media only screen and (max-width: 720px) {
+	.toggle-search { left: 0; right: auto; top: 0; }
+	.search-expand { left: 0; right: auto; top: 50px; width: 320px; }
+}
 
 /*  header : nav topbar
 /* ------------------------------------ */
 #nav-topbar.nav-container { background: #222; }
-#nav-topbar .nav-toggle { background: transparent; color: #fff; }
-#nav-topbar .nav-text { color: #fff; }
 
-#nav-topbar .nav li a {
+#nav-topbar a {
+	color: #fff;
 	text-decoration: none;
 }
 
-#nav-topbar .nav li a:hover,
-#nav-topbar .nav li a:focus {
+#nav-topbar a:hover,
+#nav-topbar a:focus {
 	text-decoration: underline;
 }
-
-
-	/* common */
-	#nav-topbar .nav li a { color: #fff; }
-	/* level 1 */
-	#nav-topbar .nav > li { border-right: none; }
-	#nav-topbar .nav > li > a:hover,
-	#nav-topbar .nav li > a:hover,
-	#nav-topbar .nav li:hover > a,
-	#nav-topbar .nav li.current_page_item > a,
-	#nav-topbar .nav li.current-menu-item > a,
-	#nav-topbar .nav li.current-menu-ancestor > a,
-	#nav-topbar .nav li.current-post-parent > a { background-color: transparent; color: #fff; }
-
-
 
 /* ------------------------------------------------------------------------- *
  *  Section: Footer
@@ -941,7 +934,6 @@ Extra Things
 .comment-tabs li.active a { border-color: #34769c; }
 
 
-.search-expand,
 #nav-topbar.nav-container { background-color: #26272b; }
 @media only screen and (min-width: 720px) {
 	#nav-topbar .nav ul { background-color: #26272b; }
@@ -950,8 +942,6 @@ Extra Things
 #header, .boxed #header { background-color: #34769c; }
 #footer-bottom { background-color: #33363b; }
 
-.site-title a img { max-height: 60px; }
-.site-description { line-height: 60px; }
 
 .single .format-image .image-container {
 	display: none;

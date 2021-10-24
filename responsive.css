@@ -60,20 +60,7 @@
 	.pad,
 	.pad.post-content,
 	.pad.format-container { padding: 20px 20px 10px; }
-	.content { padding-top: 20px; }
 	
-
-	/* header */
-	#header { padding-bottom: 0; }
-	#header .pad { padding-bottom: 0; padding-top: 0; }
-	.topbar-enabled #header { padding-top: 0; }
-	.toggle-search { left: 0; right: auto; top: 0; }
-	.search-expand { left: 0; right: auto; top: 50px; width: 320px; }
-	
-	.site-title { float: none; line-height: 50px; padding: 30px 0 20px; width: 100%; }
-	.site-title a { text-align: center; }
-	.site-title a img { max-height: 60px!important; }
-	.site-description { clear: right; display: block; float: none; line-height: inherit!important; margin: 0 0 20px 0; padding: 0; text-align: center; width: 100%; }
 	
 	/* footer */
 	#footer-bottom .pad { padding-bottom: 40px; padding-top: 50px; }
