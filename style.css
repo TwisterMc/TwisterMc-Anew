@@ -393,10 +393,6 @@ transform: rotate(60deg) translate(-48px, -11px); }
 .hex.hex-small .corner-1:before,
 .hex.hex-small .corner-2:before { height: 43px; width: 43px; }
 
-.hex.hex-medium { font-size: 24px; height: 34px; line-height: 33px; width: 60px; }
-.hex.hex-medium .corner-1:before,
-.hex.hex-medium .corner-2:before { height: 69px; width: 69px; }
-
 /*  common : nav
 /* ------------------------------------ */
 .nav-container {  position: relative; z-index: 99; }
@@ -493,23 +489,24 @@ transform: rotate(60deg) translate(-48px, -11px); }
 /* ------------------------------------------------------------------------- *
  *  Section: Footer
 /* ------------------------------------------------------------------------- */
-#footer { background: #222; width: 100%; }
-#footer a:hover { color: #ccc; }
-#footer .pad { padding-bottom: 30px; }
+#footer { background: #222; color: #fff; width: 100%; }
+#footer a:hover { color: #fff; font-weight: bold; }
 
-#footer-bottom { border-top: 6px solid #333; }
+#footer-bottom {  background-color: #33363b; border-top: 6px solid #333; }
 #footer-bottom .pad { padding-bottom: 40px; padding-top: 40px; }
-#footer-bottom a { color: #fff; color: rgba(255,255,255,1); }
-#footer-bottom a:hover { color: #fff; }
-#footer-bottom #copyright,
-#footer-bottom #credit { color: #fff;  }
-#footer-bottom #back-to-top { background: #333; color: #fff; color: rgba(255,255,255,0.7); display: block; height: 30px; margin: 0 auto; margin: 0 auto -30px; position: relative; text-align: center; width: 60px; }
-#footer-bottom #back-to-top i { font-size: 38px; position: relative; }
-#footer-bottom #back-to-top:hover { color: #fff; }
-#footer-bottom .social-links { padding-top: 10px; }
-#footer-bottom .social-links a:hover { color: #fff; }
-#footer-bottom .social-links .social-tooltip { font-size: 28px; }
 
+
+#footer-bottom #back-to-top { background: #333; color: #fff;  display: block; height: 30px; margin: 0 auto; margin: 0 auto -30px; position: relative; text-align: center; width: 60px; }
+#footer-bottom #back-to-top i { font-size: 38px; position: relative; }
+#footer-bottom #back-to-top:hover { color: #3b8dbd; }
+#footer-bottom .social-links { padding-top: 10px; }
+#footer-bottom .social-links a, #footer-bottom .social-links a:hover { color: #fff; }
+
+@media only screen and (max-width: 719px) {
+	#footer-bottom { text-align: center; }
+	#footer-bottom #footer-logo { margin-left: auto; margin-right: auto; }
+	#footer-bottom .social-links { float: none; }
+}
 
 /* ------------------------------------------------------------------------- *
  *  Post Entry
@@ -921,7 +918,6 @@ Extra Things
 }
 
 #header, .boxed #header { background-color: #34769c; }
-#footer-bottom { background-color: #33363b; }
 
 
 .single .format-image .image-container {

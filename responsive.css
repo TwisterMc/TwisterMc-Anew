@@ -62,12 +62,7 @@
 	.pad.format-container { padding: 20px 20px 10px; }
 	
 	
-	/* footer */
-	#footer-bottom .pad { padding-bottom: 40px; padding-top: 50px; }
-	#footer-bottom { text-align: center; }
-	#footer-bottom #footer-logo { margin-left: auto; margin-right: auto; }
-	#footer-bottom .social-links { float: none; }
-	#footer-bottom .social-links li { margin-left: 4px; margin-right: 4px; }
+
 	
 	/* comments */
 	.commentlist li ul li { padding-left: 10px; }
