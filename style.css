@@ -601,8 +601,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (max-width: 479px) {
 	.sidebar {
-		float: none !important;
-		width: 100%;
+		display: none;
 	}
 }
 
@@ -1261,13 +1260,15 @@ h1, h2, h3, h4, h5, h6 {
 .site-description {
 	color: #fff;
 	font-style: italic;
-	margin-left: 30px;
 }
 
 @media only screen and (min-width: 720px) {
 	#header .pad {
 		flex-direction: unset;
+	}
 
+	.site-description {
+		margin-left: 30px;
 	}
 }
 
