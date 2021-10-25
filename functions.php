@@ -29,7 +29,7 @@ add_action('wp_default_scripts', 'remove_jquery_migrate');
 
 add_filter( 'ot_show_pages', '__return_false' );
 add_filter( 'ot_show_new_layout', '__return_false' );
-add_filter( 'ot_theme_mode', '__return_true' );
+add_filter( 'ot_theme_mode', '__return_false' );
 load_template( get_template_directory() . '/option-tree/ot-loader.php' );
 
 /** JetPack Add Image To Tweet **/
@@ -47,16 +47,8 @@ add_filter(
 if ( ! function_exists( 'alx_load' ) ) {
 
 	function alx_load() {
-		// Load theme languages
-		load_theme_textdomain( 'anew', get_template_directory().'/languages' );
-
-		// Load theme options and meta boxes
-		load_template( get_template_directory() . '/functions/theme-options.php' );
-		load_template( get_template_directory() . '/functions/meta-boxes.php' );
-
 		// Load custom widgets
 		load_template( get_template_directory() . '/functions/widgets/alx-tabs.php' );
-		load_template( get_template_directory() . '/functions/widgets/alx-posts.php' );
 
 
 	}
