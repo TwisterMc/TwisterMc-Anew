@@ -56,17 +56,9 @@ if ( ! function_exists( 'alx_load' ) ) {
 
 		// Load custom widgets
 		load_template( get_template_directory() . '/functions/widgets/alx-tabs.php' );
-		//load_template( get_template_directory() . '/functions/widgets/alx-video.php' );
 		load_template( get_template_directory() . '/functions/widgets/alx-posts.php' );
 
-		// Load custom shortcodes
-		// load_template( get_template_directory() . '/functions/shortcodes.php' );
 
-		// Load dynamic styles
-		load_template( get_template_directory() . '/functions/dynamic-styles.php' );
-
-		// Load TGM plugin activation
-		//load_template( get_template_directory() . '/functions/class-tgm-plugin-activation.php' );
 	}
 
 }
@@ -135,7 +127,7 @@ add_action( 'widgets_init', 'alx_sidebars' );
 if ( ! function_exists( 'alx_scripts' ) ) {
 
 	function alx_scripts() {
-		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0.3', true );
+		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0.4', true );
 	}
 
 }
@@ -147,13 +139,9 @@ add_action( 'wp_enqueue_scripts', 'alx_scripts' );
 if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
-		// wp_enqueue_style( 'style', get_stylesheet_uri(), array(), '1.0.0', false );
-		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.3', false );
-		wp_enqueue_style( 'responsive', get_template_directory_uri() . '/responsive.css', array(), '1.0.3', false );
+		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.4', false );
+		wp_enqueue_style( 'responsive', get_template_directory_uri() . '/responsive.css', array(), '1.0.4', false );
 		wp_enqueue_style( 'dashicons' );
-		// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/fonts/font-awesome.min.css', array(), '1.0.1', false );
-
-		//wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 	}
 
 }
@@ -168,7 +156,6 @@ if ( ! function_exists( 'alx_custom_sidebars' ) ) {
 
 		$sidebars = get_option( 'sidebar-areas' );
 
-
 			if ( !empty( $sidebars ) ) {
 				foreach( $sidebars as $sidebar ) {
 					if ( isset($sidebar['title']) && !empty($sidebar['title']) && isset($sidebar['id']) && !empty($sidebar['id']) && ($sidebar['id'] !='sidebar-') ) {
@@ -177,8 +164,6 @@ if ( ! function_exists( 'alx_custom_sidebars' ) ) {
 				}
 			}
 		}
-
-
 }
 add_action( 'widgets_init', 'alx_custom_sidebars' );
 
@@ -196,33 +181,8 @@ if ( ! function_exists( 'alx_layout_class' ) ) {
 		$layout = 'col-2cl';
 		$default = 'col-2cl';
 
-		// Check for page/post specific layout
-		if ( is_page() || is_single() ) {
-			// Reset post data
-			wp_reset_postdata();
-			global $post;
-			// Get meta
-			$meta = get_post_meta($post->ID,'_layout',true);
-			// Get if set and not set to inherit
-			if ( isset($meta) && !empty($meta) && $meta != 'inherit' ) { $layout = $meta; }
-			// Else check for page-global / single-global
-			elseif ( is_page() && ( ot_get_option('layout-page') !='inherit' ) ) $layout = ot_get_option('layout-page',''.$default.'');
-			// Else get global option
-			else $layout = ot_get_option('layout-global',''.$default.'');
-		}
-
-		// Set layout based on page
-		elseif ( is_home() && ( ot_get_option('layout-home') !='inherit' ) ) $layout = ot_get_option('layout-home',''.$default.'');
-		elseif ( is_category() && ( ot_get_option('layout-archive-category') !='inherit' ) ) $layout = ot_get_option('layout-archive-category',''.$default.'');
-		elseif ( is_archive() && ( ot_get_option('layout-archive') !='inherit' ) ) $layout = ot_get_option('layout-archive',''.$default.'');
-		elseif ( is_search() && ( ot_get_option('layout-search') !='inherit' ) ) $layout = ot_get_option('layout-search',''.$default.'');
-		elseif ( is_404() && ( ot_get_option('layout-404') !='inherit' ) ) $layout = ot_get_option('layout-404',''.$default.'');
-
-		// Global option
-		else $layout = ot_get_option('layout-global',''.$default.'');
-
 		// Return layout class
-		return $layout;
+		return ot_get_option('layout-global', '' . $default . '');
 	}
 
 }
@@ -231,29 +191,9 @@ if ( ! function_exists( 'alx_layout_class' ) ) {
 /*  Dynamic sidebar primary
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_sidebar_primary' ) ) {
-
 	function alx_sidebar_primary() {
 		// Default sidebar
 		$sidebar = 'primary';
-
-		// Set sidebar based on page
-		if ( is_home() && ot_get_option('s1-home') ) $sidebar = ot_get_option('s1-home');
-		if ( is_single() && ot_get_option('s1-single') ) $sidebar = ot_get_option('s1-single');
-		if ( is_archive() && ot_get_option('s1-archive') ) $sidebar = ot_get_option('s1-archive');
-		if ( is_category() && ot_get_option('s1-archive-category') ) $sidebar = ot_get_option('s1-archive-category');
-		if ( is_search() && ot_get_option('s1-search') ) $sidebar = ot_get_option('s1-search');
-		if ( is_404() && ot_get_option('s1-404') ) $sidebar = ot_get_option('s1-404');
-		if ( is_page() && ot_get_option('s1-page') ) $sidebar = ot_get_option('s1-page');
-
-		// Check for page/post specific sidebar
-		if ( is_page() || is_single() ) {
-			// Reset post data
-			wp_reset_postdata();
-			global $post;
-			// Get meta
-			$meta = get_post_meta($post->ID,'_sidebar_primary',true);
-			if ( $meta ) { $sidebar = $meta; }
-		}
 
 		// Return sidebar
 		return $sidebar;
@@ -341,91 +281,6 @@ if ( ! function_exists( 'alx_body_class' ) ) {
 add_filter( 'body_class', 'alx_body_class' );
 
 
-/*  Custom rss feed
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_feed_link' ) ) {
-
-	function alx_feed_link( $output, $feed ) {
-		// Do not redirect comments feed
-		if ( strpos( $output, 'comments' ) )
-			return $output;
-		// Return feed url
-		return ot_get_option('rss-feed',$output);
-	}
-
-}
-//add_filter( 'feed_link', 'alx_feed_link', 10, 2 );
-
-
-/*  Custom favicon
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_favicon' ) ) {
-
-	function alx_favicon() {
-		if ( ot_get_option('favicon') ) {
-			echo '<link rel="shortcut icon" href="'.ot_get_option('favicon').'" />'."\n";
-		}
-	}
-
-}
-//add_filter( 'wp_head', 'alx_favicon' );
-
-
-/*  Tracking code
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_tracking_code' ) ) {
-
-	function alx_tracking_code() {
-		if ( ot_get_option('tracking-code') ) {
-			echo ''.ot_get_option('tracking-code').''."\n";
-		}
-	}
-
-}
-//add_filter( 'wp_footer', 'alx_tracking_code' );
-
-
-/*  Excerpt ending
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_excerpt_more' ) ) {
-
-	function alx_excerpt_more( $more ) {
-		return '&#46;&#46;&#46;';
-	}
-
-}
-//add_filter( 'excerpt_more', 'alx_excerpt_more' );
-
-
-/*  Excerpt length
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_excerpt_length' ) ) {
-
-	function alx_excerpt_length( $length ) {
-		return ot_get_option('excerpt-length',$length);
-	}
-
-}
-//add_filter( 'excerpt_length', 'alx_excerpt_length', 999 );
-
-
-/*  Add wmode transparent to media embeds
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_embed_wmode_transparent' ) ) {
-
-	function alx_embed_wmode_transparent( $html, $url, $attr ) {
-		if ( strpos( $html, "<embed src=" ) !== false )
-		{ return str_replace('</param><embed', '</param><param name="wmode" value="opaque"></param><embed wmode="opaque" ', $html); }
-		elseif ( strpos ( $html, 'feature=oembed' ) !== false )
-		{ return str_replace( 'feature=oembed', 'feature=oembed&wmode=opaque', $html ); }
-		else
-		{ return $html; }
-	}
-
-}
-//add_filter( 'embed_oembed_html', 'alx_embed_wmode_transparent', 10, 3 );
-
-
 /*  Add responsive container to embeds
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_embed_html' ) ) {
@@ -462,49 +317,6 @@ if ( ! function_exists( 'alx_thumbnail_upscale' ) ) {
 add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
 
 
-/*  Browser detection body_class() output
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_browser_body_class' ) ) {
-
-	function alx_browser_body_class( $classes ) {
-		global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
-
-		if($is_lynx) $classes[] = 'lynx';
-		elseif($is_gecko) $classes[] = 'gecko';
-		elseif($is_opera) $classes[] = 'opera';
-		elseif($is_NS4) $classes[] = 'ns4';
-		elseif($is_safari) $classes[] = 'safari';
-		elseif($is_chrome) $classes[] = 'chrome';
-		elseif($is_IE) {
-			$browser = $_SERVER['HTTP_USER_AGENT'];
-			$browser = substr( "$browser", 25, 8);
-			if ($browser == "MSIE 7.0"  ) {
-				$classes[] = 'ie7';
-				$classes[] = 'ie';
-			} elseif ($browser == "MSIE 6.0" ) {
-				$classes[] = 'ie6';
-				$classes[] = 'ie';
-			} elseif ($browser == "MSIE 8.0" ) {
-				$classes[] = 'ie8';
-				$classes[] = 'ie';
-			} elseif ($browser == "MSIE 9.0" ) {
-				$classes[] = 'ie9';
-				$classes[] = 'ie';
-			} else {
-				$classes[] = 'ie';
-			}
-		}
-		else $classes[] = 'unknown';
-
-		if( $is_iphone ) $classes[] = 'iphone';
-
-		return $classes;
-	}
-
-}
-//add_filter( 'body_class', 'alx_browser_body_class' );
-
-
 /* ------------------------------------------------------------------------- *
  *  Actions
 /* ------------------------------------------------------------------------- */
@@ -532,22 +344,6 @@ add_action( 'wp_print_styles', 'alx_deregister_styles', 100 );
 /* ------------------------------------------------------------------------- *
  *  Custom functions
 /* ------------------------------------------------------------------------- */
-
-// enqueue custom scripts
-function twistermc_scripts() {
-	//wp_enqueue_script( 'clicky', '//static.getclicky.com/js', array(), '1.0.0', true );
-	//wp_enqueue_script( 'custom_js', get_template_directory_uri() . '-child/js/tmc_scripts.js', '1.0.0', true );
-}
-
-//add_action( 'wp_enqueue_scripts', 'twistermc_scripts' );
-
-// add custom code to the footer
-function twistermc_footer_additions() {
-	//echo '<script defer="defer" type="text/javascript">clicky.init(249092);</script><noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/249092ns.gif" /></p></noscript>';
-	//echo "<script defer='defer' type='text/javascript'>var _merchantSettings=_merchantSettings || [];_merchantSettings.push(['AT', '11laKD']);(function(){var autolink=document.createElement('script');autolink.type='text/javascript';autolink.async=true; autolink.src='//autolinkmaker.itunes.apple.com/js/itunes_autolinkmaker.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(autolink, s);})();</script>";
-}
-
-//add_action('wp_footer', 'twistermc_footer_additions', 100);
 
 // add custom code to the header
 function twistermc_head_additions() {
@@ -580,37 +376,12 @@ function twistermc_head_additions() {
 	} else {
 		echo( '<meta name="twitter:card" content="summary"/>' );
 	}
-	// $postDate = get_the_date('Y');
-	// echo ('<script type="text/javascript">var postDate = ' . $postDate . '</script>');
-	// if ( is_single() ) {
-	//     $topSense = 1;
-	// } else {
-	//     $topSense = 0;
-	// }
-	// echo ('<script type="text/javascript">var showSense = ' . $topSense . '</script>');
+
 }
 
 add_action( 'wp_head', 'twistermc_head_additions', 100 );
 
-// //* Disable Pingbacks */
-// add_filter( 'xmlrpc_methods', 'remove_xmlrpc_pingback_ping' );
-// function remove_xmlrpc_pingback_ping( $methods ) {
-//    unset( $methods['pingback.ping'] );
-//    return $methods;
-// }
 
-// Make the categoires box bigger in the admin.
-//add_action('admin_head', 'admin_taller_categories_box');
-
-// function admin_taller_categories_box() {
-//   echo '<style>
-//     .categorydiv div.tabs-panel {
-//       max-height: 500px;
-//     }
-//   </style>';
-// }
-
-// add_filter( 'jetpack_sso_bypass_login_forward_wpcom', '__return_true' );
 
 
 // auto set featured image
