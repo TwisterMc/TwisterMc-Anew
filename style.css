@@ -549,14 +549,22 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
-.pad {
-	padding: 30px 30px 20px;
-}
 
+.pad,
 .pad.post-content,
 .pad.format-container {
-	padding-left: 40px;
-	padding-right: 40px;
+	padding: 15px 10px 5px;
+}
+
+@media only screen and (min-width: 720px) {
+	.pad {
+		padding: 30px 30px 20px;
+	}
+
+	.pad.post-content,
+	.pad.format-container {
+		padding: 40px 35px;
+	}
 }
 
 /*  base : layout columns
@@ -591,28 +599,16 @@ h1, h2, h3, h4, h5, h6 {
 	z-index: 2;
 }
 
+@media only screen and (max-width: 479px) {
+	.sidebar {
+		float: none !important;
+		width: 100%;
+	}
+}
+
 .sidebar .pad {
 	padding-left: 20px;
 	padding-right: 20px;
-}
-
-.sidebar-toggle {
-	background-color: #34759A;
-	cursor: pointer;
-	display: none;
-	height: 50px;
-	text-align: center;
-	width: 100%;
-}
-
-.sidebar-toggle i {
-	color: #fff;
-	font-size: 38px;
-	padding: 5px 0;
-}
-
-.s1-expand .s1 {
-	transition: width .2s ease;
 }
 
 /* sidebar primary */
@@ -625,63 +621,147 @@ h1, h2, h3, h4, h5, h6 {
 	z-index: 98; /* social icons tooltip above header nav */
 }
 
+.sidebar-toggle {
+	display: none;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Toggle Sidebar s1 : medium screens
+/* ------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 479px) and (max-width: 960px) {
+
+	.s1 {
+		width: 50px;
+	}
+
+	.s1 .sidebar-content {
+		display: none;
+		float: left;
+		width: 100%;
+	}
+
+	.sidebar-toggle {
+		background-color: #34759A;
+		cursor: pointer;
+		display: block;
+		height: 50px;
+		text-align: center;
+		width: 100%;
+	}
+
+	.sidebar-toggle i {
+		color: #fff;
+		font-size: 38px;
+		padding: 5px 0;
+	}
+
+	/* s1 expand/collapse */
+	.s1-expand .s1 {
+		background: #f2f2f2;
+		bottom: 0;
+		margin: 0 !important;
+		overflow: auto;
+		position: absolute;
+		top: 0;
+		transition: width .2s ease;
+		width: 340px;
+		z-index: 9;
+	}
+
+	.s1-expand .s1 .sidebar-content,
+	.s1-expand .s1 .post-nav {
+		display: block;
+		min-width: 340px;
+	}
+
+	.s1-collapse .s1 .sidebar-content,
+	.s1-collapse .s1 .sidebar .post-nav {
+		display: none;
+	}
+
+
+	/* 2 column, content left */
+	.col-2cl .main {
+		background: url(img/sidebar/s-right-collapse.png) repeat-y right 0;
+		padding-right: 50px;
+	}
+
+	.col-2cl .s1 {
+		margin-right: -50px;
+	}
+
+	.col-2cl.s1-expand .s1 {
+		box-shadow: -3px 0 3px rgba(0, 0, 0, 0.05);
+		right: 0;
+	}
+}
 
 /*  base : grid
 /* ------------------------------------ */
 .grid {
-	display: inline;
-	float: left;
-	margin-right: 3.2%;
-	position: relative;
-}
-
-.last {
-	clear: right;
-	margin-right: 0 !important;
-}
-
-.one-full {
-	margin-right: 0;
-	overflow: hidden;
+	margin: 0 0 10px;
 	width: 100%;
+	text-align: center;
 }
 
-.one-half {
-	width: 48.4%;
-}
+@media only screen and (min-width: 720px) {
+	.grid {
+		text-align: unset;
+		width: unset;
+		display: inline;
+		float: left;
+		margin-right: 3.2%;
+		position: relative;
+	}
 
-.one-third {
-	width: 31.2%;
-}
+	.last {
+		clear: right;
+		margin-right: 0 !important;
+	}
 
-.two-third {
-	width: 65.6%;
-}
+	.one-full {
+		margin-right: 0;
+		overflow: hidden;
+		width: 100%;
+	}
 
-.one-fourth {
-	width: 22.6%;
-}
+	.one-half {
+		width: 48.4%;
+	}
 
-.three-fourth {
-	width: 74.2%;
-}
+	.one-third {
+		width: 31.2%;
+	}
 
-.one-fifth {
-	width: 17.4%;
-}
+	.two-third {
+		width: 65.6%;
+	}
 
-.two-fifth {
-	width: 38.1%;
-}
+	.one-fourth {
+		width: 22.6%;
+	}
 
-.three-fifth {
-	width: 58.7%;
-}
+	.three-fourth {
+		width: 74.2%;
+	}
 
-.four-fifth {
-	width: 79.4%;
-}
+	.one-fifth {
+		width: 17.4%;
+	}
 
+	.two-fifth {
+		width: 38.1%;
+	}
+
+	.three-fifth {
+		width: 58.7%;
+	}
+
+	.four-fifth {
+		width: 79.4%;
+	}
+}
 
 /* ------------------------------------------------------------------------- *
  *  Common
@@ -836,20 +916,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-image-text {
-	margin-top: -35px;
+	margin-top: -15px;
 	position: absolute;
 	text-align: center;
 	top: 50%;
 	width: 100%;
 }
 
+@media only screen and (min-width: 720px) {
+	.page-image-text {
+		margin-top: -35px;
+	}
+}
+
 .page-image-text .caption {
 	color: #fff;
-	font-size: 44px;
+	font-size: 26px;
 	font-weight: 600;
-	line-height: 70px;
+	line-height: 30px;
 	text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	text-transform: uppercase;
+}
+
+@media only screen and (min-width: 720px) {
+	.page-image-text .caption {
+		font-size: 44px;
+		line-height: 70px;
+	}
 }
 
 .page-image-text .description {
@@ -1016,20 +1109,7 @@ h1, h2, h3, h4, h5, h6 {
 	z-index: 99;
 }
 
-.nav-toggle {
-	color: #fff;
-	cursor: pointer;
-	display: none;
-	float: right;
-	height: 50px;
-	text-align: center;
-	width: 60px;
-}
 
-.nav-toggle i {
-	font-size: 29px;
-	padding: 10px 0;
-}
 
 
 @media only screen and (min-width: 720px) {
@@ -1081,6 +1161,10 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+.nav-toggle {
+	display: none;
+}
+
 @media only screen and (max-width: 719px) {
 
 	.nav-container {
@@ -1090,6 +1174,21 @@ h1, h2, h3, h4, h5, h6 {
 	.nav-toggle,
 	.nav-text {
 		display: block;
+	}
+
+	.nav-toggle {
+		color: #fff;
+		cursor: pointer;
+		display: unset;
+		float: right;
+		height: 50px;
+		text-align: center;
+		width: 60px;
+	}
+
+	.nav-toggle i {
+		font-size: 29px;
+		padding: 10px 0;
 	}
 
 	.nav-wrap {
@@ -1394,9 +1493,24 @@ h1, h2, h3, h4, h5, h6 {
 .post-nav li a {
 	color: #34759A;
 	display: block;
-	min-height: 77px;
-	padding: 16px 46px 24px;
+	min-height: 0;
+	padding: 24px;
 	position: relative;
+}
+
+.content .post-nav li:first-child {
+	border-bottom: 2px solid #e5e5e5;
+}
+
+@media only screen and (min-width: 720px) {
+	.content .post-nav li a {
+		min-height: 77px;
+		padding: 16px 46px 24px;
+	}
+
+	.content .post-nav li:first-child {
+		border-bottom: unset;
+	}
 }
 
 .post-nav li a:hover {
@@ -1441,7 +1555,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content .post-nav li {
-	width: 50%;
+	width: 100%;
+}
+
+@media only screen and (min-width: 720px) {
+	.content .post-nav li {
+		width: 50%;
+	}
 }
 
 .content .post-nav li.next {
@@ -2277,14 +2397,6 @@ GIST
 }
 
 /* ---------------------------------------------------------------------
-Padding Reduction on Content
------------------------------------------------------------------------- */
-.pad.post-content {
-	padding-left: 35px;
-	padding-right: 35px;
-}
-
-/* ---------------------------------------------------------------------
 Link Padding
 ------------------------------------------------------------------------ */
 .wpcnt {
@@ -2331,7 +2443,7 @@ Gutenberg
 }
 
 .entry ul.wp-block-gallery {
-	margin: 0 -8px;
+	margin: 0;
 }
 
 .wp-block-image {

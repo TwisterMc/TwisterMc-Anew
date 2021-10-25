@@ -129,7 +129,6 @@ if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
 		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.4', false );
-		wp_enqueue_style( 'responsive', get_template_directory_uri() . '/responsive.css', array(), '1.0.4', false );
 		wp_enqueue_style( 'dashicons' );
 	}
 
