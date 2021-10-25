@@ -27,9 +27,6 @@ add_action('wp_default_scripts', 'remove_jquery_migrate');
  *  OptionTree framework integration: Use in theme mode
 /* ------------------------------------------------------------------------- */
 
-add_filter( 'ot_show_pages', '__return_false' );
-add_filter( 'ot_show_new_layout', '__return_false' );
-add_filter( 'ot_theme_mode', '__return_false' );
 load_template( get_template_directory() . '/option-tree/ot-loader.php' );
 
 /** JetPack Add Image To Tweet **/
