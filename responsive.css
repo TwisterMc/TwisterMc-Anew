@@ -60,8 +60,6 @@
 	.pad,
 	.pad.post-content,
 	.pad.format-container { padding: 20px 20px 10px; }
-	
-	
 
 	
 	/* comments */
@@ -74,9 +72,6 @@
 	.pagination { margin-bottom: 30px; }
 	
 	/* blog */
-	.format-gallery .post-format .flexslider .slides img { max-height: 240px; }
-	.format-quote .post-format blockquote,
-
 	
 	.content .post-nav li { width: 100%; }
 	.content .post-nav li:first-child { border-bottom: 2px solid #e5e5e5; }
@@ -99,7 +94,7 @@
 	/* base */
 	.pad,
 	.pad.post-content,
-	.pad.format-container { padding: 15px 15px 5px; }
+	.pad.format-container { padding: 15px 10px 5px; }
 	.sidebar .widget,
 	.child-menu { padding-left: 15px; padding-right: 15px; }
 	.gallery-caption { display: none; }
@@ -107,12 +102,6 @@
 	/* text */
 	.post-title,
 	.page-title-single { font-size: 24px; }
-	
-	
 
-	
-	/* shortcodes */
-	.dropcap { font-size: 48px; }
-	
 }
 
