@@ -44,8 +44,12 @@
 					</div>
 					<div class="grid one-half last">
 						<ul class="social-links">
-							<li><a rel="nofollow" rel="noopener" class="social-tooltip" title="Twitter" href="http://twitter.com/twistermc" target="_blank"><i class="fa fa-twitter"></i></a></li>
-							<li><a rel="nofollow" rel="noopener" class="social-tooltip" title="RSS Feed" href="https://www.twistermc.com/feed/" target="_blank"><i class="fa fa-rss"></i></a></li>
+							<li><a rel="nofollow noopener" class="social-tooltip" title="Twitter"
+							       href="http://twitter.com/twistermc" target="_blank"><i class="fa fa-twitter"></i></a>
+							</li>
+							<li><a rel="nofollow noopener" class="social-tooltip" title="RSS Feed"
+							       href="https://www.twistermc.com/feed/" target="_blank"><i class="fa fa-rss"></i></a>
+							</li>
 						</ul>
 					</div>
 				</div><!--/.pad-->
@@ -55,7 +59,7 @@
 
 	</footer><!--/#footer-->
 
-</div><!--/#wrapper-->
+		</div><!--/#wrapper-->
 
 <?php wp_footer(); ?>
 
