@@ -244,8 +244,8 @@ input, textarea, button, select, label {
 	color: #444;
 }
 
-.entry ol:not('wp-block-*'),
-.entry ul:not('wp-block-*') {
+.entry ol,
+.entry ul {
 	margin: 0 0 15px 30px;
 }
 
@@ -260,9 +260,13 @@ input, textarea, button, select, label {
 	margin: 0;
 }
 
-.entry ul li:not('wp-block-*'),
-.entry ol ul li:not('wp-block-*') {
+.entry ul li,
+.entry ol ul li {
 	list-style: square;
+}
+
+.entry ul.wp-block-latest-posts li {
+	list-style: none;
 }
 
 .entry ol li,
