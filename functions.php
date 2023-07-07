@@ -128,7 +128,7 @@ add_action( 'wp_enqueue_scripts', 'alx_scripts' );
 if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
-		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.6', false );
+		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.7', false );
 		wp_enqueue_style( 'dashicons' );
 	}
 
