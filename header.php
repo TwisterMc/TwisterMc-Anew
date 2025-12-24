@@ -23,19 +23,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </head>
 
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a href="#mainContent" class="skip-link screen-reader-text"><?php _e( 'Skip to content', 'anew' ); ?></a>
 <div id="wrapper">
 
-	<header id="header" role="banner">
+	<header id="header">
 
 		<?php if (has_nav_menu('topbar')): ?>
-			<nav class="nav-container group" id="nav-topbar" role="navigation" aria-label="Main">
-				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+			<nav class="nav-container group" id="nav-topbar" aria-label="<?php esc_attr_e( 'Main Navigation', 'anew' ); ?>">
+				<button class="nav-toggle" aria-label="<?php esc_attr_e( 'Toggle navigation', 'anew' ); ?>"><i class="fa fa-bars" aria-hidden="true"></i></button>
 				<div class="nav-wrap container"><?php wp_nav_menu(array('theme_location'=>'topbar','menu_class'=>'nav container-inner group','container'=>'','menu_id' => '','fallback_cb'=> false)); ?></div>
 
 				<div class="container">
-					<div class="toggle-search"><i class="fa fa-search"></i></div>
+					<button class="toggle-search" aria-label="<?php esc_attr_e( 'Toggle search', 'anew' ); ?>"><i class="fa fa-search" aria-hidden="true"></i></button>
 					<div class="search-expand">
 						<div class="search-expand-inner">
 							<?php get_search_form(); ?>
@@ -49,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="container">
 			<div class="pad group">
 				<?php echo tmc_site_title(); ?>
-				<h1 class="site-description"><?php bloginfo( 'description' ); ?></h1>
+				<p class="site-description"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>
 			</div>
 		</div><!--/.container-->
 

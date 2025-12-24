@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div><!--/.main-->
 	</div><!--/.container-inner-->
 
-	<footer id="footer" role="contentinfo">
+	<footer id="footer">
 		<section id="footer-widgets" class="container">
 			<div class="pad group">
 					<?php
@@ -48,14 +48,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div class="pad group">
 					<div class="grid one-half">
 
-						<div id="copyright" itemscope itemtype="https://schema.org/Organization">
+						<address id="copyright" itemscope itemtype="https://schema.org/Organization">
 							<meta itemprop="name" content="<?php echo esc_attr( get_bloginfo('name') ); ?>">
 							<meta itemprop="url" content="<?php echo esc_url( home_url('/') ); ?>">
 							<p><?php echo esc_html( get_bloginfo('name') ); ?> &copy; <?php echo esc_html( date_i18n( 'Y' ) ); ?>. <?php _e('All Rights Reserved.','anew'); ?></p>
-						</div><!--/#copyright-->
+						</address><!--/#copyright-->
 
 					</div>
-
+				</div><!--/.pad-->
 
 			</div><!--/.container-->
 		</section><!--/#footer-bottom-->

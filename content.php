@@ -19,10 +19,18 @@ $format = get_post_format();
 	</h2><!--/.post-title-->
 
 	<ul class="post-meta pad group">
-		<li><i class="fa fa-clock-o"></i><time datetime="<?php echo esc_attr( get_the_date('c') ); ?>" itemprop="datePublished"><?php the_time('j M, Y'); ?></time></li>
+		<li><i class="fa fa-clock-o" aria-hidden="true"></i><time datetime="<?php echo esc_attr( get_the_date('c') ); ?>" itemprop="datePublished"><?php the_time('j M, Y'); ?></time></li>
+		<meta itemprop="dateModified" content="<?php echo esc_attr( get_the_modified_date('c') ); ?>">
 		<span itemprop="author" itemscope itemtype="https://schema.org/Person" class="screen-reader-text">
 			<span itemprop="name"><?php echo esc_html( get_the_author() ); ?></span>
 		</span>
+		<!-- Publisher schema -->
+		<span itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="screen-reader-text">
+			<span itemprop="name"><?php echo esc_html( get_bloginfo('name') ); ?></span>
+		</span>
+		<?php if ( has_post_thumbnail() ) : ?>
+			<meta itemprop="image" content="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>">
+		<?php endif; ?>
 	</ul><!--/.post-meta-->
 
 	<div class="post-inner">

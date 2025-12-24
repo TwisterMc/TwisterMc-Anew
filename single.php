@@ -13,19 +13,30 @@ get_header();
 $format = get_post_format();
 ?>
 
-<section class="content" role="main">
+<section class="content">
 
 	<div class="pad group">
 
 	<?php while ( have_posts() ): the_post(); ?>
-		<article <?php post_class(); ?>>
-			<span id="mainContent" class="screen-reader-text">Main Content</span>
+		<article <?php post_class(); ?> itemscope itemtype="https://schema.org/BlogPosting">
 			<span id="mainContent" class="screen-reader-text">Main Content</span>
 
-			<h1 class="post-title pad"><?php the_title(); ?></h1>
+			<h1 class="post-title pad" itemprop="headline"><?php the_title(); ?></h1>
 
 			<ul class="post-meta pad group">
-				<li><i class="fa fa-clock-o"></i><?php the_time('j M, Y'); ?></li>
+				<li><i class="fa fa-clock-o" aria-hidden="true"></i><time datetime="<?php echo esc_attr( get_the_date('c') ); ?>" itemprop="datePublished"><?php the_time('j M, Y'); ?></time></li>
+				<meta itemprop="dateModified" content="<?php echo esc_attr( get_the_modified_date('c') ); ?>">
+				<span itemprop="author" itemscope itemtype="https://schema.org/Person" class="screen-reader-text">
+					<span itemprop="name"><?php echo esc_html( get_the_author() ); ?></span>
+				</span>
+				<!-- Publisher schema -->
+				<span itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="screen-reader-text">
+					<span itemprop="name"><?php echo esc_html( get_bloginfo('name') ); ?></span>
+					<meta itemprop="url" content="<?php echo esc_url( home_url('/') ); ?>">
+				</span>
+				<?php if ( has_post_thumbnail() ) : ?>
+					<meta itemprop="image" content="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>">
+				<?php endif; ?>
 			</ul>
 
 			<div class="post-inner">
@@ -63,10 +74,12 @@ $format = get_post_format();
 
 
 		<?php if ( is_single() ): ?>
-			<ul class="post-nav group">
-				<li class="next"><?php next_post_link('%link', '<i class="fa fa-chevron-right"></i><strong>'.__('Next', 'anew').'</strong> <span>%title</span>'); ?></li>
-				<li class="previous"><?php previous_post_link('%link', '<i class="fa fa-chevron-left"></i><strong>'.__('Previous', 'anew').'</strong> <span>%title</span>'); ?></li>
-			</ul>
+			<nav class="post-nav" aria-label="<?php esc_attr_e( 'Post Navigation', 'anew' ); ?>">
+				<ul class="group">
+					<li class="next"><?php next_post_link('%link', '<i class="fa fa-chevron-right" aria-hidden="true"></i><strong>'.__('Next', 'anew').'</strong> <span>%title</span>'); ?></li>
+					<li class="previous"><?php previous_post_link('%link', '<i class="fa fa-chevron-left" aria-hidden="true"></i><strong>'.__('Previous', 'anew').'</strong> <span>%title</span>'); ?></li>
+				</ul>
+			</nav>
 		<?php endif; ?>
 
 

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<section class="content" role="main">
-<a id="mainContent" role="heading" tabindex="-1" class="isVisuallyHidden" aria-level="2">Main Content</a>
+<section class="content">
+	<h1 id="mainContent" class="screen-reader-text">Main Content</h1>
 
 	<div class="pad group">
 
