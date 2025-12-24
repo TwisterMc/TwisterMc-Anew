@@ -781,9 +781,36 @@ h6 {
   display: none;
 }
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 480px) and (max-width: 959px) {
   .sidebar-toggle {
     display: block;
+    background-color: #34759a;
+    cursor: pointer;
+    height: 50px;
+    text-align: center;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    font-size: 32px;
+    transition: background 0.2s;
+  }
+  .sidebar-toggle:hover,
+  .sidebar-toggle:focus {
+    background-color: #23547a;
+    outline: none;
+  }
+  .sidebar-toggle i {
+    color: #fff;
+    font-size: 38px;
+    padding: 5px 0;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .sidebar-toggle {
+    display: none !important;
   }
 }
 
