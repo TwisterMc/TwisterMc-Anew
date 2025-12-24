@@ -1,6 +1,6 @@
-	<div class="sidebar s1" role="complementary">
+	<aside class="sidebar s1">
 		
-		<a class="sidebar-toggle" title="<?php _e('Expand Sidebar','anew'); ?>"><i class="fa icon-sidebar-toggle"></i></a>
+		<button class="sidebar-toggle" aria-label="<?php esc_attr_e('Expand Sidebar','anew'); ?>"><i class="fa icon-sidebar-toggle" aria-hidden="true"></i></button>
 		
 		<div class="sidebar-content">
 			
@@ -8,4 +8,4 @@
 			
 		</div><!--/.sidebar-content-->
 		
-	</div><!--/.sidebar-->
+	</aside><!--/.sidebar-->
