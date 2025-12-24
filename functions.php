@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Use a child theme instead of placing custom functions here
 // http://codex.wordpress.org/Child_Themes
 
-//Remove JQuery migrate
+//Remove jQuery migrate
 function remove_jquery_migrate($scripts)
 {
 	if (!is_admin() && isset($scripts->registered['jquery'])) {
@@ -416,18 +416,6 @@ add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
  *  Actions
 /* ------------------------------------------------------------------------- */
 
-/*  Script for no-js / js class
-/* ------------------------------------ */
-if ( ! function_exists( 'alx_html_js_class' ) ) {
-
-	function alx_html_js_class () {
-		echo '<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>'. "\n";
-	}
-
-}
-add_action( 'wp_head', 'alx_html_js_class', 1 );
-
-
 /*  Preload critical assets
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_preload_assets' ) ) {
@@ -439,14 +427,6 @@ if ( ! function_exists( 'alx_preload_assets' ) ) {
 
 }
 add_action( 'wp_head', 'alx_preload_assets', 2 );
-
-
-/*  WP-PageNavi support - @devinsays (via GitHub)
-/* ------------------------------------ */
-function alx_deregister_styles() {
-	wp_deregister_style( 'wp-pagenavi' );
-}
-add_action( 'wp_print_styles', 'alx_deregister_styles', 100 );
 
 
 /* ------------------------------------------------------------------------- *

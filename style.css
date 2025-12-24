@@ -17,13 +17,16 @@ Tags:
 */
 
 /* ------------------------------------------------------------------------- *
- *  Reset - http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
+ *  CSS Reset - Simplified for modern browsers
  * ------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
 span,
-applet,
 object,
 iframe,
 h1,
@@ -37,9 +40,7 @@ blockquote,
 pre,
 a,
 abbr,
-acronym,
 address,
-big,
 cite,
 code,
 del,
@@ -52,16 +53,13 @@ q,
 s,
 samp,
 small,
-strike,
 strong,
 sub,
 sup,
-tt,
 var,
 b,
 u,
 i,
-center,
 dl,
 dt,
 dd,
@@ -89,11 +87,9 @@ figure,
 figcaption,
 footer,
 header,
-hgroup,
 menu,
 nav,
 output,
-ruby,
 section,
 summary,
 time,
@@ -115,7 +111,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 menu,
 nav,
 section {
@@ -165,11 +160,6 @@ body {
 }
 
 ::selection {
-  background-color: #34759a;
-  color: #fff;
-}
-
-::-moz-selection {
   background-color: #34759a;
   color: #fff;
 }
@@ -311,12 +301,6 @@ label {
   color: #444;
   font-family: inherit;
   font-size: 16px;
-}
-
-.themeform input::-moz-focus-inner,
-.themeform button::-moz-focus-inner {
-  border: 0;
-  padding: 0;
 }
 
 .themeform input[type="text"],
@@ -648,7 +632,6 @@ h5,
 h6 {
   color: #444;
   font-weight: 600;
-  -ms-word-wrap: break-word;
   word-wrap: break-word;
 }
 
@@ -1605,7 +1588,6 @@ h6 {
   color: #222;
   font-size: 24px;
   line-height: 1.4em;
-  -ms-word-wrap: break-word;
   word-wrap: break-word;
 }
 
@@ -1962,7 +1944,6 @@ h6 {
 .alx-tab .tab-item-title,
 .alx-posts .post-item-title {
   margin: 2px 0;
-  -ms-word-wrap: break-word;
   word-wrap: break-word;
 }
 
