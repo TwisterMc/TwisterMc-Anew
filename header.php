@@ -57,4 +57,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</header><!--/#header-->
 
 	<div id="page" class="container">
-		<div class="main group">
+		<main class="main group">

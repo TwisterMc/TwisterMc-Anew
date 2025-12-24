@@ -3,15 +3,18 @@
 <?php if ( !has_post_format( ) && !is_single() || has_post_format( 'image' ) && !is_single() || has_post_format( 'video' ) && !is_single() ): // Standard & Image ?>
 
 	<div class="post-format">
-		<div class="image-container">
-			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php echo esc_attr( get_the_title() ); ?>">
-				<?php if ( has_post_thumbnail() ) {	
-					the_post_thumbnail('thumb-large'); 
-					$caption = get_post(get_post_thumbnail_id())->post_excerpt;
-					if ( isset($caption) && $caption ) echo '<div class="image-caption">' . esc_html( $caption ) . '</div>';
-				} ?>
-			</a>
-		</div>
+		<?php if ( has_post_thumbnail() ) : ?>
+			<figure class="image-container">
+				<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php echo esc_attr( get_the_title() ); ?>">
+					<?php the_post_thumbnail('thumb-large'); ?>
+				</a>
+				<?php 
+				$caption = get_post(get_post_thumbnail_id())->post_excerpt;
+				if ( isset($caption) && $caption ) : ?>
+					<figcaption class="image-caption"><?php echo esc_html( $caption ); ?></figcaption>
+				<?php endif; ?>
+			</figure>
+		<?php endif; ?>
 	</div>
 	
 <?php endif; ?>

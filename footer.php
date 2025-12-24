@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-		</div><!--/.main-->
+		</main><!--/.main-->
 	</div><!--/.container-inner-->
 
 	<footer id="footer">
