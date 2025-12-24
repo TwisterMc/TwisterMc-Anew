@@ -20,32 +20,15 @@ Tags:
  *  CSS Reset - Simplified for modern browsers
  * ------------------------------------------------------------------------- */
 * {
-  box-sizing: border-box;
-}
+  ol,
+  ul {
+    list-style: none;
+  }
 
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
+  /* Always hide sidebar-toggle by default (mobile-first) */
+  .sidebar-toggle {
+    display: none !important;
+  }
 img,
 ins,
 kbd,
@@ -119,61 +102,46 @@ section {
 
 ol,
 ul {
-  list-style: none;
-}
+  /* Sidebar toggle: only visible on tablet (480px-959px), hidden elsewhere */
+  @media only screen and (max-width: 479px), only screen and (min-width: 960px) {
+    .sidebar-toggle {
+      display: none !important;
+    }
+  }
 
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* ------------------------------------------------------------------------- *
- *  Base Styles
-/* ------------------------------------------------------------------------- */
-@font-face {
-  font-display: swap;
-  font-family: "titillium_webregular";
-  font-style: normal;
-  font-weight: normal;
-  src: url("fonts/titilliumweb-regular-webfont.woff2") format("woff2"),
-    url("fonts/titilliumweb-regular-webfont.woff") format("woff");
-}
-
-body {
-  background: #f2f2f2;
-  color: #333;
-  font-family: "titillium_webregular", Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.6em;
-}
-
-::selection {
-  background-color: #34759a;
-  color: #fff;
-}
-
-a {
-  color: #34759a;
-}
-
-a:hover {
-  color: #444;
-  text-decoration: underline;
-}
-
-img {
+  @media only screen and (min-width: 480px) and (max-width: 959px) {
+    .sidebar-toggle {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      background-color: #34759a;
+      cursor: pointer;
+      height: 50px;
+      text-align: center;
+      width: 100%;
+      border: none;
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      color: #fff;
+      font-size: 32px;
+      transition: background 0.2s;
+      padding: 0;
+    }
+    .sidebar-toggle:hover,
+    .sidebar-toggle:focus {
+      background-color: #23547a;
+      outline: none;
+    }
+    .sidebar-toggle i {
+      color: #fff;
+      font-size: 38px;
+      padding: 0;
+      margin: 0 auto;
+      line-height: 1;
+      display: block;
+      text-align: center;
+    }
+  }
   height: auto;
   max-width: 100%;
 }
@@ -750,40 +718,34 @@ h6 {
 /*  base : sidebar - mobile first
 /* ------------------------------------ */
 .sidebar {
-  display: none; /* Hidden on mobile by default */
-  padding-bottom: 20px;
+  display: block;
+  width: 100%;
   position: relative;
+  padding-bottom: 20px;
   z-index: 2;
+  margin-top: 30px;
 }
 
 @media only screen and (min-width: 480px) {
   .sidebar {
-    display: block;
-  }
-
-  .sidebar .pad {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  /* sidebar primary */
-  .s1 {
     width: 340px;
-    z-index: 2;
+    float: right;
+    margin-top: 0;
   }
-
-  .s1:hover {
-    z-index: 98; /* social icons tooltip above header nav */
+}
+/* Hide sidebar-toggle on mobile (below 480px) */
+@media only screen and (max-width: 479px) {
+  .sidebar-toggle {
+    display: none !important;
   }
 }
 
-.sidebar-toggle {
-  display: none;
-}
-
+/* Sidebar toggle button: center icon horizontally and vertically, even when expanded */
 @media only screen and (min-width: 480px) and (max-width: 959px) {
   .sidebar-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #34759a;
     cursor: pointer;
     height: 50px;
@@ -795,6 +757,7 @@ h6 {
     color: #fff;
     font-size: 32px;
     transition: background 0.2s;
+    padding: 0;
   }
   .sidebar-toggle:hover,
   .sidebar-toggle:focus {
@@ -804,7 +767,11 @@ h6 {
   .sidebar-toggle i {
     color: #fff;
     font-size: 38px;
-    padding: 5px 0;
+    padding: 0;
+    margin: 0 auto;
+    line-height: 1;
+    display: block;
+    text-align: center;
   }
 }
 
@@ -829,20 +796,7 @@ h6 {
     width: 100%;
   }
 
-  .sidebar-toggle {
-    background-color: #34759a;
-    cursor: pointer;
-    display: block;
-    height: 50px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .sidebar-toggle i {
-    color: #fff;
-    font-size: 38px;
-    padding: 5px 0;
-  }
+  /* ...existing code... (remove duplicate .sidebar-toggle rules here) */
 
   /* s1 expand/collapse */
   .s1-expand .s1 {
