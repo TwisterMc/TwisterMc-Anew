@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "titillium_webregular";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("fonts/titilliumweb-regular-webfont.woff2") format("woff2"),
+       url("fonts/titilliumweb-regular-webfont.woff") format("woff");
+}
+
+body {
+  font-family: "titillium_webregular", Arial, sans-serif;
+}
 /*
 Theme Name: Anew
 Theme URI: http://alxmedia.se/themes/anew/
