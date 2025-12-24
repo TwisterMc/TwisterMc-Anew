@@ -1,13 +1,28 @@
-<?php $format = get_post_format(); ?>
+<?php
+/**
+ * Content Template
+ * 
+ * @package Anew
+ */
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('group'); ?>>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-	<h2 class="post-title pad">
-		<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+$format = get_post_format();
+?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class('group'); ?> itemscope itemtype="https://schema.org/BlogPosting">
+
+	<h2 class="post-title pad" itemprop="headline">
+		<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php echo esc_attr( get_the_title() ); ?>" itemprop="url"><?php the_title(); ?></a>
 	</h2><!--/.post-title-->
 
 	<ul class="post-meta pad group">
-		<li><i class="fa fa-clock-o"></i><?php the_time('j M, Y'); ?></li>
+		<li><i class="fa fa-clock-o"></i><time datetime="<?php echo esc_attr( get_the_date('c') ); ?>" itemprop="datePublished"><?php the_time('j M, Y'); ?></time></li>
+		<span itemprop="author" itemscope itemtype="https://schema.org/Person" class="screen-reader-text">
+			<span itemprop="name"><?php echo esc_html( get_the_author() ); ?></span>
+		</span>
 	</ul><!--/.post-meta-->
 
 	<div class="post-inner">
@@ -25,7 +40,7 @@
 
 		<div class="post-content pad">
 
-			<div class="entry">
+			<div class="entry" itemprop="description">
 				<?php
 				if ( is_archive() || is_home() ) {
 					the_excerpt();

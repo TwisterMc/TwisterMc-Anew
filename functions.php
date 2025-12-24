@@ -1,4 +1,15 @@
 <?php
+/**
+ * Theme Functions
+ * 
+ * @package Anew
+ */
+
+// Prevent direct file access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* ------------------------------------------------------------------------- *
  *  Custom functions
 /* ------------------------------------------------------------------------- */
@@ -27,7 +38,7 @@ add_action('wp_default_scripts', 'remove_jquery_migrate');
  *  OptionTree framework integration: Use in theme mode
 /* ------------------------------------------------------------------------- */
 
-load_template( get_template_directory() . '/option-tree/ot-loader.php' );
+require_once get_template_directory() . '/option-tree/ot-loader.php';
 
 /** JetPack Add Image To Tweet **/
 add_filter(
@@ -45,7 +56,7 @@ if ( ! function_exists( 'alx_load' ) ) {
 
 	function alx_load() {
 		// Load custom widgets
-		load_template( get_template_directory() . '/functions/widgets/alx-tabs.php' );
+		require_once get_template_directory() . '/functions/widgets/alx-tabs.php';
 
 
 	}
@@ -100,11 +111,40 @@ add_action( 'after_setup_theme', 'alx_setup' );
 if ( ! function_exists( 'alx_sidebars' ) ) {
 
 	function alx_sidebars() {
-		register_sidebar(array( 'name' => 'Primary','id' => 'primary','description' => "Normal full width sidebar", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
-		register_sidebar(array( 'name' => 'Footer 1','id' => 'footer-1', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
-		register_sidebar(array( 'name' => 'Footer 2','id' => 'footer-2', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
-		register_sidebar(array( 'name' => 'Footer 3','id' => 'footer-3', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
-		register_sidebar(array( 'name' => 'Footer 4','id' => 'footer-4', 'description' => "Widetized footer", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
+		$sidebars = array(
+			'primary' => array(
+				'name' => __('Primary', 'anew'),
+				'description' => __('Normal full width sidebar', 'anew'),
+			),
+			'footer-1' => array(
+				'name' => __('Footer 1', 'anew'),
+				'description' => __('Widgetized footer', 'anew'),
+			),
+			'footer-2' => array(
+				'name' => __('Footer 2', 'anew'),
+				'description' => __('Widgetized footer', 'anew'),
+			),
+			'footer-3' => array(
+				'name' => __('Footer 3', 'anew'),
+				'description' => __('Widgetized footer', 'anew'),
+			),
+			'footer-4' => array(
+				'name' => __('Footer 4', 'anew'),
+				'description' => __('Widgetized footer', 'anew'),
+			),
+		);
+		
+		foreach ( $sidebars as $id => $sidebar ) {
+			register_sidebar( array(
+				'name' => $sidebar['name'],
+				'id' => $id,
+				'description' => $sidebar['description'],
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget' => '</div>',
+				'before_title' => '<h3>',
+				'after_title' => '</h3>',
+			) );
+		}
 	}
 
 }
@@ -144,14 +184,24 @@ if ( ! function_exists( 'alx_custom_sidebars' ) ) {
 
 		$sidebars = get_option( 'sidebar-areas' );
 
-			if ( !empty( $sidebars ) ) {
-				foreach( $sidebars as $sidebar ) {
-					if ( isset($sidebar['title']) && !empty($sidebar['title']) && isset($sidebar['id']) && !empty($sidebar['id']) && ($sidebar['id'] !='sidebar-') ) {
-						register_sidebar(array('name' => ''.$sidebar['title'].'','id' => ''.strtolower($sidebar['id']).'','before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
-					}
+		if ( ! empty( $sidebars ) && is_array( $sidebars ) ) {
+			foreach ( $sidebars as $sidebar ) {
+				if ( isset( $sidebar['title'] ) && ! empty( $sidebar['title'] ) && 
+				     isset( $sidebar['id'] ) && ! empty( $sidebar['id'] ) && 
+				     ( $sidebar['id'] !== 'sidebar-' ) ) {
+					
+					register_sidebar( array(
+						'name' => sanitize_text_field( $sidebar['title'] ),
+						'id' => sanitize_key( strtolower( $sidebar['id'] ) ),
+						'before_widget' => '<div id="%1$s" class="widget %2$s">',
+						'after_widget' => '</div>',
+						'before_title' => '<h3>',
+						'after_title' => '</h3>',
+					) );
 				}
 			}
 		}
+	}
 }
 add_action( 'widgets_init', 'alx_custom_sidebars' );
 
@@ -194,12 +244,26 @@ if ( ! function_exists( 'alx_sidebar_primary' ) ) {
 if ( ! function_exists( 'tmc_site_title' ) ) {
 
 	function tmc_site_title() {
+		$logo_url = ot_get_option('custom-logo');
+		$site_name = get_bloginfo('name');
+		
+		if ( ! empty( $logo_url ) ) {
+			$logo = sprintf(
+				'<img src="%s" alt="%s" height="60" width="50">',
+				esc_url( $logo_url ),
+				esc_attr( $site_name )
+			);
+		} else {
+			$logo = esc_html( $site_name );
+		}
 
-		$logo = '<img src="'.ot_get_option('custom-logo').'" alt="'.get_bloginfo('name').'" height="60" width="50">';
+		$link = sprintf(
+			'<a href="%s" rel="home">%s</a>',
+			esc_url( home_url('/') ),
+			$logo
+		);
 
-		$link = '<a href="'.home_url('/').'" rel="home">'.$logo.'</a>';
-
-		$sitename = '<p class="site-title">'.$link.'</p>'."\n";
+		$sitename = '<p class="site-title">' . $link . '</p>' . "\n";
 
 		return $sitename;
 	}
@@ -335,35 +399,55 @@ add_action( 'wp_print_styles', 'alx_deregister_styles', 100 );
 
 // add custom code to the header
 function twistermc_head_additions() {
-	echo '<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">';
-	echo '<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">';
-	echo '<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">';
-	echo '<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">';
-	echo '<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">';
-	echo '<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">';
-	echo '<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">';
-	echo '<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">';
-	echo '<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">';
-	echo '<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">';
-	echo '<link rel="icon" type="image/png" href="/favicons/favicon-194x194.png" sizes="194x194">';
-	echo '<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">';
-	echo '<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">';
-	echo '<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">';
-	echo '<link rel="manifest" href="/favicons/manifest.json">';
-	echo '<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#3F8EBC">';
-	echo '<meta name="msapplication-TileColor" content="#da532c">';
-	echo '<meta name="msapplication-TileImage" content="/mstile-144x144.png">';
-	echo '<meta name="theme-color" content="#ffffff">';
-	echo '<meta name="twitter:site" content="@TwisterMc"/>';
-	echo '<meta name="twitter:domain" content="Blog on a Stick"/>';
-	echo '<meta name="twitter:creator" content="@twistermc"/>';
-	echo '<meta property="fb:admins" content="500138493"/>';
+	// Favicon links
+	$favicons = array(
+		'apple-touch-icon' => array(
+			array('sizes' => '57x57', 'href' => '/favicons/apple-touch-icon-57x57.png'),
+			array('sizes' => '60x60', 'href' => '/favicons/apple-touch-icon-60x60.png'),
+			array('sizes' => '72x72', 'href' => '/favicons/apple-touch-icon-72x72.png'),
+			array('sizes' => '76x76', 'href' => '/favicons/apple-touch-icon-76x76.png'),
+			array('sizes' => '114x114', 'href' => '/favicons/apple-touch-icon-114x114.png'),
+			array('sizes' => '120x120', 'href' => '/favicons/apple-touch-icon-120x120.png'),
+			array('sizes' => '144x144', 'href' => '/favicons/apple-touch-icon-144x144.png'),
+			array('sizes' => '152x152', 'href' => '/favicons/apple-touch-icon-152x152.png'),
+			array('sizes' => '180x180', 'href' => '/favicons/apple-touch-icon-180x180.png'),
+		),
+		'icon' => array(
+			array('type' => 'image/png', 'sizes' => '32x32', 'href' => '/favicons/favicon-32x32.png'),
+			array('type' => 'image/png', 'sizes' => '194x194', 'href' => '/favicons/favicon-194x194.png'),
+			array('type' => 'image/png', 'sizes' => '96x96', 'href' => '/favicons/favicon-96x96.png'),
+			array('type' => 'image/png', 'sizes' => '192x192', 'href' => '/favicons/android-chrome-192x192.png'),
+			array('type' => 'image/png', 'sizes' => '16x16', 'href' => '/favicons/favicon-16x16.png'),
+		),
+	);
+	
+	foreach ($favicons['apple-touch-icon'] as $icon) {
+		printf('<link rel="apple-touch-icon" sizes="%s" href="%s">', esc_attr($icon['sizes']), esc_url($icon['href']));
+	}
+	foreach ($favicons['icon'] as $icon) {
+		printf('<link rel="icon" type="%s" href="%s" sizes="%s">', esc_attr($icon['type']), esc_url($icon['href']), esc_attr($icon['sizes']));
+	}
+	?>
+	<link rel="manifest" href="/favicons/manifest.json">
+	<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#3F8EBC">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<?php
+	
+	// Twitter/Social meta tags
+	$twitter_card = 'summary';
 	$format = get_post_format();
 	if ( $format === 'image' ) {
-		echo( '<meta name="twitter:card" content="photo">' );
-	} else {
-		echo( '<meta name="twitter:card" content="summary"/>' );
+		$twitter_card = 'summary_large_image';
 	}
+	?>
+	<meta name="twitter:card" content="<?php echo esc_attr($twitter_card); ?>">
+	<meta name="twitter:site" content="@TwisterMc">
+	<meta name="twitter:creator" content="@TwisterMc">
+	<meta property="og:site_name" content="<?php echo esc_attr( get_bloginfo('name') ); ?>">
+	<meta property="fb:admins" content="500138493">
+	<?php
 
 }
 

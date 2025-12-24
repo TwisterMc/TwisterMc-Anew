@@ -1,9 +1,25 @@
+<?php
+/**
+ * Header Template
+ * 
+ * @package Anew
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
 <!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
 
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<?php 
+	// Preload critical assets
+	echo '<link rel="preload" href="' . get_template_directory_uri() . '/fonts/titilliumweb-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>';
+	?>
 
 	<?php wp_head(); ?>
 
@@ -12,8 +28,8 @@
 
 </head>
 
-<body <?php body_class(); ?>>
-<a href="#mainContent" class="linkSkip">Skip To Main Content (Click This)</a>
+<?php wp_body_open(); ?>
+<a href="#mainContent" class="skip-link screen-reader-text"><?php _e( 'Skip to content', 'anew' ); ?></a>
 <div id="wrapper">
 
 	<header id="header" role="banner">

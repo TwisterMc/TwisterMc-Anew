@@ -1,17 +1,28 @@
-<?php get_header(); ?>
-<?php $format = get_post_format(); ?>
+<?php
+/**
+ * Single Post Template
+ * 
+ * @package Anew
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+get_header();
+$format = get_post_format();
+?>
 
 <section class="content" role="main">
 
 	<div class="pad group">
 
 	<?php while ( have_posts() ): the_post(); ?>
-	<a id="mainContent" role="heading" tabindex="-1" class="isVisuallyHidden" aria-level="2">Main Content</a>
-
-
 		<article <?php post_class(); ?>>
+			<span id="mainContent" class="screen-reader-text">Main Content</span>
+			<span id="mainContent" class="screen-reader-text">Main Content</span>
 
-			<h1 class="post-title pad"><?php the_title(); ?></a></h1>
+			<h1 class="post-title pad"><?php the_title(); ?></h1>
 
 			<ul class="post-meta pad group">
 				<li><i class="fa fa-clock-o"></i><?php the_time('j M, Y'); ?></li>
@@ -32,7 +43,7 @@
 
 				<div class="post-content pad">
 
-					<div class="entry">
+					<div class="entry" itemprop="articleBody">
 						<?php the_content(); ?>
 						<?php wp_link_pages(array('before'=>'<div class="post-pages">'.__('Pages:','anew'),'after'=>'</div>')); ?>
 					</div><!--/.entry-->

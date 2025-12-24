@@ -1,8 +1,19 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Main Template File
+ * 
+ * @package Anew
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+get_header();
+?>
 
 <section class="content" role="main">
-<a id="mainContent" role="heading" tabindex="-1" class="isVisuallyHidden" aria-level="2">Main Content</a>
-
+	<h1 id="mainContent" class="screen-reader-text">Main Content</h1>
 	
 	<div class="pad group">
 		<?php if ( have_posts() ) : ?>
