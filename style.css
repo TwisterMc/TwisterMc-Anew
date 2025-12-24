@@ -50,7 +50,7 @@ ul {
 
 /* Always hide sidebar-toggle by default (mobile-first) */
 .sidebar-toggle {
-  display: none !important;
+  display: none;
 }
 
 article,
@@ -399,7 +399,7 @@ label {
 }
 
 .entry img .size-full {
-  width: 100% !important;
+  width: 100%;
 }
 
 .entry .gallery img,
@@ -435,12 +435,12 @@ label {
 
 .entry .wp-caption.alignnone {
   overflow: hidden;
-  width: 100% !important;
+  width: 100%;
 }
 
 .entry .wp-caption.alignnone img {
   margin: 0 auto;
-  max-width: 100% !important;
+  max-width: 100%;
 }
 
 .entry .wp-caption-text,
@@ -462,14 +462,14 @@ label {
 /* default gallery */
 .entry .gallery {
   clear: both;
-  margin: 15px 0 !important;
+  margin: 15px 0;
   overflow: hidden;
   width: 100%;
 }
 
 .entry .gallery img {
-  border-color: transparent !important;
-  border-width: 1px 2px !important;
+  border-color: transparent;
+  border-width: 1px 2px;
   display: block;
   height: auto;
   width: 100%;
@@ -477,7 +477,7 @@ label {
 
 .entry .gallery .gallery-item {
   border-color: transparent;
-  margin-top: 0 !important;
+  margin-top: 0;
   overflow: hidden;
   position: relative;
 }
@@ -512,7 +512,7 @@ label {
 .entry .gallery-columns-7 .gallery-caption,
 .entry .gallery-columns-8 .gallery-caption,
 .entry .gallery-columns-9 .gallery-caption {
-  display: none !important;
+  display: none;
 }
 
 /*  base : headings
@@ -661,7 +661,7 @@ h6 {
 /* Hide sidebar-toggle on mobile (below 480px) */
 @media only screen and (max-width: 479px) {
   .sidebar-toggle {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -702,7 +702,7 @@ h6 {
 
 @media only screen and (min-width: 960px) {
   .sidebar-toggle {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -727,7 +727,7 @@ h6 {
   .s1-expand .s1 {
     background: #f2f2f2;
     bottom: 0;
-    margin: 0 !important;
+    margin: 0;
     overflow: auto;
     position: absolute;
     top: 0;
@@ -783,7 +783,7 @@ h6 {
 
   .last {
     clear: right;
-    margin-right: 0 !important;
+    margin-right: 0;
   }
 
   .one-full {
@@ -901,7 +901,7 @@ h6 {
 }
 
 .social-links li a {
-  display: block !important;
+  display: block;
   position: relative;
   text-align: center;
 }
@@ -1183,10 +1183,96 @@ h6 {
   z-index: 99;
 }
 
-/* Mobile: show toggle button */
+/* ------------------------------------------------------------------------- *
+ *  Mobile Toggle & Search - Refined
+ * ------------------------------------------------------------------------- */
 .nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: transparent;
+  border: none;
+  width: 60px;
+  height: 50px;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-toggle i {
+  font-size: 26px;
+  line-height: 1;
   display: block;
 }
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.nav-toggle:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.toggle-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  height: 50px;
+  position: relative;
+  z-index: 1001;
+}
+.toggle-search:hover,
+.toggle-search.active {
+  background: rgba(255, 255, 255, 0.05);
+}
+.toggle-search:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.search-expand {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  width: 320px;
+  z-index: 1002;
+  background-color: #26272b;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  padding: 8px;
+}
+.search-expand[aria-hidden="false"],
+.search-expand.open {
+  display: block;
+}
+.search-expand-inner {
+  padding: 8px;
+}
+.search-expand input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #fff;
+  color: #222;
+}
+
+@media only screen and (min-width: 720px) {
+  .search-expand {
+    right: 0;
+    top: 40px;
+    width: 260px;
+  }
+}
+
+/* Mobile: show toggle button is handled by base `.nav-toggle` above */
 
 @media only screen and (min-width: 720px) {
   /* Desktop: hide toggle button */
@@ -1195,7 +1281,7 @@ h6 {
   }
 
   .nav-wrap {
-    height: auto !important;
+    height: auto;
   }
 
   /* common */
@@ -1253,7 +1339,6 @@ h6 {
   .nav-toggle {
     color: #fff;
     cursor: pointer;
-    display: unset;
     float: right;
     height: 50px;
     text-align: center;
@@ -1302,7 +1387,7 @@ h6 {
 
   /* level 2 & 3 */
   .nav ul {
-    display: block !important;
+    display: block;
     margin-left: 40px;
   }
 }
@@ -1367,7 +1452,6 @@ h6 {
 .toggle-search {
   color: #fff;
   cursor: pointer;
-  display: block;
   padding: 13px 20px;
   position: absolute;
   right: 0;
@@ -1409,6 +1493,40 @@ h6 {
     right: auto;
     top: 50px;
     width: 320px;
+  }
+}
+
+/* Mobile: unify hover state and center nav/search buttons */
+@media only screen and (max-width: 719px) {
+  .nav-toggle,
+  .toggle-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    width: 60px;
+    height: 50px;
+    box-sizing: border-box;
+    background: transparent;
+    border-radius: 6px;
+    color: #fff;
+  }
+
+  .nav-toggle i,
+  .toggle-search i {
+    margin: 0;
+    padding: 0;
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .nav-toggle:hover,
+  .toggle-search:hover,
+  .nav-toggle:focus,
+  .toggle-search:focus {
+    background: rgba(255, 255, 255, 0.06);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 117, 154, 0.12);
   }
 }
 
@@ -2186,7 +2304,7 @@ li #reply-title {
   border-top: 0;
   font-size: 0;
   height: 0;
-  margin: 0 !important;
+  margin: 0;
   padding: 0;
 }
 
@@ -2279,13 +2397,13 @@ li #reply-title {
 }
 
 .wp-pagenavi span.pages {
-  border: none !important;
+  border: none;
   display: block;
-  margin-bottom: 1em !important;
+  margin-bottom: 1em;
 }
 
 .wp-pagenavi span.extend {
-  border: none !important;
+  border: none;
   border-bottom: 3px solid transparent;
   border-top: 1px solid transparent;
 }
@@ -2329,15 +2447,15 @@ Extra Things
 ------------------------------------------------------------------------ */
 
 .isVisuallyHidden:not(:focus):not(:active) {
-  border: 0 !important;
-  clip: rect(1px 1px 1px 1px) !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  height: 1px !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 .linkSkip {
@@ -2366,7 +2484,7 @@ Extra Things
 
 @media print {
   .linkSkip {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -2514,7 +2632,7 @@ Accessibility
 }
 
 .wpa-about {
-  color: #000 !important;
+  color: #000;
 }
 
 /* ---------------------------------------------------------------------
