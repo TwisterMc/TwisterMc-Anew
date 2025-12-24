@@ -34,11 +34,19 @@ function remove_jquery_migrate($scripts)
 add_action('wp_default_scripts', 'remove_jquery_migrate');
 
 
-/* ------------------------------------------------------------------------- *
- *  OptionTree framework integration: Use in theme mode
-/* ------------------------------------------------------------------------- */
+/*  Theme Configuration (hardcoded settings)
+/* ------------------------------------ */
+define( 'ANEW_LOGO_URL', 'https://www.twistermc.com/blog-u/wp-content/uploads/2013/11/twistermc-logo-white.png' );
+define( 'ANEW_LOGO_MAX_HEIGHT', 60 );
+define( 'ANEW_LAYOUT_GLOBAL', 'col-2cl' );
+define( 'ANEW_CONTAINER_WIDTH', 1380 );
+define( 'ANEW_COLOR_ACCENT', '#3b8dbd' );
+define( 'ANEW_COLOR_TOPBAR', '#26272b' );
+define( 'ANEW_COLOR_HEADER', '#3b8dbd' );
+define( 'ANEW_COLOR_FOOTER', '#33363b' );
+define( 'ANEW_EXCERPT_LENGTH', 55 );
+define( 'ANEW_FOOTER_WIDGETS', 4 );
 
-require_once get_template_directory() . '/option-tree/ot-loader.php';
 
 /** JetPack Add Image To Tweet **/
 add_filter(
@@ -258,12 +266,8 @@ add_action( 'widgets_init', 'alx_custom_sidebars' );
 if ( ! function_exists( 'alx_layout_class' ) ) {
 
 	function alx_layout_class() {
-		// Default layout
-		$layout = 'col-2cl';
-		$default = 'col-2cl';
-
 		// Return layout class
-		return ot_get_option('layout-global', '' . $default . '');
+		return ANEW_LAYOUT_GLOBAL;
 	}
 
 }
@@ -287,7 +291,7 @@ if ( ! function_exists( 'alx_sidebar_primary' ) ) {
 if ( ! function_exists( 'tmc_site_title' ) ) {
 
 	function tmc_site_title() {
-		$logo_url = ot_get_option('custom-logo');
+		$logo_url = ANEW_LOGO_URL;
 		$site_name = get_bloginfo('name');
 		
 		if ( ! empty( $logo_url ) ) {
@@ -555,3 +559,26 @@ JS;
 		wp_add_inline_script( 'jetpack-blocks-editor', $disable_external_media );
 	}
 );
+
+// Add block editor (Gutenberg) compatibility: theme.json support, block styles, wide/full align, editor styles, and color palette.
+add_action( 'after_setup_theme', function() {
+	// Add support for block styles
+	add_theme_support( 'wp-block-styles' );
+	// Add support for full and wide align images/blocks
+	add_theme_support( 'align-wide' );
+	// Add support for editor styles
+	add_theme_support( 'editor-styles' );
+	// Load editor stylesheet (create this file if you want custom editor CSS)
+	add_editor_style( 'editor-style.css' );
+	// Add support for responsive embeds
+	add_theme_support( 'responsive-embeds' );
+	// Add support for custom color palette (optional, matches your theme)
+	add_theme_support( 'editor-color-palette', [
+		[ 'name' => __( 'Accent', 'anew' ), 'slug' => 'accent', 'color' => ANEW_COLOR_ACCENT ],
+		[ 'name' => __( 'Topbar', 'anew' ), 'slug' => 'topbar', 'color' => ANEW_COLOR_TOPBAR ],
+		[ 'name' => __( 'Header', 'anew' ), 'slug' => 'header', 'color' => ANEW_COLOR_HEADER ],
+		[ 'name' => __( 'Footer', 'anew' ), 'slug' => 'footer', 'color' => ANEW_COLOR_FOOTER ],
+		[ 'name' => __( 'White', 'anew' ), 'slug' => 'white', 'color' => '#fff' ],
+		[ 'name' => __( 'Black', 'anew' ), 'slug' => 'black', 'color' => '#000' ],
+	] );
+} );
