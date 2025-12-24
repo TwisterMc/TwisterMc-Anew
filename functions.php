@@ -422,15 +422,7 @@ add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
 
 /*  Preload critical assets
 /* ------------------------------------ */
-if ( ! function_exists( 'alx_preload_assets' ) ) {
 
-	function alx_preload_assets() {
-		// Preload critical font
-		echo '<link rel="preload" href="' . esc_url( get_template_directory_uri() . '/fonts/titilliumweb-regular-webfont.woff2' ) . '" as="font" type="font/woff2" crossorigin>';
-	}
-
-}
-add_action( 'wp_head', 'alx_preload_assets', 2 );
 
 
 /* ------------------------------------------------------------------------- *
