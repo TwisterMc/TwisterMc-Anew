@@ -1,4 +1,8 @@
 <?php
+// Ensure Dashicons are loaded for all users (front-end and back-end)
+add_action('wp_enqueue_scripts', function() {
+	wp_enqueue_style('dashicons');
+});
 // Preload critical font for performance
 if ( ! function_exists( 'alx_preload_assets' ) ) {
 	function alx_preload_assets() {
@@ -498,6 +502,9 @@ add_action( 'wp_head', 'twistermc_head_additions', 100 );
 // auto set featured image
 function tmc_autoset_featured() {
 	global $post;
+	if ( ! is_object( $post ) || ! isset( $post->ID ) ) {
+		return;
+	}
 	$already_has_thumb = has_post_thumbnail( $post->ID );
 	if ( ! $already_has_thumb ) {
 		$attached_image = get_children( "post_parent=$post->ID&post_type=attachment&post_mime_type=image&numberposts=1" );
