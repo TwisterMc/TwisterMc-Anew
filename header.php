@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <a href="#mainContent" class="skip-link screen-reader-text"><?php _e( 'Skip to content', 'anew' ); ?></a>
 <div id="wrapper">
 
-	<header id="header">
+	<header class="site-header">
 
 		<?php if (has_nav_menu('topbar')): ?>
 			<nav class="nav-container group" id="nav-topbar" aria-label="<?php esc_attr_e( 'Main Navigation', 'anew' ); ?>">
