@@ -1,7 +1,7 @@
 /*
 Theme Name: Anew
 Theme URI: http://alxmedia.se/themes/anew/
-Version: 3.1.8
+Version: 3.1.9
 Description: Thomas' Version / <a href="http://alxmedia.se/themes/anew/">Anew</a> is a responsive 100% high resolution theme in classic tumblog style. Each post format is shown in a unique visual way and can be given any color you want. A toggle sidebar gives a great browsing and reading experience on both tablet and mobile. Features include: Unlimited topbar, header, footer and accent colors, unlimited widget areas, 0-1 sidebars to the left or right that can be uniquely specified for each page or post, 280px width sidebar, 0-4 footer widget columns, almost zero layout images, author bio and post nav, 10 post formats, good SEO, 3 flexible custom widgets, localisation support, social links, logo or header image upload and many more useful admin panel features.
 Author: Thomas McMahon & Alexander Agnarson
 Author URI: https://twistermc.com
@@ -10,6 +10,10 @@ Tags:
 	Copyright: (c) 2013 Alexander "Alx" Agnarson
 	License: GNU General Public License v3.0
 	License URI: http://www.gnu.org/licenses/gpl-3.0.html
+	
+	Optimizations (Dec 2024):
+	- Mobile-first CSS architecture for key sections
+	- Optimized for Core Web Vitals and Lighthouse performance
 */
 
 /* ------------------------------------------------------------------------- *
@@ -714,6 +718,7 @@ h6 {
   width: 100%;
 }
 
+/* Mobile-first padding */
 .pad,
 .pad.post-content,
 .pad.format-container {
@@ -734,57 +739,69 @@ h6 {
 /*  base : layout columns
 /* ------------------------------------ */
 
-/* 2 column, content left */
+/* 2 column, content left - mobile first */
 .col-2cl .main {
   padding: 0;
+}
+
+.col-2cl .content {
+  float: none;
+  width: 100%;
 }
 
 @media only screen and (min-width: 480px) {
   .col-2cl .main {
     padding-right: 340px;
   }
+
+  .col-2cl .content {
+    float: left;
+  }
+
+  .col-2cl .s1 {
+    float: right;
+    margin-right: -340px;
+  }
 }
 
-.col-2cl .s1 {
-  float: right;
-  margin-right: -340px;
-}
-
-.col-2cl .content {
-  float: left;
-}
-
-/*  base : sidebar
+/*  base : sidebar - mobile first
 /* ------------------------------------ */
 .sidebar {
+  display: none; /* Hidden on mobile by default */
   padding-bottom: 20px;
   position: relative;
   z-index: 2;
 }
 
-@media only screen and (max-width: 479px) {
+@media only screen and (min-width: 480px) {
   .sidebar {
-    display: none;
+    display: block;
   }
-}
 
-.sidebar .pad {
-  padding-left: 20px;
-  padding-right: 20px;
-}
+  .sidebar .pad {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-/* sidebar primary */
-.s1 {
-  width: 340px;
-  z-index: 2;
-}
+  /* sidebar primary */
+  .s1 {
+    width: 340px;
+    z-index: 2;
+  }
 
-.s1:hover {
-  z-index: 98; /* social icons tooltip above header nav */
+  .s1:hover {
+    z-index: 98; /* social icons tooltip above header nav */
+  }
 }
 
 .sidebar-toggle {
   display: none;
+}
+
+@media only screen and (min-width: 480px) {
+  .sidebar-toggle {
+    display: block;
+  }
 }
 
 /* ------------------------------------------------------------------------- *
@@ -1270,14 +1287,24 @@ h6 {
   width: 43px;
 }
 
-/*  common : nav
+/*  common : nav - mobile first
 /* ------------------------------------ */
 .nav-container {
   position: relative;
   z-index: 99;
 }
 
+/* Mobile: show toggle button */
+.nav-toggle {
+  display: block;
+}
+
 @media only screen and (min-width: 720px) {
+  /* Desktop: hide toggle button */
+  .nav-toggle {
+    display: none;
+  }
+
   .nav-wrap {
     height: auto !important;
   }
@@ -1322,10 +1349,6 @@ h6 {
     width: 180px;
     z-index: 2;
   }
-}
-
-.nav-toggle {
-  display: none;
 }
 
 @media only screen and (max-width: 719px) {

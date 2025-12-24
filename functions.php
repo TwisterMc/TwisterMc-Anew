@@ -106,6 +106,24 @@ if ( ! function_exists( 'alx_setup' ) ) {
 add_action( 'after_setup_theme', 'alx_setup' );
 
 
+/*  Add lazy loading to post thumbnails
+/* ------------------------------------ */
+if ( ! function_exists( 'alx_lazy_load_thumbnails' ) ) {
+
+	function alx_lazy_load_thumbnails( $attr, $attachment, $size ) {
+		// Don't lazy load the first image on single posts/pages
+		if ( is_singular() && ! did_action( 'the_post_thumbnail' ) ) {
+			$attr['fetchpriority'] = 'high';
+		} else {
+			$attr['loading'] = 'lazy';
+		}
+		return $attr;
+	}
+
+}
+add_filter( 'wp_get_attachment_image_attributes', 'alx_lazy_load_thumbnails', 10, 3 );
+
+
 /*  Register sidebars
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_sidebars' ) ) {
@@ -156,7 +174,9 @@ add_action( 'widgets_init', 'alx_sidebars' );
 if ( ! function_exists( 'alx_scripts' ) ) {
 
 	function alx_scripts() {
-		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0.4', true );
+		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0.5', true );
+		// Add defer attribute to non-critical scripts
+		wp_script_add_data( 'scripts', 'defer', true );
 	}
 
 }
@@ -168,12 +188,35 @@ add_action( 'wp_enqueue_scripts', 'alx_scripts' );
 if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
-		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.7', false );
-		wp_enqueue_style( 'dashicons' );
+		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.8', false );
+		// Load Dashicons only if user is logged in
+		if ( is_user_logged_in() ) {
+			wp_enqueue_style( 'dashicons' );
+		}
 	}
 
 }
 add_action( 'wp_enqueue_scripts', 'alx_styles' );
+
+
+/*  Add defer to scripts
+/* ------------------------------------ */
+if ( ! function_exists( 'alx_defer_scripts' ) ) {
+
+	function alx_defer_scripts( $tag, $handle, $src ) {
+		// Don't defer jQuery as other scripts depend on it
+		if ( 'jquery-core' === $handle || 'jquery' === $handle ) {
+			return $tag;
+		}
+		// Defer other scripts
+		if ( strpos( $tag, 'defer' ) === false ) {
+			$tag = str_replace( ' src=', ' defer="defer" src=', $tag );
+		}
+		return $tag;
+	}
+
+}
+add_filter( 'script_loader_tag', 'alx_defer_scripts', 10, 3 );
 
 
 /*  Register custom sidebars
@@ -249,7 +292,7 @@ if ( ! function_exists( 'tmc_site_title' ) ) {
 		
 		if ( ! empty( $logo_url ) ) {
 			$logo = sprintf(
-				'<img src="%s" alt="%s" height="60" width="50">',
+				'<img src="%s" alt="%s" width="50" height="60" fetchpriority="high">',
 				esc_url( $logo_url ),
 				esc_attr( $site_name )
 			);
@@ -383,6 +426,19 @@ if ( ! function_exists( 'alx_html_js_class' ) ) {
 
 }
 add_action( 'wp_head', 'alx_html_js_class', 1 );
+
+
+/*  Preload critical assets
+/* ------------------------------------ */
+if ( ! function_exists( 'alx_preload_assets' ) ) {
+
+	function alx_preload_assets() {
+		// Preload critical font
+		echo '<link rel="preload" href="' . esc_url( get_template_directory_uri() . '/fonts/titilliumweb-regular-webfont.woff2' ) . '" as="font" type="font/woff2" crossorigin>';
+	}
+
+}
+add_action( 'wp_head', 'alx_preload_assets', 2 );
 
 
 /*  WP-PageNavi support - @devinsays (via GitHub)
