@@ -1,3 +1,4 @@
+<?php
 // Preload critical font for performance
 if ( ! function_exists( 'alx_preload_assets' ) ) {
 	function alx_preload_assets() {
@@ -5,7 +6,6 @@ if ( ! function_exists( 'alx_preload_assets' ) ) {
 	}
 }
 add_action( 'wp_head', 'alx_preload_assets', 2 );
-<?php
 /**
  * Theme Functions
  * 
