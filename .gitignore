@@ -24,3 +24,4 @@ node_modules/
 
 ## ignore IDE Things
 .history
+/.idea/
