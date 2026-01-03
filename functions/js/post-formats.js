@@ -7,38 +7,55 @@
 	Copyright: (c) 2013 Jermaine Maree, http://jermainemaree.com
 */
 
-jQuery(document).ready(function($) {
+document.addEventListener("DOMContentLoaded", function () {
+  function hide_statuses() {
+    var selectors = [
+      "audio",
+      "aside",
+      "chat",
+      "gallery",
+      "image",
+      "link",
+      "quote",
+      "status",
+      "video",
+    ];
+    selectors.forEach(function (s) {
+      var el = document.getElementById("format-" + s);
+      if (el) el.style.display = "none";
+    });
+  }
 
-	// Hide post format sections
-	function hide_statuses() {
-		$('#format-audio,#format-aside,#format-chat,#format-gallery,#format-image,#format-link,#format-quote,#format-status,#format-video').hide();
-	}
+  if (document.getElementById("post-formats-select")) {
+    hide_statuses();
 
-	// Post Formats
-	if($("#post-formats-select").length) {
-		// Hide post format sections
-		hide_statuses();
+    var post_formats = [
+      "audio",
+      "aside",
+      "chat",
+      "gallery",
+      "image",
+      "link",
+      "quote",
+      "status",
+      "video",
+    ];
 
-		// Supported post formats
-		var post_formats = ['audio','aside','chat','gallery','image','link','quote','status','video'];
+    var selected = document.querySelector("input[name='post_format']:checked");
+    if (selected && post_formats.indexOf(selected.value) !== -1) {
+      var el = document.getElementById("format-" + selected.value);
+      if (el) el.style.display = "block";
+    }
 
-		// Get selected post format
-		var selected_post_format = $("input[name='post_format']:checked").val();
-
-		// Show post format meta box
-		if(jQuery.inArray(selected_post_format,post_formats) != '-1') {
-			$('#format-'+selected_post_format).show();
-		}
-
-		// Hide/show post format meta box when option changed
-		$("input[name='post_format']:radio").change(function() {
-			// Hide post format sections
-			hide_statuses();
-			// Shoe selected section
-			if(jQuery.inArray($(this).val(),post_formats) != '-1') {
-				$('#format-'+$(this).val()).show();
-			}
-		});
-	}
-
+    var radios = document.querySelectorAll("input[name='post_format']:radio");
+    radios.forEach(function (r) {
+      r.addEventListener("change", function () {
+        hide_statuses();
+        if (post_formats.indexOf(this.value) !== -1) {
+          var el = document.getElementById("format-" + this.value);
+          if (el) el.style.display = "block";
+        }
+      });
+    });
+  }
 });

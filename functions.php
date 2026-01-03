@@ -193,7 +193,7 @@ add_action( 'widgets_init', 'alx_sidebars' );
 if ( ! function_exists( 'alx_scripts' ) ) {
 
 	function alx_scripts() {
-		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery', 'wp-i18n' ), '1.0.5', true );
+		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'wp-i18n' ), '1.0.5', true );
 		// Defer only theme scripts explicitly
 		wp_script_add_data( 'scripts', 'defer', true );
 	}
@@ -351,7 +351,7 @@ if ( ! function_exists( 'alx_post_formats_script' ) ) {
 		// Only load on posts, pages
 		if ( !in_array( $hook, array('post.php','post-new.php') ) )
 			return;
-		wp_enqueue_script( 'post-formats', get_template_directory_uri() . '/functions/js/post-formats.js', array( 'jquery' ) );
+		wp_enqueue_script( 'post-formats', get_template_directory_uri() . '/functions/js/post-formats.js', array(), '1.0.0', true );
 	}
 
 }
