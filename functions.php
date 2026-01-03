@@ -193,8 +193,8 @@ add_action( 'widgets_init', 'alx_sidebars' );
 if ( ! function_exists( 'alx_scripts' ) ) {
 
 	function alx_scripts() {
-		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0.5', true );
-		// Add defer attribute to non-critical scripts
+		wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery', 'wp-i18n' ), '1.0.5', true );
+		// Defer only theme scripts explicitly
 		wp_script_add_data( 'scripts', 'defer', true );
 	}
 
@@ -220,22 +220,8 @@ add_action( 'wp_enqueue_scripts', 'alx_styles' );
 
 /*  Add defer to scripts
 /* ------------------------------------ */
-if ( ! function_exists( 'alx_defer_scripts' ) ) {
-
-	function alx_defer_scripts( $tag, $handle, $src ) {
-		// Don't defer jQuery as other scripts depend on it
-		if ( 'jquery-core' === $handle || 'jquery' === $handle ) {
-			return $tag;
-		}
-		// Defer other scripts
-		if ( strpos( $tag, 'defer' ) === false ) {
-			$tag = str_replace( ' src=', ' defer="defer" src=', $tag );
-		}
-		return $tag;
-	}
-
-}
-add_filter( 'script_loader_tag', 'alx_defer_scripts', 10, 3 );
+/* Global script deferral removed to avoid races with core/plugins (e.g. wp-i18n).
+   Use wp_script_add_data( 'handle', 'defer', true ); for theme scripts instead. */
 
 
 /*  Register custom sidebars
