@@ -1,0 +1,232 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-02 23:30-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:153
+msgid "Primary"
+msgstr ""
+
+#: functions.php:154
+msgid "Normal full width sidebar"
+msgstr ""
+
+#: functions.php:157
+msgid "Footer 1"
+msgstr ""
+
+#: functions.php:158 functions.php:162 functions.php:166 functions.php:170
+msgid "Widgetized footer"
+msgstr ""
+
+#: functions.php:161
+msgid "Footer 2"
+msgstr ""
+
+#: functions.php:165
+msgid "Footer 3"
+msgstr ""
+
+#: functions.php:169
+msgid "Footer 4"
+msgstr ""
+
+#: functions.php:569
+msgid "Accent"
+msgstr ""
+
+#: functions.php:570
+msgid "Topbar"
+msgstr ""
+
+#: functions.php:571
+msgid "Header"
+msgstr ""
+
+#: functions.php:572
+msgid "Footer"
+msgstr ""
+
+#: functions.php:573
+msgid "White"
+msgstr ""
+
+#: functions.php:574
+msgid "Black"
+msgstr ""
+
+#: 404.php:10
+msgid ""
+"The page you are trying to reach does not exist, or has been moved. Please "
+"use the menus or the search box to find what you are looking for."
+msgstr ""
+
+#: inc/page-title.php:9
+msgid "Results"
+msgstr ""
+
+#: inc/page-title.php:9
+msgid "for"
+msgstr ""
+
+#: inc/page-title.php:14
+msgid "Error 404."
+msgstr ""
+
+#: inc/page-title.php:14
+msgid "Page not found!"
+msgstr ""
+
+#: inc/page-title.php:19
+msgid "Author:"
+msgstr ""
+
+#: inc/page-title.php:22
+msgid "Category:"
+msgstr ""
+
+#: inc/page-title.php:30
+msgid "Tagged:"
+msgstr ""
+
+#: inc/page-title.php:33
+msgid "Daily Archive:"
+msgstr ""
+
+#: inc/page-title.php:36
+msgid "Monthly Archive:"
+msgstr ""
+
+#: inc/page-title.php:39
+msgid "Yearly Archive:"
+msgstr ""
+
+#: inc/page-title.php:43 inc/page-title.php:46
+msgid "Type:"
+msgstr ""
+
+#: inc/page-title.php:43
+msgid "Image"
+msgstr ""
+
+#: inc/page-title.php:46
+msgid "Video"
+msgstr ""
+
+#: comments.php:7
+msgid "No Responses"
+msgstr ""
+
+#: comments.php:7
+msgid "1 Response"
+msgstr ""
+
+#: comments.php:7
+msgid "% Responses"
+msgstr ""
+
+#: comments.php:10
+msgid "Comments"
+msgstr ""
+
+#: comments.php:11
+msgid "Pingbacks"
+msgstr ""
+
+#: search.php:12
+msgid "Sorry, no posts matched your criteria. Try again with some other terms."
+msgstr ""
+
+#: header.php:28
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:34
+msgid "Main Navigation"
+msgstr ""
+
+#: header.php:35
+msgid "Toggle navigation"
+msgstr ""
+
+#: header.php:39
+msgid "Toggle search"
+msgstr ""
+
+#: footer.php:46
+msgid "Back to Top"
+msgstr ""
+
+#: footer.php:54
+msgid "All Rights Reserved."
+msgstr ""
+
+#: functions/widgets/alx-tabs.php:27
+msgid "Recent Posts"
+msgstr ""
+
+#: functions/widgets/alx-tabs.php:28
+msgid "Popular Posts"
+msgstr ""
+
+#: functions/widgets/alx-tabs.php:29
+msgid "Recent Comments"
+msgstr ""
+
+#: functions/widgets/alx-tabs.php:30
+msgid "Tags"
+msgstr ""
+
+#: functions/widgets/alx-tabs.php:183
+msgid "says:"
+msgstr ""
+
+#: single.php:59
+msgid "Pages:"
+msgstr ""
+
+#: single.php:64
+msgid "Tagged With:"
+msgstr ""
+
+#: single.php:77
+msgid "Post Navigation"
+msgstr ""
+
+#: single.php:79
+msgid "Next"
+msgstr ""
+
+#: single.php:80
+msgid "Previous"
+msgstr ""
+
+#: sidebar.php:3
+msgid "Expand Sidebar"
+msgstr ""
+
+#: searchform.php:2
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:3
+msgid "To search type and hit enter"
+msgstr ""
+
+#: searchform.php:4
+msgid "Search"
+msgstr ""
