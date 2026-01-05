@@ -21,14 +21,13 @@
  *  Common Widget Lists
 /* ------------------------------------------------------------------------- */
 
-.alx-tab li,
-.alx-posts li {
+.alx-tab li {
   border-bottom: 1px solid #e4e4e4;
   padding: 10px 0;
 }
 
 /* ------------------------------------------------------------------------- *
- *  Custom Widget: alxtabs / alxposts
+ *  Custom Widget: alxtabs
 /* ------------------------------------------------------------------------- */
 
 .alx-tabs-nav {
@@ -80,14 +79,12 @@
   display: none;
 }
 
-.alx-tab li,
-.alx-posts li {
+.alx-tab li {
   line-height: 1.4em;
   overflow: hidden;
 }
 
-.alx-tab a,
-.alx-posts a {
+.alx-tab a {
   transition: color 0.2s ease, opacity 0.2s ease;
 }
 
@@ -95,8 +92,7 @@
   border-radius: 100%;
 }
 
-.alx-tab img,
-.alx-posts img {
+.alx-tab img {
   display: block;
   height: 80px;
   width: 80px;
@@ -113,13 +109,12 @@
   transition: opacity 0.3s ease;
 }
 
-.alx-tab .tab-item-title,
-.alx-posts .post-item-title {
+.alx-tab .tab-item-title {
   margin: 2px 0;
   word-wrap: break-word;
 }
 
-.alx-posts .post-item-date {
+.alx-tab .tab-item-date {
   text-transform: uppercase;
 }
 
@@ -134,8 +129,4 @@
 .alx-tab li:hover .tab-item-thumbnail,
 .alx-tab img:hover {
   opacity: 1;
-}
-
-.alx-posts .post-item-thumbnail {
-  margin-bottom: 10px;
 }

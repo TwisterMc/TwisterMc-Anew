@@ -82,8 +82,6 @@ if ( ! function_exists( 'alx_load' ) ) {
 	function alx_load() {
 		// Load custom widgets
 		require_once get_template_directory() . '/functions/widgets/alx-tabs.php';
-		require_once get_template_directory() . '/functions/widgets/alx-posts.php';
-		require_once get_template_directory() . '/functions/widgets/alx-video.php';
 	}
 
 }

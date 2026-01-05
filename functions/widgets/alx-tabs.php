@@ -15,8 +15,8 @@ class AlxTabs extends WP_Widget {
 
 /*  Constructor
 /* ------------------------------------ */
-    function __construct() {
-		parent::__construct( false, 'AlxTabs', array('description' => 'List posts, comments, and/or tags with or without tabs.', 'classname' => 'widget_alx_tabs') );;
+	function __construct() {
+	parent::__construct( false, 'AlxTabs', array('description' => 'List recent and popular posts with or without tabs.', 'classname' => 'widget_alx_tabs') );
 	}
 
 /*  Create tabs-nav
@@ -25,15 +25,11 @@ class AlxTabs extends WP_Widget {
 		// Borrowed from Jermaine Maree, thanks mate!
 		$titles = array(
 			'recent'	=> __('Recent Posts','anew'),
-			'popular'	=> __('Popular Posts','anew'),
-			'comments'	=> __('Recent Comments','anew'),
-			'tags'		=> __('Tags','anew')
+			'popular'	=> __('Popular Posts','anew')
 		);
 		$icons = array(
 			'recent'   => 'fa fa-clock-o',
-			'popular'  => 'fa fa-star',
-			'comments' => 'fa fa-comments-o',
-			'tags'     => 'fa fa-tags'
+			'popular'  => 'fa fa-star'
 		);
 		$output = sprintf('<ul class="alx-tabs-nav group tab-count-%s">', $count);
 		foreach ( $tabs as $tab ) {
@@ -61,18 +57,13 @@ class AlxTabs extends WP_Widget {
 /* ------------------------------------ */
 	$tabs = array();
 	$count = 0;
-	$order = array(
-		'recent'	=> $instance['order_recent'],
-		'popular'	=> $instance['order_popular'],
-		'comments'	=> $instance['order_comments'],
-		'tags'		=> $instance['order_tags']
-	);
-	asort($order);
-	foreach ( $order as $key => $value ) {
-		if ( $instance[$key.'_enable'] ) {
-			$tabs[] = $key;
-			$count++;
-		}
+	if ( $instance['recent_enable'] ) {
+		$tabs[] = 'recent';
+		$count++;
+	}
+	if ( $instance['popular_enable'] ) {
+		$tabs[] = 'popular';
+		$count++;
 	}
 	if ( $tabs && ($count > 1) ) { $output .= $this->_create_tabs($tabs,$count); }
 ?>
@@ -188,55 +179,6 @@ class AlxTabs extends WP_Widget {
 			<?php wp_reset_postdata(); ?>
 			
 		<?php } ?>
-	
-
-		<?php if($instance['comments_enable']) { // Recent comments enabled? ?>
-
-			<?php
-				// Cache comments query for 5 minutes
-				$transient_key = 'alx_tabs_comments_' . $instance["comments_num"];
-				$comments = get_transient( $transient_key );
-				
-				if ( false === $comments ) {
-					$comments = get_comments(array('number'=>$instance["comments_num"],'status'=>'approve','post_status'=>'publish'));
-					set_transient( $transient_key, $comments, 5 * MINUTE_IN_SECONDS );
-				}
-			?>
-			
-			<ul id="tab-comments" class="alx-tab group <?php if($instance['comments_avatars']) { echo 'avatars-enabled'; } ?>">
-				<?php foreach ($comments as $comment): ?>
-				<li>
-					
-						<?php if($instance['comments_avatars']) { // Avatars enabled? ?>
-						<div class="tab-item-avatar">
-							<a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>">
-								<?php echo get_avatar($comment->comment_author_email,$size='96'); ?>
-							</a>
-						</div>
-						<?php } ?>
-						
-						<div class="tab-item-inner group">
-							<?php $str=explode(' ',get_comment_excerpt($comment->comment_ID)); $comment_excerpt=implode(' ',array_slice($str,0,11)); if(count($str) > 11 && substr($comment_excerpt,-1)!='.') $comment_excerpt.='...' ?>					
-							<div class="tab-item-name"><?php echo $comment->comment_author; ?> <?php _e('says:','anew'); ?></div>
-							<div class="tab-item-comment"><a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>"><?php echo $comment_excerpt; ?></a></div>
-							
-						</div>
-
-				</li>
-				<?php endforeach; ?>
-			</ul><!--/.alx-tab-->
-
-		<?php } ?>
-
-		<?php if($instance['tags_enable']) { // Tags enabled? ?>
-
-			<ul id="tab-tags" class="alx-tab group">
-				<li>
-					<?php wp_tag_cloud(); ?>
-				</li>
-			</ul><!--/.alx-tab-->
-				
-		<?php } ?>
 	</div>
 
 <?php
@@ -263,17 +205,6 @@ class AlxTabs extends WP_Widget {
 		$instance['popular_cat_id'] = strip_tags($new['popular_cat_id']);
 		$instance['popular_time'] = strip_tags($new['popular_time']);
 		$instance['popular_num'] = strip_tags($new['popular_num']);
-	// Recent comments
-		$instance['comments_enable'] = $new['comments_enable']?1:0;
-		$instance['comments_avatars'] = $new['comments_avatars']?1:0;
-		$instance['comments_num'] = strip_tags($new['comments_num']);
-	// Tags
-		$instance['tags_enable'] = $new['tags_enable']?1:0;
-	// Order
-		$instance['order_recent'] = strip_tags($new['order_recent']);
-		$instance['order_popular'] = strip_tags($new['order_popular']);
-		$instance['order_comments'] = strip_tags($new['order_comments']);
-		$instance['order_tags'] = strip_tags($new['order_tags']);
 		return $instance;
 	}
 
@@ -296,17 +227,6 @@ class AlxTabs extends WP_Widget {
 			'popular_cat_id' 	=> '0',
 			'popular_time' 		=> '0',
 			'popular_num' 		=> '5',
-		// Recent comments
-			'comments_enable' 	=> 1,
-			'comments_avatars' 	=> 1,
-			'comments_num' 		=> '5',
-		// Tags
-			'tags_enable' 		=> 1,
-		// Order
-			'order_recent' 		=> '1',
-			'order_popular' 	=> '2',
-			'order_comments' 	=> '3',
-			'order_tags' 		=> '4',
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 ?>
@@ -371,50 +291,6 @@ class AlxTabs extends WP_Widget {
 			  <option value="1 week ago"<?php selected( $instance["popular_time"], "1 week ago" ); ?>>This week</option>
 			  <option value="1 day ago"<?php selected( $instance["popular_time"], "1 day ago" ); ?>>Past 24 hours</option>
 			</select>	
-		</p>
-		
-		<hr>
-		<h4>Recent Comments</h4>
-		
-		<p>
-			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('comments_enable'); ?>" name="<?php echo $this->get_field_name('comments_enable'); ?>" <?php checked( (bool) $instance["comments_enable"], true ); ?>>
-			<label for="<?php echo $this->get_field_id('comments_enable'); ?>">Enable recent comments</label>
-		</p>
-		<p>
-			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('comments_avatars'); ?>" name="<?php echo $this->get_field_name('comments_avatars'); ?>" <?php checked( (bool) $instance["comments_avatars"], true ); ?>>
-			<label for="<?php echo $this->get_field_id('comments_avatars'); ?>">Show avatars</label>
-		</p>
-		<p>
-			<label style="width: 55%; display: inline-block;" for="<?php echo $this->get_field_id("comments_num"); ?>">Items to show</label>
-			<input style="width:20%;" id="<?php echo $this->get_field_id("comments_num"); ?>" name="<?php echo $this->get_field_name("comments_num"); ?>" type="text" value="<?php echo absint($instance["comments_num"]); ?>" size='3' />
-		</p>
-
-		<hr>
-		<h4>Tags</h4>
-		
-		<p>
-			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('tags_enable'); ?>" name="<?php echo $this->get_field_name('tags_enable'); ?>" <?php checked( (bool) $instance["tags_enable"], true ); ?>>
-			<label for="<?php echo $this->get_field_id('tags_enable'); ?>">Enable tags</label>
-		</p>
-	
-		<hr>
-		<h4>Tab Order</h4>
-		
-		<p>
-			<label style="width: 55%; display: inline-block;" for="<?php echo $this->get_field_id("order_recent"); ?>">Recent posts</label>
-			<input class="widefat" style="width:20%;" type="text" id="<?php echo $this->get_field_id("order_recent"); ?>" name="<?php echo $this->get_field_name("order_recent"); ?>" value="<?php echo $instance["order_recent"]; ?>" />
-		</p>
-		<p>
-			<label style="width: 55%; display: inline-block;" for="<?php echo $this->get_field_id("order_popular"); ?>">Most popular</label>
-			<input class="widefat" style="width:20%;" type="text" id="<?php echo $this->get_field_id("order_popular"); ?>" name="<?php echo $this->get_field_name("order_popular"); ?>" value="<?php echo $instance["order_popular"]; ?>" />
-		</p>
-		<p>
-			<label style="width: 55%; display: inline-block;" for="<?php echo $this->get_field_id("order_comments"); ?>">Recent comments</label>
-			<input class="widefat" style="width:20%;" type="text" id="<?php echo $this->get_field_id("order_comments"); ?>" name="<?php echo $this->get_field_name("order_comments"); ?>" value="<?php echo $instance["order_comments"]; ?>" />
-		</p>
-		<p>
-			<label style="width: 55%; display: inline-block;" for="<?php echo $this->get_field_id("order_tags"); ?>">Tags</label>
-			<input class="widefat" style="width:20%;" type="text" id="<?php echo $this->get_field_id("order_tags"); ?>" name="<?php echo $this->get_field_name("order_tags"); ?>" value="<?php echo $instance["order_tags"]; ?>" />
 		</p>
 		
 		<hr>
