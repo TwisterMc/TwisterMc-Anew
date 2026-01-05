@@ -38,19 +38,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<header class="site-header">
 
 		<?php if (has_nav_menu('topbar')): ?>
-			<nav class="nav-container group" id="nav-topbar" aria-label="<?php esc_attr_e( 'Main Navigation', 'anew' ); ?>">
+			
+		<nav class="nav-container group" id="nav-topbar" role="navigation" aria-label="Main">
+			<button class="nav-toggle" aria-label="<?php esc_attr_e( 'Toggle navigation', 'anew' ); ?>"><i class="fa fa-bars" aria-hidden="true"></i></button>
+			<div class="nav-wrap container"><?php wp_nav_menu(array('theme_location'=>'topbar','menu_class'=>'nav container-inner group','container'=>'','menu_id' => '','fallback_cb'=> false)); ?></div>
+
+			<div class="container">
 				<button class="toggle-search" aria-label="<?php esc_attr_e( 'Toggle search', 'anew' ); ?>"><i class="fa fa-search" aria-hidden="true"></i></button>
 				<div class="search-expand">
 					<div class="search-expand-inner">
 						<?php get_search_form(); ?>
 					</div>
 				</div>
-				<button class="nav-toggle" aria-label="<?php esc_attr_e( 'Toggle navigation', 'anew' ); ?>"><i class="fa fa-bars" aria-hidden="true"></i></button>
-				<div class="nav-wrap container">
-					<?php wp_nav_menu(array('theme_location'=>'topbar','menu_class'=>'nav container-inner group','container'=>'','menu_id' => '','fallback_cb'=> false)); ?>
-				</div>
-			</nav><!--/#nav-topbar-->
-		<?php endif; ?>
+			</div><!--/.container-->
+		</nav><!--/#nav-topbar-->
+
 
 		<div class="container">
 			<div class="pad group">
@@ -58,6 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<p class="site-description"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>
 			</div>
 		</div><!--/.container-->
+	<?php endif; ?>
 
 	</header><!--/#header-->
 

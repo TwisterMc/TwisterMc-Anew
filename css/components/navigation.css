@@ -1,7 +1,7 @@
 /* Navigation Component */
 
 /* ------------------------------------------------------------------------- *
- *  Nav Container
+ *  Common: Nav
 /* ------------------------------------------------------------------------- */
 
 .nav-container {
@@ -9,138 +9,48 @@
   z-index: 99;
 }
 
-.nav-wrap {
-  display: block;
-}
-
-/* ------------------------------------------------------------------------- *
- *  Mobile Toggle Buttons (Shared Base)
-/* ------------------------------------------------------------------------- */
-
+/* Button styles for accessibility */
 .nav-toggle,
 .toggle-search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
   background: transparent;
   border: none;
-  height: 50px;
   cursor: pointer;
-  padding: 0;
-  transition: background-color 0.2s ease;
-}
-
-.nav-toggle {
-  width: 60px;
-  font-size: 28px;
-}
-
-.nav-toggle i,
-.toggle-search i {
-  font-size: 26px;
-  line-height: 1;
-  display: block;
-}
-
-.nav-toggle:hover,
-.toggle-search:hover,
-.toggle-search.active {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.toggle-search.active i:before {
-  content: "\f140";
-  font-family: dashicons;
+  color: #fff;
 }
 
 .nav-toggle:focus,
 .toggle-search:focus {
   outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
-.toggle-search {
-  padding: 10px 14px;
-  position: absolute;
-  right: 0;
-  z-index: 1001;
-}
-
+/* Search expand visibility */
 .search-expand {
   display: none;
   position: absolute;
+  background-color: #2d2d2d;
+  padding: 15px;
   right: 0;
-  top: 0;
-  margin-top: 10px;
-  min-width: 320px;
-  z-index: 1002;
-  background-color: #26272b;
-  border-radius: 6px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  padding: 8px;
 }
 
-.search-expand[aria-hidden="false"],
-.search-expand.open {
-  display: block;
-}
-
-.search-expand-inner {
-  padding: 8px;
-}
-
-.search-expand .searchform {
+.searchform {
   display: flex;
-  gap: 8px;
-  align-items: center;
 }
 
-.search-expand input {
-  flex: 1;
-  padding: 10px 12px;
-  border-radius: 4px;
-  border: 1px solid #444;
-  background: #fff;
-  color: #222;
-}
-
-.search-expand button {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search-expand button:focus {
-  outline: 2px solid rgba(229, 78, 83, 0.5);
-  outline-offset: 2px;
+.searchform input[type="search"] {
+  width: 300px;
 }
 
 @media only screen and (min-width: 720px) {
-  .search-expand {
-    right: 0;
-    top: 40px;
-    width: 260px;
-  }
-}
-
-/* ------------------------------------------------------------------------- *
- *  Desktop Navigation
-/* ------------------------------------------------------------------------- */
-
-@media only screen and (min-width: 720px) {
-  .nav-toggle {
-    display: none;
-  }
-
   .nav-wrap {
-    height: auto;
+    height: auto !important;
   }
 
-  .nav {
-    display: block;
+  .toggle-search {
+    padding: 13px 20px 8px;
+    position: absolute;
+    right: 0;
+    top: -50px;
   }
 
   /* common */
@@ -185,51 +95,42 @@
   }
 }
 
-/* ------------------------------------------------------------------------- *
- *  Mobile Navigation
-/* ------------------------------------------------------------------------- */
+.nav-toggle {
+  display: none;
+}
 
 @media only screen and (max-width: 719px) {
   .nav-container {
     text-transform: none;
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
+  }
+
+  .nav-toggle,
+  .nav-text {
+    display: block;
   }
 
   .nav-toggle {
-    display: block;
-    order: 2;
-    margin-left: auto;
+    color: #fff;
+    cursor: pointer;
+    display: unset;
+    float: right;
+    height: 50px;
+    text-align: center;
+    width: 60px;
   }
 
-  .toggle-search {
-    order: 1;
-    position: static;
-    top: auto;
-    right: auto;
-    left: auto;
-  }
-
-  .search-expand {
-    order: 3;
-    left: 0;
-    right: auto;
-    top: 50px;
-    width: 320px;
-    position: absolute;
+  .nav-toggle i {
+    font-size: 29px;
+    padding: 10px 0;
   }
 
   .nav-wrap {
-    order: 4;
-    width: 100%;
+    float: left;
+    clear: both;
     height: 0;
     overflow: hidden;
     position: relative;
-  }
-
-  .nav {
-    display: block;
+    width: 100%;
   }
 
   .nav-wrap.transition {
@@ -261,8 +162,27 @@
 
   /* level 2 & 3 */
   .nav ul {
-    display: block;
+    display: block !important;
     margin-left: 40px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .toggle-search {
+    left: 0;
+    right: auto;
+    top: 0;
+    position: absolute;
+    padding: 8px 20px;
+  }
+
+  .search-expand {
+    left: 0;
+    right: auto;
+    top: 50px;
+    position: absolute;
+    background-color: #2d2d2d;
+    padding: 15px;
   }
 }
 

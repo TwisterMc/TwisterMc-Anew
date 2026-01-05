@@ -184,6 +184,7 @@ label {
 .themeform input[type="text"],
 .themeform input[type="password"],
 .themeform input[type="email"],
+.themeform input[type="search"],
 .themeform textarea {
   border: 2px solid #ddd;
   display: block;
@@ -194,6 +195,7 @@ label {
 .themeform input[type="text"]:focus,
 .themeform input[type="password"]:focus,
 .themeform input[type="email"]:focus,
+.themeform input[type="search"]:focus,
 .themeform textarea:focus {
   border-color: #34759a;
 }
