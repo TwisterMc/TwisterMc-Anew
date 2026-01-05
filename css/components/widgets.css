@@ -1,0 +1,141 @@
+/* Widgets Component */
+
+/* ------------------------------------------------------------------------- *
+ *  Base Widgets
+/* ------------------------------------------------------------------------- */
+
+.sidebar .widget {
+  padding: 30px 30px 20px;
+}
+
+.widget {
+  contain: layout style;
+  overflow: hidden;
+}
+
+.widget a:hover {
+  color: #444;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Common Widget Lists
+/* ------------------------------------------------------------------------- */
+
+.alx-tab li,
+.alx-posts li {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 10px 0;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Custom Widget: alxtabs / alxposts
+/* ------------------------------------------------------------------------- */
+
+.alx-tabs-nav {
+  border-bottom: 3px solid #ddd;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.alx-tabs-nav.tab-count-1 li {
+  width: 100%;
+}
+
+.alx-tabs-nav.tab-count-2 li {
+  width: 50%;
+}
+
+.alx-tabs-nav.tab-count-3 li {
+  width: 33.333%;
+}
+
+.alx-tabs-nav.tab-count-4 li {
+  width: 25%;
+}
+
+.alx-tabs-nav li {
+  display: block;
+  float: left;
+}
+
+.alx-tabs-nav li a {
+  border-bottom: 3px solid transparent;
+  color: #444;
+  display: block;
+  font-size: 18px;
+  margin-bottom: -3px;
+  padding: 8px 0;
+}
+
+.alx-tabs-nav li a:hover {
+  border-bottom-color: #999;
+}
+
+.alx-tabs-nav li.active a {
+  border-bottom-color: #34759a;
+  color: #34759a;
+}
+
+.alx-tabs-nav li a span {
+  display: none;
+}
+
+.alx-tab li,
+.alx-posts li {
+  line-height: 1.4em;
+  overflow: hidden;
+}
+
+.alx-tab a,
+.alx-posts a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.alx-tab img {
+  border-radius: 100%;
+}
+
+.alx-tab img,
+.alx-posts img {
+  display: block;
+  height: 80px;
+  width: 80px;
+}
+
+.alx-tab.thumbs-enabled li {
+  padding-left: 94px;
+}
+
+.alx-tab .tab-item-thumbnail {
+  float: left;
+  margin-left: -94px;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.alx-tab .tab-item-title,
+.alx-posts .post-item-title {
+  margin: 2px 0;
+  word-wrap: break-word;
+}
+
+.alx-posts .post-item-date {
+  text-transform: uppercase;
+}
+
+.alx-tab .tab-item-title a {
+  color: #444;
+}
+
+.alx-tab .tab-item-title a:hover {
+  color: #34759a;
+}
+
+.alx-tab li:hover .tab-item-thumbnail,
+.alx-tab img:hover {
+  opacity: 1;
+}
+
+.alx-posts .post-item-thumbnail {
+  margin-bottom: 10px;
+}

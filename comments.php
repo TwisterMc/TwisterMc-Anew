@@ -6,8 +6,8 @@
 	
 		<h3 class="heading"><?php comments_number( __( 'No Responses', 'anew' ), __( '1 Response', 'anew' ), __( '% Responses', 'anew' ) ); ?></h3>
 	
-		<ul class="comment-tabs group">
-			<li class="active"><a href="#commentlist-container"><i class="fa fa-comments-o"></i><?php _e( 'Comments', 'anew' ); ?><span><?php echo count($wp_query->comments_by_type['comment']); ?></span></a></li>
+	<ul class="comment-tabs group" role="tablist">
+		<li class="active" role="presentation"><a href="#commentlist-container" role="tab" aria-selected="true" aria-controls="commentlist-container"><i class="fa fa-comments-o" aria-hidden="true"></i><?php _e( 'Comments', 'anew' ); ?><span><?php echo count($wp_query->comments_by_type['comment']); ?></span></a></li>
 			<li><a href="#pinglist-container"><i class="fa fa-share"></i><?php _e( 'Pingbacks', 'anew' ); ?><span><?php echo count($wp_query->comments_by_type['pings']); ?></span></a></li>
 		</ul>
 

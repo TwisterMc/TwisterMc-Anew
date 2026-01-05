@@ -1,0 +1,87 @@
+/* Theme Customizations - Thomas McMahon's specific modifications */
+
+/* ------------------------------------------------------------------------- *
+ *  Creations Page Layout
+/* ------------------------------------------------------------------------- */
+
+.creation {
+  float: left;
+  margin-bottom: 40px;
+  width: 46%;
+}
+
+.creation.odd {
+  clear: both;
+  margin-right: 20px;
+}
+
+.creation_short_description {
+  font-style: italic;
+}
+
+@media only screen and (max-width: 479px) {
+  .creation {
+    float: none;
+    width: 100%;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Custom Elements
+/* ------------------------------------------------------------------------- */
+
+.sense {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.video-container {
+  margin-bottom: 20px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  GIST Styling
+/* ------------------------------------------------------------------------- */
+
+.gist .gist-file .gist-data .line-pre {
+  text-align: left;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Link Padding
+/* ------------------------------------------------------------------------- */
+
+.wpcnt {
+  border-bottom: 1px solid #f5f5f5;
+  border-top: 1px solid #f5f5f5;
+  margin: 50px 0;
+  padding: 15px 0;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  CTA Button
+/* ------------------------------------------------------------------------- */
+
+.ctaButton {
+  background-color: blueviolet;
+  padding: 10px;
+  text-align: center;
+}
+
+.ctaButton:hover,
+.ctaButton:focus {
+  background-color: greenyellow;
+  color: #000;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Accessibility Overrides
+/* ------------------------------------------------------------------------- */
+
+.textwidget a {
+  color: #ffffff;
+}
+
+.wpa-about {
+  color: #000;
+}

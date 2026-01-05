@@ -1,0 +1,427 @@
+/* Layout: Container, Columns, Grid, Sidebar Structure */
+
+/* ------------------------------------------------------------------------- *
+ *  Container & Content
+/* ------------------------------------------------------------------------- */
+
+.container {
+  margin: 0 auto;
+  max-width: 1080px;
+  position: relative;
+  width: 100%;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+}
+
+/* Mobile-first padding */
+.pad,
+.pad.post-content,
+.pad.format-container {
+  padding: 15px 10px 5px;
+}
+
+@media only screen and (min-width: 720px) {
+  .pad {
+    padding: 30px 30px 20px;
+  }
+
+  .pad.post-content,
+  .pad.format-container {
+    padding: 40px 35px;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Layout Columns
+/* ------------------------------------------------------------------------- */
+
+/* 2 column, content left - mobile first */
+.col-2cl .main {
+  padding: 0;
+}
+
+.col-2cl .content {
+  float: none;
+  width: 100%;
+}
+
+@media only screen and (min-width: 480px) {
+  .col-2cl .main {
+    padding-right: 340px;
+  }
+
+  .col-2cl .content {
+    float: left;
+  }
+
+  .col-2cl .s1 {
+    float: right;
+    margin-right: -340px;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Grid System
+/* ------------------------------------------------------------------------- */
+
+.grid {
+  margin: 0 0 10px;
+  text-align: center;
+  width: 100%;
+}
+
+@media only screen and (min-width: 720px) {
+  .grid {
+    display: inline;
+    float: left;
+    margin-right: 3.2%;
+    position: relative;
+    text-align: unset;
+    width: unset;
+  }
+
+  .last {
+    clear: right;
+    margin-right: 0;
+  }
+
+  .one-full {
+    margin-right: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .one-half {
+    width: 48.4%;
+  }
+
+  .one-third {
+    width: 31.2%;
+  }
+
+  .two-third {
+    width: 65.6%;
+  }
+
+  .one-fourth {
+    width: 22.6%;
+  }
+
+  .three-fourth {
+    width: 74.2%;
+  }
+
+  .one-fifth {
+    width: 17.4%;
+  }
+
+  .two-fifth {
+    width: 38.1%;
+  }
+
+  .three-fifth {
+    width: 58.7%;
+  }
+
+  .four-fifth {
+    width: 79.4%;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Responsive Videos
+/* ------------------------------------------------------------------------- */
+
+.video-container {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed,
+.video-container video {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Responsive Image Container
+/* ------------------------------------------------------------------------- */
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.image-caption {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  bottom: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.03);
+  color: #eee;
+  left: 4px;
+  line-height: 1.4em;
+  margin-right: 4px;
+  padding: 7px 10px;
+  position: absolute;
+}
+
+.image-caption a {
+  color: #fff;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Page Image
+/* ------------------------------------------------------------------------- */
+
+.page-image {
+  margin: 0 0 30px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.page-image-text {
+  margin-top: -15px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+@media only screen and (min-width: 720px) {
+  .page-image-text {
+    margin-top: -35px;
+  }
+}
+
+.page-image-text .caption {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 30px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 720px) {
+  .page-image-text .caption {
+    font-size: 44px;
+    line-height: 70px;
+  }
+}
+
+.page-image-text .description {
+  color: #fff;
+  display: block;
+  font-weight: 300;
+  line-height: 36px;
+}
+
+.page-image-text .description i {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  font-style: normal;
+  opacity: 0.9;
+  padding: 6px 10px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Page Title
+/* ------------------------------------------------------------------------- */
+
+.page-title.pad {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.page-title i {
+  margin-right: 6px;
+}
+
+.page-title h1,
+.page-title h2,
+.page-title h4 {
+  text-transform: uppercase;
+}
+
+.page-title .category-description {
+  margin: 10px 0;
+}
+
+.page-title .themeform {
+  margin: 10px 0;
+}
+
+.page-title .themeform input[type="text"] {
+  width: 100%;
+}
+
+.page-title-single {
+  color: #222;
+  font-size: 30px;
+  line-height: 1.4em;
+  margin-bottom: 14px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Pagination
+/* ------------------------------------------------------------------------- */
+
+.pagination {
+  margin-bottom: 15px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Hexagon Shape
+/* ------------------------------------------------------------------------- */
+
+.hex {
+  background-color: #ccc;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: auto 173px;
+  color: #fff;
+  float: left;
+  height: 86px;
+  position: relative;
+  text-align: center;
+  width: 150px;
+  z-index: 2;
+  zoom: 1;
+}
+
+.hex .hex-inner {
+  position: relative;
+  z-index: 4;
+}
+
+.hex a {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  text-indent: -9999em;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+.hex .corner-1,
+.hex .corner-2 {
+  backface-visibility: hidden;
+  background: inherit;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.hex .corner-1 {
+  transform: rotate(60deg);
+  z-index: -1;
+}
+
+.hex .corner-2 {
+  transform: rotate(-60deg);
+}
+
+.hex .corner-1:before,
+.hex .corner-2:before {
+  backface-visibility: hidden;
+  background: inherit;
+  background-repeat: no-repeat;
+  content: "";
+  height: 173px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 173px;
+  z-index: 3;
+}
+
+.hex .corner-1:before {
+  transform: rotate(-60deg) translate(-87px, 0px);
+  transform-origin: 0 0;
+}
+
+.hex .corner-2:before {
+  bottom: 0;
+  transform: rotate(60deg) translate(-48px, -11px);
+}
+
+.hex.hex-small {
+  font-size: 14px;
+  height: 22px;
+  line-height: 21px;
+  width: 38px;
+}
+
+.hex.hex-small .corner-1:before,
+.hex.hex-small .corner-2:before {
+  height: 43px;
+  width: 43px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Thumb Icon
+/* ------------------------------------------------------------------------- */
+
+.thumb-icon {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  bottom: 20px;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+  color: #fff;
+  display: block;
+  height: 32px;
+  left: 20px;
+  position: absolute;
+  text-align: center;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 32px;
+}
+
+.thumb-icon i {
+  font-size: 18px;
+  padding: 7px 0;
+  transform: rotate(-45deg);
+}
+
+.thumb-icon .fa-play {
+  margin: -1px 0 0 2px;
+}
+
+.thumb-icon.small {
+  border-radius: 3px;
+  bottom: 50%;
+  height: 24px;
+  left: 50%;
+  margin: 0 0 -12px -12px;
+  position: absolute;
+  width: 24px;
+}
+
+.thumb-icon.small .fa {
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 0;
+}

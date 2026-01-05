@@ -11,7 +11,7 @@
 
 				<?php get_template_part('inc/page-image'); ?>
 
-				<h1 class="page-title-single"><?php echo get_the_title(); ?></h1>
+				<h1 class="page-title-single"><?php echo esc_html( get_the_title() ); ?></h1>
 
 				<div class="entry themeform">
 					<?php the_content(); ?>

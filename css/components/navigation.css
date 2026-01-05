@@ -1,0 +1,330 @@
+/* Navigation Component */
+
+/* ------------------------------------------------------------------------- *
+ *  Nav Container
+/* ------------------------------------------------------------------------- */
+
+.nav-container {
+  position: relative;
+  z-index: 99;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Mobile Toggle Buttons (Shared Base)
+/* ------------------------------------------------------------------------- */
+
+.nav-toggle,
+.toggle-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: transparent;
+  border: none;
+  height: 50px;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.nav-toggle {
+  width: 60px;
+  font-size: 28px;
+}
+
+.nav-toggle i,
+.toggle-search i {
+  font-size: 26px;
+  line-height: 1;
+  display: block;
+}
+
+.nav-toggle:hover,
+.toggle-search:hover,
+.toggle-search.active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-toggle:focus,
+.toggle-search:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.toggle-search {
+  padding: 10px 14px;
+  position: relative;
+  z-index: 1001;
+}
+
+.search-expand {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  width: 320px;
+  z-index: 1002;
+  background-color: #26272b;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  padding: 8px;
+}
+
+.search-expand[aria-hidden="false"],
+.search-expand.open {
+  display: block;
+}
+
+.search-expand-inner {
+  padding: 8px;
+}
+
+.search-expand input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #fff;
+  color: #222;
+}
+
+@media only screen and (min-width: 720px) {
+  .search-expand {
+    right: 0;
+    top: 40px;
+    width: 260px;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Desktop Navigation
+/* ------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 720px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-wrap {
+    height: auto;
+  }
+
+  /* common */
+  .nav li a {
+    display: block;
+    padding: 10px 14px;
+  }
+
+  /* dropdown arrows */
+  .nav > li > a:after {
+    content: "\f140";
+    float: right;
+    font-family: dashicons;
+    opacity: 0.5;
+  }
+
+  .nav li > a:only-child:after {
+    content: "";
+    margin: 0;
+  }
+
+  /* level 1 */
+  .nav > li {
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  /* level 2 & 3 */
+  .nav li:hover > ul {
+    display: block;
+  }
+
+  .nav ul {
+    display: none;
+    left: 0;
+    padding: 10px 0;
+    position: absolute;
+    top: 40px;
+    width: 180px;
+    z-index: 2;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Mobile Navigation
+/* ------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 719px) {
+  .nav-container {
+    text-transform: none;
+  }
+
+  .nav-toggle,
+  .nav-text {
+    display: block;
+  }
+
+  .nav-toggle {
+    color: #fff;
+    cursor: pointer;
+    float: right;
+    height: 50px;
+    text-align: center;
+    width: 60px;
+  }
+
+  .nav-toggle i {
+    font-size: 29px;
+    padding: 10px 0;
+  }
+
+  .nav-wrap {
+    float: left;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .nav-wrap.transition {
+    transition: height 0.35s ease;
+  }
+
+  .expand .nav-wrap {
+    height: auto;
+  }
+
+  /* common */
+  .nav li a {
+    display: block;
+    line-height: 20px;
+    padding: 8px 20px;
+  }
+
+  /* dropdown arrows */
+  .nav li > a:after {
+    content: "\f140";
+    font-family: dashicons;
+    margin-left: 6px;
+    opacity: 0.5;
+  }
+
+  .nav li > a:only-child:after {
+    content: "";
+  }
+
+  /* level 2 & 3 */
+  .nav ul {
+    display: block;
+    margin-left: 40px;
+  }
+
+  /* Mobile: unified button styling already defined above */
+  .nav-toggle,
+  .toggle-search {
+    width: 60px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border-radius: 6px;
+  }
+
+  .nav-toggle:hover,
+  .toggle-search:hover,
+  .nav-toggle:focus,
+  .toggle-search:focus {
+    background: rgba(255, 255, 255, 0.06);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 117, 154, 0.12);
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Nav Topbar
+/* ------------------------------------------------------------------------- */
+
+#nav-topbar.nav-container {
+  background: var(--color-bg-dark, #222);
+  background-color: var(--color-topbar, #26272b);
+}
+
+#nav-topbar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#nav-topbar a:hover,
+#nav-topbar a:focus {
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 720px) {
+  #nav-topbar .nav ul {
+    background-color: var(--color-topbar, #26272b);
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Social Links
+/* ------------------------------------------------------------------------- */
+
+.social-links {
+  float: right;
+  font-weight: 400;
+  padding-top: 40px;
+  position: relative;
+  text-align: center;
+}
+
+.social-links li {
+  display: inline-block;
+  font-size: 0;
+  line-height: 16px;
+  margin-left: 8px;
+}
+
+.social-links li a {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+
+.social-links .social-tooltip {
+  color: #222;
+  display: inline;
+  font-size: 28px;
+  position: relative;
+  z-index: 98;
+}
+
+.social-links .social-tooltip:hover {
+  color: #444;
+  text-decoration: none;
+}
+
+.social-links .social-tooltip:hover:after {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  color: #666;
+  content: attr(title);
+  display: block;
+  padding: 5px 15px;
+  position: absolute;
+  right: 0;
+  top: -36px;
+  white-space: nowrap;
+}
+
+.social-links .social-tooltip:hover:before {
+  border: solid;
+  border-color: #fff transparent;
+  border-width: 5px 5px 0 5px;
+  content: "";
+  display: block;
+  position: absolute;
+  right: 8px;
+  top: -10px;
+  z-index: 1;
+}

@@ -1,4 +1,4 @@
-	<aside class="sidebar s1">
+	<aside class="sidebar s1" role="complementary" aria-label="<?php esc_attr_e('Sidebar','anew'); ?>">
 		
 		<button class="sidebar-toggle" aria-label="<?php esc_attr_e('Expand Sidebar','anew'); ?>"><i class="fa icon-sidebar-toggle" aria-hidden="true"></i></button>
 		

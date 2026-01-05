@@ -1,0 +1,271 @@
+/* Posts Component - Post Entry, Formats, Meta */
+
+/* ------------------------------------------------------------------------- *
+ *  Post Entry
+/* ------------------------------------------------------------------------- */
+
+.post-inner {
+  contain: layout style;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), 0 3px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.post-title {
+  color: #222;
+  font-size: 24px;
+  line-height: 1.4em;
+  word-wrap: break-word;
+}
+
+@media only screen and (min-width: 480px) {
+  .post-title {
+    font-size: 30px;
+  }
+}
+
+.post-title a {
+  color: #222;
+}
+
+.post-title.pad,
+.post-meta.pad {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.post-meta {
+  margin-bottom: 15px;
+}
+
+.single .format-image .image-container {
+  display: none;
+}
+
+.post-meta {
+  margin-bottom: 25px;
+}
+
+.post-meta i {
+  margin-right: 4px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Post Tags
+/* ------------------------------------------------------------------------- */
+
+.post-tags {
+  margin-bottom: 10px;
+}
+
+.post-tags:not(:first-child) {
+  margin-bottom: 40px;
+}
+
+.post-tags span {
+  display: inline-block;
+  margin: 0 7px 0 0;
+}
+
+.post-tags a {
+  background-color: #333;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  margin: 0 5px 2px 0;
+  padding: 3px 7px;
+  white-space: nowrap;
+}
+
+.post-tags a:hover {
+  background-color: #34759a;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Post Navigation
+/* ------------------------------------------------------------------------- */
+
+.post-nav li {
+  display: inline;
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+
+.post-nav li a {
+  color: #34759a;
+  display: block;
+  min-height: 0;
+  padding: 24px;
+  position: relative;
+}
+
+.content .post-nav li:first-child {
+  border-bottom: 2px solid #e5e5e5;
+}
+
+@media only screen and (min-width: 720px) {
+  .content .post-nav li a {
+    min-height: 77px;
+    padding: 16px 46px 24px;
+  }
+
+  .content .post-nav li:first-child {
+    border-bottom: unset;
+  }
+}
+
+.post-nav li a:hover {
+  color: #444;
+}
+
+.post-nav li i {
+  color: #ccc;
+  font-size: 18px;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+}
+
+.post-nav li a strong {
+  display: block;
+  text-transform: uppercase;
+}
+
+.post-nav li a span {
+  color: #444;
+}
+
+.post-nav li a:hover span,
+.post-nav li a:hover i {
+  color: #34759a;
+}
+
+.post-nav li.previous i {
+  left: 10px;
+}
+
+.post-nav li.next i {
+  right: 10px;
+}
+
+.content .post-nav {
+  border-bottom: 2px solid #e5e5e5;
+  border-top: 2px solid #e5e5e5;
+  margin-bottom: 40px;
+}
+
+.content .post-nav li {
+  width: 100%;
+}
+
+@media only screen and (min-width: 720px) {
+  .content .post-nav li {
+    width: 50%;
+  }
+}
+
+.content .post-nav li.next {
+  box-shadow: -1px 0 0 #e5e5e5, inset 1px 0 0 #e5e5e5;
+  float: right;
+}
+
+.content .post-nav li.next a {
+  padding-left: 24px;
+}
+
+.content .post-nav li.previous {
+  box-shadow: 1px 0 0 #e5e5e5, inset -1px 0 0 #e5e5e5;
+  float: left;
+}
+
+.content .post-nav li.previous a {
+  padding-right: 24px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Post Formats
+/* ------------------------------------------------------------------------- */
+
+.format-standard .hex .fa,
+.format-aside .hex .fa,
+.page .hex .fa {
+  color: #777;
+}
+
+.page .post-deco .hex .fa:before {
+  content: "\f15c";
+}
+
+.sticky .post-deco .hex .fa:before {
+  content: "\f005";
+}
+
+.post-deco {
+  background: #e5e5e5;
+  height: 5px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.post-deco .hex {
+  background: #e5e5e5;
+  left: 50%;
+  margin-left: -19px;
+  position: absolute;
+  right: 50%;
+  top: -8px;
+}
+
+.post-deco .hex .fa {
+  font-size: 20px;
+}
+
+.post-deco .hex .fa:before {
+  content: "\f464";
+  font-family: dashicons;
+}
+
+/* Post format: common */
+.post-format {
+  position: relative;
+}
+
+.post-format p {
+  margin-bottom: 1em;
+}
+
+.format-container .fa {
+  float: right;
+  font-size: 24px;
+  margin-left: 20px;
+  margin-top: 4px;
+}
+
+/* Post format: image */
+.format-image .hex,
+.format-image .post-deco {
+  background: #7eb66f;
+}
+
+.fa-camera:before,
+.format-image .hex .fa:before {
+  content: "\f129";
+  font-family: dashicons;
+}
+
+/* Post format: video */
+.format-video .hex,
+.format-video .post-deco {
+  background: #e8554e;
+}
+
+.format-video .hex .fa:before {
+  content: "\f236";
+  font-family: dashicons;
+}

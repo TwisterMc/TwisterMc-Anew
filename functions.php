@@ -88,15 +88,14 @@ add_action( 'after_setup_theme', 'alx_load' );
  *  Base functionality
 /* ------------------------------------------------------------------------- */
 
-// Content width
-if ( !isset( $content_width ) ) { $content_width = 600; }
-
-
 /*  Theme setup
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_setup' ) ) {
 
 	function alx_setup() {
+		// Set content width (max width for images/embeds)
+		$GLOBALS['content_width'] = 600;
+		
 		// Enable automatic feed links
 		add_theme_support( 'automatic-feed-links' );
 
@@ -106,8 +105,33 @@ if ( ! function_exists( 'alx_setup' ) ) {
 		// Enable post format support
 		add_theme_support( 'post-formats', array( 'image', 'video' ) );
 
-		// Enabled new title-tag support
+		// Enable title-tag support
 		add_theme_support( 'title-tag' );
+		
+		// Enable HTML5 markup
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+			'style',
+			'script'
+		) );
+		
+		// Enable custom logo
+		add_theme_support( 'custom-logo', array(
+			'height'      => ANEW_LOGO_MAX_HEIGHT,
+			'width'       => 150,
+			'flex-height' => true,
+			'flex-width'  => true,
+		) );
+		
+		// Enable responsive embeds
+		add_theme_support( 'responsive-embeds' );
+		
+		// Enable block-based widgets
+		add_theme_support( 'widgets-block-editor' );
 
 		// Thumbnail sizes
 		add_image_size( 'thumb-small', 160, 160, true );
@@ -202,12 +226,36 @@ if ( ! function_exists( 'alx_scripts' ) ) {
 add_action( 'wp_enqueue_scripts', 'alx_scripts' );
 
 
-/*  Enqueue css
+/*  Enqueue css - Modular approach for better performance
 /* ------------------------------------ */
 if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
-		wp_enqueue_style( 'style-2', get_template_directory_uri() . '/style.css', array(), '1.0.8', false );
+		$theme_version = '3.2.1'; // Update version when CSS changes
+		$template_uri = get_template_directory_uri();
+		
+		// Base styles (required)
+		wp_enqueue_style( 'anew-base', $template_uri . '/css/base.css', array(), $theme_version );
+		wp_enqueue_style( 'anew-layout', $template_uri . '/css/layout.css', array(), $theme_version );
+		wp_enqueue_style( 'anew-utilities', $template_uri . '/css/utilities.css', array(), $theme_version );
+		
+		// Component styles
+		wp_enqueue_style( 'anew-navigation', $template_uri . '/css/components/navigation.css', array(), $theme_version );
+		wp_enqueue_style( 'anew-site-frame', $template_uri . '/css/components/site-frame.css', array(), $theme_version ); // Merged header+footer
+		wp_enqueue_style( 'anew-posts', $template_uri . '/css/components/posts.css', array(), $theme_version );
+		wp_enqueue_style( 'anew-sidebar', $template_uri . '/css/components/sidebar.css', array(), $theme_version );
+		wp_enqueue_style( 'anew-widgets', $template_uri . '/css/components/widgets.css', array(), $theme_version );
+		
+		// Conditional: Comments (only on single posts/pages with comments open)
+		if ( is_singular() && ( comments_open() || get_comments_number() ) ) {
+			wp_enqueue_style( 'anew-comments', $template_uri . '/css/components/comments.css', array(), $theme_version );
+		}
+		
+		// Theme customizations
+		wp_enqueue_style( 'anew-theme', $template_uri . '/css/theme.css', array(), $theme_version );
+		
+		// Note: style.css is kept as WordPress theme requirement (header only, no actual styles loaded)
+		
 		// Load Dashicons only if user is logged in
 		if ( is_user_logged_in() ) {
 			wp_enqueue_style( 'dashicons' );
@@ -288,26 +336,31 @@ if ( ! function_exists( 'alx_sidebar_primary' ) ) {
 if ( ! function_exists( 'tmc_site_title' ) ) {
 
 	function tmc_site_title() {
-		$logo_url = ANEW_LOGO_URL;
 		$site_name = get_bloginfo('name');
 		
-		if ( ! empty( $logo_url ) ) {
+		// Check for custom logo first (modern approach)
+		if ( has_custom_logo() ) {
+			$logo = get_custom_logo();
+		} 
+		// Fallback to hardcoded logo URL
+		elseif ( ! empty( ANEW_LOGO_URL ) ) {
 			$logo = sprintf(
-				'<img src="%s" alt="%s" width="50" height="60" fetchpriority="high">',
-				esc_url( $logo_url ),
+				'<a href="%s" rel="home"><img src="%s" alt="%s" width="50" height="60" fetchpriority="high"></a>',
+				esc_url( home_url('/') ),
+				esc_url( ANEW_LOGO_URL ),
 				esc_attr( $site_name )
 			);
-		} else {
-			$logo = esc_html( $site_name );
+		} 
+		// Final fallback to site name text
+		else {
+			$logo = sprintf(
+				'<a href="%s" rel="home">%s</a>',
+				esc_url( home_url('/') ),
+				esc_html( $site_name )
+			);
 		}
 
-		$link = sprintf(
-			'<a href="%s" rel="home">%s</a>',
-			esc_url( home_url('/') ),
-			$logo
-		);
-
-		$sitename = '<p class="site-title">' . $link . '</p>' . "\n";
+		$sitename = '<p class="site-title">' . $logo . '</p>' . "\n";
 
 		return $sitename;
 	}
@@ -482,48 +535,6 @@ function twistermc_head_additions() {
 
 add_action( 'wp_head', 'twistermc_head_additions', 100 );
 
-
-
-
-// auto set featured image
-function tmc_autoset_featured() {
-	global $post;
-	if ( ! is_object( $post ) || ! isset( $post->ID ) ) {
-		return;
-	}
-	$already_has_thumb = has_post_thumbnail( $post->ID );
-	if ( ! $already_has_thumb ) {
-		$attached_image = get_children( "post_parent=$post->ID&post_type=attachment&post_mime_type=image&numberposts=1" );
-		if ( $attached_image ) {
-			foreach ( $attached_image as $attachment_id => $attachment ) {
-				set_post_thumbnail( $post->ID, $attachment_id );
-			}
-		}
-	}
-}
-
-add_action( 'the_post', 'tmc_autoset_featured' );
-add_action( 'save_post', 'tmc_autoset_featured' );
-add_action( 'draft_to_publish', 'tmc_autoset_featured' );
-add_action( 'new_to_publish', 'tmc_autoset_featured' );
-add_action( 'pending_to_publish', 'tmc_autoset_featured' );
-add_action( 'future_to_publish', 'tmc_autoset_featured' );
-
-/**
- * Disable Ads appearing below the post content.
- */
-
-function wordads_disable_inpost_pages() {
-	$tmc_pfx_date = get_the_date( 'Y' );
-
-	if ( is_front_page() || is_page() || $tmc_pfx_date > 2017 ) {
-		add_filter( 'wordads_inpost_disable', '__return_true' );
-	}
-	add_filter( 'wordads_header_disable', '__return_true' );
-}
-
-add_action( 'wp_head', 'wordads_disable_inpost_pages', 10 );
-
 function jetpackme_related_posts_time_restriction( $date_range ) {
 	$date_range = array(
 		'from' => 1420070400,
@@ -551,26 +562,3 @@ JS;
 		wp_add_inline_script( 'jetpack-blocks-editor', $disable_external_media );
 	}
 );
-
-// Add block editor (Gutenberg) compatibility: theme.json support, block styles, wide/full align, editor styles, and color palette.
-add_action( 'after_setup_theme', function() {
-	// Add support for block styles
-	add_theme_support( 'wp-block-styles' );
-	// Add support for full and wide align images/blocks
-	add_theme_support( 'align-wide' );
-	// Add support for editor styles
-	add_theme_support( 'editor-styles' );
-	// Load editor stylesheet (create this file if you want custom editor CSS)
-	add_editor_style( 'editor-style.css' );
-	// Add support for responsive embeds
-	add_theme_support( 'responsive-embeds' );
-	// Add support for custom color palette (optional, matches your theme)
-	add_theme_support( 'editor-color-palette', [
-		[ 'name' => __( 'Accent', 'anew' ), 'slug' => 'accent', 'color' => ANEW_COLOR_ACCENT ],
-		[ 'name' => __( 'Topbar', 'anew' ), 'slug' => 'topbar', 'color' => ANEW_COLOR_TOPBAR ],
-		[ 'name' => __( 'Header', 'anew' ), 'slug' => 'header', 'color' => ANEW_COLOR_HEADER ],
-		[ 'name' => __( 'Footer', 'anew' ), 'slug' => 'footer', 'color' => ANEW_COLOR_FOOTER ],
-		[ 'name' => __( 'White', 'anew' ), 'slug' => 'white', 'color' => '#fff' ],
-		[ 'name' => __( 'Black', 'anew' ), 'slug' => 'black', 'color' => '#000' ],
-	] );
-} );

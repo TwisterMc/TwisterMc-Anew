@@ -1,0 +1,353 @@
+/* Comments Component */
+
+/* ------------------------------------------------------------------------- *
+ *  Comments Base
+/* ------------------------------------------------------------------------- */
+
+#comments {
+  margin-top: 20px;
+}
+
+#pinglist-container {
+  display: none;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Comment Tabs
+/* ------------------------------------------------------------------------- */
+
+.comment-tabs {
+  border-bottom: 2px solid #e5e5e5;
+  margin-bottom: 20px;
+}
+
+.comment-tabs li {
+  float: left;
+  margin-bottom: -2px;
+}
+
+.comment-tabs li a {
+  border-bottom: 2px solid #e5e5e5;
+  color: #333;
+  display: block;
+  font-weight: 600;
+  padding: 0 10px 10px;
+}
+
+.comment-tabs li a:hover {
+  border-color: #ccc;
+  color: #444;
+}
+
+.comment-tabs li span {
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  margin-left: 8px;
+  padding: 0 6px;
+}
+
+.comment-tabs li i {
+  margin-right: 6px;
+}
+
+.comment-tabs li.active a {
+  border-bottom-color: #34759a;
+  color: #34759a;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Comment List
+/* ------------------------------------------------------------------------- */
+
+.commentlist,
+.pinglist {
+  margin-bottom: 20px;
+}
+
+.commentlist li,
+.pinglist li {
+  line-height: 22px;
+  padding-left: 60px;
+}
+
+.commentlist .comment-body,
+.pinglist li {
+  clear: both;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.commentlist .comment-author,
+.commentlist .comment-meta,
+.commentlist .comment-awaiting-moderation {
+  display: block;
+  float: left;
+  line-height: 22px;
+}
+
+.commentlist .comment-author {
+  margin-right: 6px;
+}
+
+.commentlist .comment-author a {
+  color: #34759a;
+}
+
+.commentlist .fn,
+.pinglist .ping-link {
+  color: #444;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.commentlist .says {
+  display: none;
+}
+
+.commentlist .avatar {
+  border-radius: 100%;
+  height: 48px;
+  left: -60px;
+  position: absolute;
+  top: 0;
+  width: 48px;
+}
+
+.commentlist .comment-meta:before,
+.pinglist .ping-meta:before {
+  color: #ccc;
+  content: "\f464";
+  font-family: dashicons;
+  font-size: 10px;
+  margin-right: 3px;
+  vertical-align: 4%;
+}
+
+.commentlist .comment-meta a,
+.pinglist .ping-meta {
+  color: #333;
+}
+
+.commentlist .reply {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.commentlist .reply a {
+  background-color: #333;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  margin: 0 5px 2px 0;
+  padding: 5px 7px;
+  white-space: nowrap;
+}
+
+.commentlist .reply a:hover {
+  background-color: #34759a;
+}
+
+.comment-awaiting-moderation {
+  color: #e8554e;
+  font-style: normal;
+}
+
+/* Pings */
+.pinglist li {
+  padding-left: 0;
+}
+
+/* Comment text */
+.commentlist .comment-body p {
+  clear: both;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.commentlist .comment-body strong {
+  font-weight: bold;
+}
+
+.commentlist .comment-body em {
+  font-style: italic;
+}
+
+.commentlist .comment-body ol li {
+  list-style: decimal;
+  margin-left: 2em;
+  padding: 0;
+}
+
+.commentlist .comment-body ul li {
+  list-style: square;
+  margin-left: 2em;
+  padding: 0;
+}
+
+/* Post author & admin comment */
+.commentlist li.bypostauthor > .comment-body:after,
+.commentlist li.comment-author-admin > .comment-body:after {
+  background: #34759a;
+  color: #fff;
+  content: "\f464";
+  display: block;
+  font-family: dashicons;
+  font-style: normal;
+  line-height: 12px;
+  position: absolute;
+  text-align: center;
+  width: 12px;
+}
+
+.commentlist li.comment-author-admin > .comment-body:after {
+  content: "\f005";
+}
+
+.commentlist li.bypostauthor > .comment-body:after,
+.commentlist li.comment-author-admin > .comment-body:after {
+  border-radius: 100%;
+  font-size: 10px;
+  left: -28px;
+  padding: 3px;
+  top: 32px;
+}
+
+.commentlist li li.bypostauthor > .comment-body:after,
+.commentlist li li.comment-author-admin > .comment-body:after {
+  border-radius: 100%;
+  font-size: 8px;
+  left: -26px;
+  padding: 2px;
+  top: 22px;
+}
+
+/* Child comments */
+.commentlist li li {
+  margin: 0;
+  padding-left: 48px;
+}
+
+.commentlist li li .avatar {
+  height: 36px;
+  left: -48px;
+  top: 0;
+  width: 36px;
+}
+
+.commentlist li li .comment-meta {
+  left: 70px;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Comments Navigation
+/* ------------------------------------------------------------------------- */
+
+.comments-nav {
+  margin-bottom: 20px;
+}
+
+.comments-nav a {
+  font-weight: 600;
+}
+
+.comments-nav .nav-previous {
+  float: left;
+}
+
+.comments-nav .nav-next {
+  float: right;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Comment Form
+/* ------------------------------------------------------------------------- */
+
+.logged-in-as,
+.comment-notes,
+.form-allowed-tags {
+  display: none;
+}
+
+#respond {
+  position: relative;
+}
+
+#reply-title {
+  margin-bottom: 20px;
+}
+
+li #reply-title {
+  border-top: 0;
+  font-size: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#cancel-comment-reply-link {
+  bottom: 26px;
+  color: #999;
+  display: block;
+  font-size: 12px;
+  position: absolute;
+  right: 20px;
+}
+
+#cancel-comment-reply-link:hover {
+  color: #444;
+}
+
+#commentform {
+  background: #e5e5e5;
+  border-bottom: 1px solid #fbfbfb;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 10px 20px 20px;
+}
+
+#commentform p.comment-form-author {
+  float: left;
+  width: 48%;
+}
+
+#commentform p.comment-form-email {
+  float: right;
+  width: 48%;
+}
+
+#commentform p.comment-form-url,
+#commentform p.comment-form-comment {
+  clear: both;
+}
+
+#commentform label {
+  display: block;
+  font-weight: 600;
+  padding: 6px 0;
+}
+
+#commentform input[type="text"],
+#commentform textarea {
+  max-width: 100%;
+  width: 100%;
+}
+
+#commentform textarea {
+  height: 100px;
+}
+
+#commentform p.form-submit {
+  margin-top: 10px;
+}
+
+.logged-in #reply-title {
+  margin-bottom: 20px;
+}
+
+.logged-in #commentform p.comment-form-comment {
+  margin-top: 10px;
+}
+
+.logged-in #commentform p.comment-form-comment label {
+  display: none;
+}

@@ -1,0 +1,214 @@
+/* Utilities: Helper classes, Skip links, Accessibility */
+
+/* ------------------------------------------------------------------------- *
+ *  Skip Links
+/* ------------------------------------------------------------------------- */
+
+.linkSkip {
+  background-color: #ffffff;
+  border: 5px solid #0075c9;
+  color: #0075c9;
+  display: block;
+  font-size: 19px;
+  left: -9999px;
+  margin: 0 auto;
+  padding: 15px;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.linkSkip:focus {
+  color: #0075c9;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
+}
+
+@media print {
+  .linkSkip {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Notification Banners
+/* ------------------------------------------------------------------------- */
+
+.info,
+.success,
+.warning,
+.error,
+.validation {
+  border: 1px solid;
+  margin: 10px 0;
+  padding: 15px 10px 15px 50px;
+}
+
+.info {
+  background-color: #bde5f8;
+  color: #00529b;
+}
+
+.success {
+  background-color: #dff2bf;
+  color: #4f8a10;
+}
+
+.warning {
+  background-color: #feefb3;
+  color: #9f6000;
+}
+
+.error {
+  background-color: #ffbaba;
+  color: #d8000c;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Shortcodes
+/* ------------------------------------------------------------------------- */
+
+.highlight {
+  border-bottom: 1px dotted #222;
+  color: #222;
+}
+
+hr,
+.hr {
+  background: #e5e5e5;
+  border: 0;
+  border-bottom: 1px solid #fbfbfb;
+  height: 2px;
+  margin: 30px 0;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Plugin: WP-Pagenavi
+/* ------------------------------------------------------------------------- */
+
+.wp-pagenavi {
+  float: none;
+  margin-right: -2px;
+  text-align: center;
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+  color: #444;
+  display: inline;
+  margin: 0 2px;
+  padding: 7px 8px;
+}
+
+.wp-pagenavi span.pages {
+  border: none;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.wp-pagenavi span.extend {
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.wp-pagenavi span.current {
+  color: #444;
+}
+
+.wp-pagenavi a {
+  border: none;
+  border-bottom: 3px solid #ddd;
+  border-top: 1px solid #f1f1f1;
+}
+
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current {
+  border-bottom: 3px solid #34759a;
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Dashicons Replacements
+/* ------------------------------------------------------------------------- */
+
+.icon-sidebar-toggle:before {
+  content: "\f341";
+  font-family: dashicons;
+  font-size: 20px;
+}
+
+.col-2cl.s1-expand .s1 .icon-sidebar-toggle:before {
+  content: "\f345";
+  font-family: dashicons;
+}
+
+.fa-clock-o:before {
+  content: "\f469";
+  font-family: dashicons;
+}
+
+.fa-comment:before {
+  content: "\f101";
+  font-family: dashicons;
+}
+
+.fa-chevron-left:before {
+  content: "\f341";
+  font-family: dashicons;
+}
+
+.fa-chevron-right:before {
+  content: "\f345";
+  font-family: dashicons;
+}
+
+.fa-search:before {
+  content: "\f179";
+  font-family: dashicons;
+  font-size: 20px;
+}
+
+.fa-twitter:before {
+  content: "\f301";
+  font-family: dashicons;
+}
+
+.fa-rss:before {
+  content: "\f303";
+  font-family: dashicons;
+}
+
+.fa-angle-up:before {
+  content: "\f343";
+  font-family: dashicons;
+}
+
+.fa-bars:before {
+  content: "\f228";
+  font-family: dashicons;
+}
+
+.fa-star:before {
+  content: "\f155";
+  font-family: dashicons;
+}
+
+.fa-comments-o:before {
+  content: "\f101";
+  font-family: dashicons;
+}
+
+.fa-share:before {
+  content: "\f103";
+  font-family: dashicons;
+}
+
+.fa-folder-open:before {
+  content: "\f18f";
+  font-family: dashicons;
+}

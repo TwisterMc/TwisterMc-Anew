@@ -5,15 +5,7 @@
 	License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 	Copyright: (c) 2013 Alexander "Alx" Agnarson, http://alxmedia.se
-*/
-
-/*
-	scripts.js
-
-	License: GNU General Public License v3.0
-	License URI: http://www.gnu.org/licenses/gpl-3.0.html
-
-	Copyright: (c) 2013 Alexander "Alx" Agnarson, http://alxmedia.se
+	Modernized: 2025 Thomas McMahon
 */
 
 // Vanilla JS replacement for former jQuery functionality
@@ -86,7 +78,7 @@
   });
 
   /*  Scroll to top */
-  var backToTop = document.querySelector("a#back-to-top");
+  var backToTop = document.querySelector(".back-to-top, #back-to-top");
   if (backToTop) {
     backToTop.addEventListener("click", function (e) {
       e.preventDefault();

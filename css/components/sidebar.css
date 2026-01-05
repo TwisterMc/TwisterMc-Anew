@@ -1,0 +1,122 @@
+/* Sidebar Component */
+
+/* ------------------------------------------------------------------------- *
+ *  Sidebar Base - Mobile First
+/* ------------------------------------------------------------------------- */
+
+.sidebar {
+  contain: layout style;
+  display: block;
+  width: 100%;
+  position: relative;
+  padding-bottom: 20px;
+  z-index: 2;
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 480px) {
+  .sidebar {
+    width: 340px;
+    float: right;
+    margin-top: 0;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Sidebar Toggle
+/* ------------------------------------------------------------------------- */
+
+.sidebar-toggle {
+  display: none;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 959px) {
+  .sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #34759a;
+    cursor: pointer;
+    height: 50px;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    transition: background-color 0.2s ease;
+    padding: 0;
+  }
+
+  .sidebar-toggle:hover,
+  .sidebar-toggle:focus {
+    background-color: #23547a;
+    outline: none;
+  }
+
+  .sidebar-toggle i {
+    color: #fff;
+    font-size: 38px;
+    line-height: 1;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------------- *
+ *  Toggle Sidebar s1 : Medium Screens
+/* ------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 479px) and (max-width: 960px) {
+  .s1 {
+    width: 50px;
+  }
+
+  .s1 .sidebar-content {
+    display: none;
+    float: left;
+    width: 100%;
+  }
+
+  /* s1 expand/collapse */
+  .s1-expand .s1 {
+    background: #f2f2f2;
+    bottom: 0;
+    margin: 0;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    transition: width 0.2s ease;
+    width: 340px;
+    z-index: 9;
+  }
+
+  .s1-expand .s1 .sidebar-content,
+  .s1-expand .s1 .post-nav {
+    display: block;
+    min-width: 340px;
+  }
+
+  .s1-collapse .s1 .sidebar-content,
+  .s1-collapse .s1 .sidebar .post-nav {
+    display: none;
+  }
+
+  /* 2 column, content left */
+  .col-2cl .main {
+    background: url(../../img/sidebar/s-right-collapse.png) repeat-y right 0;
+    padding-right: 50px;
+  }
+
+  .col-2cl .s1 {
+    margin-right: -50px;
+  }
+
+  .col-2cl.s1-expand .s1 {
+    box-shadow: -3px 0 3px rgba(0, 0, 0, 0.05);
+    right: 0;
+  }
+}
