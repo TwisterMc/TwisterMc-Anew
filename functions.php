@@ -2,7 +2,7 @@
 // Preload critical font for performance
 if ( ! function_exists( 'alx_preload_assets' ) ) {
 	function alx_preload_assets() {
-		echo '<link rel="preload" href="' . esc_url( get_template_directory_uri() . '/fonts/titilliumweb-regular-webfont.woff2' ) . '" as="font" type="font/woff2" crossorigin>';
+		echo '<link rel="preload" href="' . esc_url( anew_get_template_uri() . '/fonts/titilliumweb-regular-webfont.woff2' ) . '" as="font" type="font/woff2" crossorigin>';
 	}
 }
 add_action( 'wp_head', 'alx_preload_assets', 2 );
@@ -82,12 +82,28 @@ if ( ! function_exists( 'alx_load' ) ) {
 	function alx_load() {
 		// Load custom widgets
 		require_once get_template_directory() . '/functions/widgets/alx-tabs.php';
-
-
+		require_once get_template_directory() . '/functions/widgets/alx-posts.php';
+		require_once get_template_directory() . '/functions/widgets/alx-video.php';
 	}
 
 }
 add_action( 'after_setup_theme', 'alx_load' );
+
+/*  Clear widget caches when content changes
+/* ------------------------------------ */
+if ( ! function_exists( 'anew_clear_widget_caches' ) ) {
+	function anew_clear_widget_caches() {
+		global $wpdb;
+		// Delete all transients starting with our widget cache keys
+		$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '\_transient\_alx\_%' OR option_name LIKE '\_transient\_timeout\_alx\_%'" );
+	}
+}
+// Clear widget caches on post publish/update
+add_action( 'save_post', 'anew_clear_widget_caches' );
+add_action( 'delete_post', 'anew_clear_widget_caches' );
+// Clear widget caches on comment approval
+add_action( 'comment_post', 'anew_clear_widget_caches' );
+add_action( 'transition_comment_status', 'anew_clear_widget_caches' );
 
 
 /* ------------------------------------------------------------------------- *
@@ -234,11 +250,25 @@ add_action( 'wp_enqueue_scripts', 'alx_scripts' );
 
 /*  Enqueue css - Modular approach for better performance
 /* ------------------------------------ */
+
+/*  Cached template URI helper
+/* ------------------------------------ */
+if ( ! function_exists( 'anew_get_template_uri' ) ) {
+	function anew_get_template_uri() {
+		static $template_uri = null;
+		if ( $template_uri === null ) {
+			$template_uri = get_template_directory_uri();
+		}
+		return $template_uri;
+	}
+}
+
 if ( ! function_exists( 'alx_styles' ) ) {
 
 	function alx_styles() {
-		$theme_version = '3.2.1'; // Update version when CSS changes
-		$template_uri = get_template_directory_uri();
+		// Use dynamic version from theme header
+		$theme_version = wp_get_theme()->get('Version');
+		$template_uri = anew_get_template_uri();
 		
 		// Base styles (required)
 		wp_enqueue_style( 'anew-base', $template_uri . '/css/base.css', array(), $theme_version );
@@ -340,7 +370,10 @@ if ( ! function_exists( 'alx_sidebar_primary' ) ) {
 if ( ! function_exists( 'tmc_site_title' ) ) {
 
 	function tmc_site_title() {
-		$site_name = get_bloginfo('name');
+		static $site_name = null;
+		if ( $site_name === null ) {
+			$site_name = get_bloginfo('name');
+		}
 		
 		// Check for custom logo first (modern approach)
 		if ( has_custom_logo() ) {

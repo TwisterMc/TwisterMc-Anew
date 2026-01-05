@@ -101,7 +101,7 @@ class AlxVideo extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id("video_embed_code"); ?>">Video Embed Code</label>
-			<textarea class="widefat" id="<?php echo $this->get_field_id('video_embed_code'); ?>" name="<?php echo $this->get_field_name('video_embed_code'); ?>"><?php echo $instance["video_embed_code"]; ?></textarea>
+			<textarea class="widefat" id="<?php echo $this->get_field_id('video_embed_code'); ?>" name="<?php echo $this->get_field_name('video_embed_code'); ?>"><?php echo esc_textarea($instance["video_embed_code"]); ?></textarea>
 		</p>
 	</div>
 <?php

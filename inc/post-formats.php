@@ -1,5 +1,3 @@
-<?php $meta = get_post_custom($post->ID); ?>
-
 <?php if ( !has_post_format( ) && !is_single() || has_post_format( 'image' ) && !is_single() || has_post_format( 'video' ) && !is_single() ): // Standard & Image ?>
 
 	<div class="post-format">
@@ -9,7 +7,8 @@
 					<?php the_post_thumbnail('thumb-large'); ?>
 				</a>
 				<?php 
-				$caption = get_post(get_post_thumbnail_id())->post_excerpt;
+				$thumbnail_post = get_post(get_post_thumbnail_id());
+				$caption = $thumbnail_post ? $thumbnail_post->post_excerpt : '';
 				if ( isset($caption) && $caption ) : ?>
 					<figcaption class="image-caption"><?php echo esc_html( $caption ); ?></figcaption>
 				<?php endif; ?>

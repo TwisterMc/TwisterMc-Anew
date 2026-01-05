@@ -29,7 +29,7 @@ $format = get_post_format();
 			<span itemprop="name"><?php echo esc_html( get_bloginfo('name') ); ?></span>
 		</span>
 		<?php if ( has_post_thumbnail() ) : ?>
-			<meta itemprop="image" content="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>">
+			<meta itemprop="image" content="<?php echo esc_url( get_the_post_thumbnail_url( null, 'full' ) ); ?>">
 		<?php endif; ?>
 	</ul><!--/.post-meta-->
 

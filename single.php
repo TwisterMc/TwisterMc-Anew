@@ -35,7 +35,7 @@ $format = get_post_format();
 					<meta itemprop="url" content="<?php echo esc_url( home_url('/') ); ?>">
 				</span>
 				<?php if ( has_post_thumbnail() ) : ?>
-					<meta itemprop="image" content="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>">
+				<meta itemprop="image" content="<?php echo esc_url( get_the_post_thumbnail_url( null, 'full' ) ); ?>">
 				<?php endif; ?>
 			</ul>
 

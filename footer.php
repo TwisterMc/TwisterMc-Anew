@@ -16,27 +16,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<section id="footer-widgets" class="container">
 			<div class="pad group">
 					<?php
-					if ( is_active_sidebar( 'footer-1' ) ) :
-						echo '<div class="grid one-fourth">';
-						dynamic_sidebar( 'footer-1' );
-						echo '</div>';
-					endif;
-					if ( is_active_sidebar( 'footer-2' ) ) :
-						echo '<div class="grid one-fourth">';
-						dynamic_sidebar( 'footer-2' );
-						echo '</div>';
-					endif;
-					if ( is_active_sidebar( 'footer-3' ) ) :
-						echo '<div class="grid one-fourth">';
-						dynamic_sidebar( 'footer-3' );
-						echo '</div>';
-					endif;
-					if ( is_active_sidebar( 'footer-4' ) ) :
-						echo '<div class="grid one-fourth">';
-						dynamic_sidebar( 'footer-4' );
-						echo '</div>';
-					endif;
-				?>
+					// Cache sidebar checks for better performance
+					$footer_sidebars = array(
+						'footer-1' => is_active_sidebar( 'footer-1' ),
+						'footer-2' => is_active_sidebar( 'footer-2' ),
+						'footer-3' => is_active_sidebar( 'footer-3' ),
+						'footer-4' => is_active_sidebar( 'footer-4' ),
+					);
+					
+					foreach ( $footer_sidebars as $sidebar_id => $is_active ) {
+						if ( $is_active ) {
+							echo '<div class="grid one-fourth">';
+							dynamic_sidebar( $sidebar_id );
+							echo '</div>';
+						}
+					}
+					?>
 			</div><!--/.pad-->
 		</section><!--/#footer-widgets-->
 

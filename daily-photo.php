@@ -18,8 +18,13 @@ get_header(); ?>
 					$dir = '/var/www/html/tw/twistermc.com/daily-lily/';
 					$img_url = '/daily-lily/';
 					$tn_url = '/daily-lily/tn/';
-					$dir_array = array();
-					if (is_dir($dir)) {
+					
+					// Cache directory listing for 1 hour
+					$transient_key = 'daily_photo_list_' . md5($dir);
+					$dir_array = get_transient($transient_key);
+					
+					if (false === $dir_array && is_dir($dir)) {
+						$dir_array = array();
 						$handle = opendir($dir);
 						if ($handle) {
 							while (false !== ($file = readdir($handle))) {
@@ -29,6 +34,8 @@ get_header(); ?>
 							}
 							closedir($handle);
 						}
+						sort($dir_array);
+						set_transient($transient_key, $dir_array, HOUR_IN_SECONDS);
 					}
 					if (!empty($dir_array)) {
 						sort($dir_array);
