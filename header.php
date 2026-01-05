@@ -15,6 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- DNS Prefetch for external resources -->
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//www.google-analytics.com">
 
 	<!-- Inline Critical CSS for faster initial render -->
 	<style><?php include( get_template_directory() . '/css/critical.css' ); ?></style>

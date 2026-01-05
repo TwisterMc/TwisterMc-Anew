@@ -74,7 +74,7 @@ class AlxPosts extends WP_Widget {
 					<?php if ( has_post_thumbnail() ): ?>
 						<?php the_post_thumbnail('thumb-medium'); ?>
 					<?php else: ?>
-						<img src="<?php echo get_template_directory_uri(); ?>/img/thumb-medium.png" alt="<?php the_title(); ?>" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/thumb-medium.png" alt="<?php the_title(); ?>" width="480" height="300" loading="lazy" />
 					<?php endif; ?>
 					<?php if ( has_post_format('video') && !is_sticky() ) echo'<span class="thumb-icon"><i class="fa fa-play"></i></span>'; ?>
 					<?php if ( has_post_format('audio') && !is_sticky() ) echo'<span class="thumb-icon"><i class="fa fa-headphones"></i></span>'; ?>
@@ -92,6 +92,8 @@ class AlxPosts extends WP_Widget {
 		</li>
 		<?php endwhile; ?>
 	</ul><!--/.alx-posts-->
+	
+	<?php wp_reset_postdata(); ?>
 
 <?php
 		$output .= ob_get_clean();

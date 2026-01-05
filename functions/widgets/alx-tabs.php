@@ -104,7 +104,7 @@ class AlxTabs extends WP_Widget {
 							<?php if ( has_post_thumbnail() ): ?>
 								<?php the_post_thumbnail('thumb-small'); ?>
 							<?php else: ?>
-								<img src="<?php echo get_template_directory_uri(); ?>/img/thumb-small.png" alt="<?php the_title(); ?>" />
+						<img src="<?php echo get_template_directory_uri(); ?>/img/thumb-small.png" alt="<?php the_title(); ?>" width="120" height="80" loading="lazy" />
 							<?php endif; ?>
 							<?php if ( has_post_format('video') && !is_sticky() ) echo'<span class="thumb-icon small"><i class="fa fa-play"></i></span>'; ?>
 							<?php if ( has_post_format('audio') && !is_sticky() ) echo'<span class="thumb-icon small"><i class="fa fa-headphones"></i></span>'; ?>
@@ -121,6 +121,8 @@ class AlxTabs extends WP_Widget {
 				</li>
 				<?php endwhile; ?>
 			</ul><!--/.alx-tab-->
+			
+			<?php wp_reset_postdata(); ?>
 
 		<?php } ?>
 
@@ -165,7 +167,7 @@ class AlxTabs extends WP_Widget {
 							<?php if ( has_post_thumbnail() ): ?>
 								<?php the_post_thumbnail('thumb-small'); ?>
 							<?php else: ?>
-								<img src="<?php echo get_template_directory_uri(); ?>/img/thumb-small.png" alt="<?php the_title(); ?>" />
+								<img src="<?php echo get_template_directory_uri(); ?>/img/thumb-small.png" alt="<?php the_title(); ?>" width="120" height="80" loading="lazy" />
 							<?php endif; ?>
 							<?php if ( has_post_format('video') && !is_sticky() ) echo'<span class="thumb-icon small"><i class="fa fa-play"></i></span>'; ?>
 							<?php if ( has_post_format('audio') && !is_sticky() ) echo'<span class="thumb-icon small"><i class="fa fa-headphones"></i></span>'; ?>
@@ -183,12 +185,23 @@ class AlxTabs extends WP_Widget {
 				<?php endwhile; ?>
 			</ul><!--/.alx-tab-->
 			
+			<?php wp_reset_postdata(); ?>
+			
 		<?php } ?>
 	
 
 		<?php if($instance['comments_enable']) { // Recent comments enabled? ?>
 
-			<?php $comments = get_comments(array('number'=>$instance["comments_num"],'status'=>'approve','post_status'=>'publish')); ?>
+			<?php
+				// Cache comments query for 5 minutes
+				$transient_key = 'alx_tabs_comments_' . $instance["comments_num"];
+				$comments = get_transient( $transient_key );
+				
+				if ( false === $comments ) {
+					$comments = get_comments(array('number'=>$instance["comments_num"],'status'=>'approve','post_status'=>'publish'));
+					set_transient( $transient_key, $comments, 5 * MINUTE_IN_SECONDS );
+				}
+			?>
 			
 			<ul id="tab-comments" class="alx-tab group <?php if($instance['comments_avatars']) { echo 'avatars-enabled'; } ?>">
 				<?php foreach ($comments as $comment): ?>
