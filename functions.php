@@ -13,7 +13,7 @@ add_action( 'wp_head', 'alx_preload_assets', 2 );
 /**
  * Theme Functions
  * 
- * @package Anew
+ * @package AnewTwo
  */
 
 // Prevent direct file access
