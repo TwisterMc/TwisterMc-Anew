@@ -39,18 +39,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php if (has_nav_menu('topbar')): ?>
 			<nav class="nav-container group" id="nav-topbar" aria-label="<?php esc_attr_e( 'Main Navigation', 'anew' ); ?>">
-				<button class="nav-toggle" aria-label="<?php esc_attr_e( 'Toggle navigation', 'anew' ); ?>"><i class="fa fa-bars" aria-hidden="true"></i></button>
-				<div class="nav-wrap container"><?php wp_nav_menu(array('theme_location'=>'topbar','menu_class'=>'nav container-inner group','container'=>'','menu_id' => '','fallback_cb'=> false)); ?></div>
-
-				<div class="container">
-					<button class="toggle-search" aria-label="<?php esc_attr_e( 'Toggle search', 'anew' ); ?>"><i class="fa fa-search" aria-hidden="true"></i></button>
-					<div class="search-expand">
-						<div class="search-expand-inner">
-							<?php get_search_form(); ?>
-						</div>
+				<button class="toggle-search" aria-label="<?php esc_attr_e( 'Toggle search', 'anew' ); ?>"><i class="fa fa-search" aria-hidden="true"></i></button>
+				<div class="search-expand">
+					<div class="search-expand-inner">
+						<?php get_search_form(); ?>
 					</div>
-				</div><!--/.container-->
-
+				</div>
+				<button class="nav-toggle" aria-label="<?php esc_attr_e( 'Toggle navigation', 'anew' ); ?>"><i class="fa fa-bars" aria-hidden="true"></i></button>
+				<div class="nav-wrap container">
+					<?php wp_nav_menu(array('theme_location'=>'topbar','menu_class'=>'nav container-inner group','container'=>'','menu_id' => '','fallback_cb'=> false)); ?>
+				</div>
 			</nav><!--/#nav-topbar-->
 		<?php endif; ?>
 

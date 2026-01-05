@@ -1,4 +1,4 @@
-<?php if ( !has_post_format( ) && !is_single() || has_post_format( 'image' ) && !is_single() || has_post_format( 'video' ) && !is_single() ): // Standard & Image ?>
+<?php if ( !has_post_format( ) && !is_single() || has_post_format( 'image' ) && !is_single() || has_post_format( 'video' ) && !is_single() ): // Standard & Image ?> ?>
 
 	<div class="post-format">
 		<?php if ( has_post_thumbnail() ) : ?>

@@ -1,6 +1,6 @@
 <?php if ( post_password_required() ) { return; } ?>
 
-<section id="comments" class="themeform">
+<section id="comments" class="themeform pad group">
 	
 	<?php if ( have_comments() ) : ?>
 	

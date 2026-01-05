@@ -201,17 +201,14 @@
 
     wrapper.classList.toggle("expand");
     if (wrapper.classList.contains("expand")) {
+      wrapper.classList.add("transition");
       setTimeout(function () {
-        wrapper.classList.add("transition");
         wrapper.style.height = contentHeight + "px";
       }, 10);
     } else {
+      wrapper.classList.add("transition");
       setTimeout(function () {
-        wrapper.style.height = wrapperHeight + "px";
-        setTimeout(function () {
-          wrapper.classList.add("transition");
-          wrapper.style.height = "0";
-        }, 10);
+        wrapper.style.height = "0";
       }, 10);
     }
 
