@@ -46,7 +46,10 @@ class AlxTabs extends WP_Widget {
 /*  Widget
 /* ------------------------------------ */
 	public function widget($args, $instance) {
-		extract( $args );
+		$before_widget = $args['before_widget'];
+		$after_widget = $args['after_widget'];
+		$before_title = $args['before_title'];
+		$after_title = $args['after_title'];
 		$instance['title']?NULL:$instance['title']='';
 		$title = apply_filters('widget_title',$instance['title']);
 		$output = $before_widget."\n";
@@ -80,7 +83,7 @@ class AlxTabs extends WP_Widget {
 		<?php if($instance['recent_enable']) { // Recent posts enabled? ?>
 			
 			<?php $recent=new WP_Query(); ?>
-			<?php $recent->query('showposts='.$instance["recent_num"].'&cat='.$instance["recent_cat_id"].'&ignore_sticky_posts=1');?>
+			<?php $recent->query('posts_per_page='.$instance["recent_num"].'&cat='.$instance["recent_cat_id"].'&ignore_sticky_posts=1');?>
 			
 			<ul id="tab-recent" class="alx-tab group <?php if($instance['recent_thumbs']) { echo 'thumbs-enabled'; } ?>">
 				<?php while ($recent->have_posts()): $recent->the_post(); ?>
@@ -118,7 +121,7 @@ class AlxTabs extends WP_Widget {
 			<?php
 				$popular = new WP_Query( array(
 					'post_type'				=> array( 'post' ),
-					'showposts'				=> $instance['popular_num'],
+					'posts_per_page'		=> $instance['popular_num'],
 					'cat'					=> $instance['popular_cat_id'],
 					'ignore_sticky_posts'	=> true,
 					'orderby'				=> 'comment_count',

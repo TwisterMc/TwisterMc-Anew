@@ -6,14 +6,14 @@
 /*  Columns / Grid
 /* ------------------------------------ */
 	function alx_column_shortcode($atts,$content=NULL) {
-		extract( shortcode_atts( array(
+		$atts = shortcode_atts( array(
 			'size'	=> 'one-third',
 			'last'	=> false
-		), $atts) );
+		), $atts);
 
-		$lastclass=$last?' last':'';
-		$output='<div class="grid '.strip_tags($size).$lastclass.'">'.do_shortcode($content).'</div>';
-		if($last)
+		$lastclass=$atts['last']?' last':'';
+		$output='<div class="grid '.strip_tags($atts['size']).$lastclass.'">'.do_shortcode($content).'</div>';
+		if($atts['last'])
 			$output.='<div class="clear"></div>';
 		return $output;
 	}

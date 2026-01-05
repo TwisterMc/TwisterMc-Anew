@@ -22,7 +22,10 @@ class AlxPosts extends WP_Widget {
 /*  Widget
 /* ------------------------------------ */
 	public function widget($args, $instance) {
-		extract( $args );
+		$before_widget = $args['before_widget'];
+		$after_widget = $args['after_widget'];
+		$before_title = $args['before_title'];
+		$after_title = $args['after_title'];
 		$instance['title']?NULL:$instance['title']='';
 		$title = apply_filters('widget_title',$instance['title']);
 		$output = $before_widget."\n";
@@ -35,7 +38,7 @@ class AlxPosts extends WP_Widget {
 	<?php
 		$posts = new WP_Query( array(
 			'post_type'				=> array( 'post' ),
-			'showposts'				=> $instance['posts_num'],
+			'posts_per_page'		=> $instance['posts_num'],
 			'cat'					=> $instance['posts_cat_id'],
 			'ignore_sticky_posts'	=> true,
 			'orderby'				=> $instance['posts_orderby'],

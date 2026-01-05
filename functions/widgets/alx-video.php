@@ -22,7 +22,10 @@ class AlxVideo extends WP_Widget {
 /*  Widget
 /* ------------------------------------ */
 	public function widget($args, $instance) {
-		extract( $args );
+		$before_widget = $args['before_widget'];
+		$after_widget = $args['after_widget'];
+		$before_title = $args['before_title'];
+		$after_title = $args['after_title'];
 		$instance['title']?NULL:$instance['title']='';
 		$title = apply_filters('widget_title',$instance['title']);
 		$output = $before_widget."\n";

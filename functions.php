@@ -58,6 +58,16 @@ define( 'ANEW_COLOR_FOOTER', '#33363b' );
 define( 'ANEW_EXCERPT_LENGTH', 55 );
 define( 'ANEW_FOOTER_WIDGETS', 4 );
 
+/* ------------------------------------------------------------------------- *
+ *  Localization & Translation Support
+/* ------------------------------------------------------------------------- */
+
+if ( ! function_exists( 'anew_load_textdomain' ) ) {
+	function anew_load_textdomain() {
+		load_theme_textdomain( 'anew', get_template_directory() . '/languages' );
+	}
+}
+add_action( 'after_setup_theme', 'anew_load_textdomain' );
 
 /** JetPack Add Image To Tweet **/
 add_filter(
@@ -373,7 +383,10 @@ if ( ! function_exists( 'tmc_site_title' ) ) {
 if ( ! function_exists( 'alx_post_images' ) ) {
 
 	function alx_post_images( $args=array() ) {
-		global $post;
+		$post = get_post();
+		if ( ! $post ) {
+			return array();
+		}
 
 		$defaults = array(
 			'numberposts'		=> -1,
