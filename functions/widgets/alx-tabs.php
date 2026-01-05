@@ -82,8 +82,17 @@ class AlxTabs extends WP_Widget {
 	
 		<?php if($instance['recent_enable']) { // Recent posts enabled? ?>
 			
-			<?php $recent=new WP_Query(); ?>
-			<?php $recent->query('posts_per_page='.$instance["recent_num"].'&cat='.$instance["recent_cat_id"].'&ignore_sticky_posts=1');?>
+			<?php
+				// Cache recent posts query for 5 minutes
+				$transient_key = 'alx_tabs_recent_' . md5( $instance["recent_num"] . $instance["recent_cat_id"] );
+				$recent = get_transient( $transient_key );
+				
+				if ( false === $recent ) {
+					$recent = new WP_Query();
+					$recent->query('posts_per_page='.$instance["recent_num"].'&cat='.$instance["recent_cat_id"].'&ignore_sticky_posts=1');
+					set_transient( $transient_key, $recent, 5 * MINUTE_IN_SECONDS );
+				}
+			?>
 			
 			<ul id="tab-recent" class="alx-tab group <?php if($instance['recent_thumbs']) { echo 'thumbs-enabled'; } ?>">
 				<?php while ($recent->have_posts()): $recent->the_post(); ?>
@@ -119,19 +128,31 @@ class AlxTabs extends WP_Widget {
 		<?php if($instance['popular_enable']) { // Popular posts enabled? ?>
 				
 			<?php
-				$popular = new WP_Query( array(
-					'post_type'				=> array( 'post' ),
-					'posts_per_page'		=> $instance['popular_num'],
-					'cat'					=> $instance['popular_cat_id'],
-					'ignore_sticky_posts'	=> true,
-					'orderby'				=> 'comment_count',
-					'order'					=> 'dsc',
-					'date_query' => array(
-						array(
-							'after' => $instance['popular_time'],
+				// Cache popular posts query for 5 minutes
+				$transient_key = 'alx_tabs_popular_' . md5( serialize( array(
+					$instance['popular_num'],
+					$instance['popular_cat_id'],
+					$instance['popular_time']
+				) ) );
+				
+				$popular = get_transient( $transient_key );
+				
+				if ( false === $popular ) {
+					$popular = new WP_Query( array(
+						'post_type'				=> array( 'post' ),
+						'posts_per_page'		=> $instance['popular_num'],
+						'cat'					=> $instance['popular_cat_id'],
+						'ignore_sticky_posts'	=> true,
+						'orderby'				=> 'comment_count',
+						'order'					=> 'dsc',
+						'date_query' => array(
+							array(
+								'after' => $instance['popular_time'],
+							),
 						),
-					),
-				) );
+					) );
+					set_transient( $transient_key, $popular, 5 * MINUTE_IN_SECONDS );
+				}
 			?>
 			<ul id="tab-popular" class="alx-tab group <?php if($instance['popular_thumbs']) { echo 'thumbs-enabled'; } ?>">
 				

@@ -1,8 +1,4 @@
 <?php
-// Ensure Dashicons are loaded for all users (front-end and back-end)
-add_action('wp_enqueue_scripts', function() {
-	wp_enqueue_style('dashicons');
-});
 // Preload critical font for performance
 if ( ! function_exists( 'alx_preload_assets' ) ) {
 	function alx_preload_assets() {
@@ -266,10 +262,8 @@ if ( ! function_exists( 'alx_styles' ) ) {
 		
 		// Note: style.css is kept as WordPress theme requirement (header only, no actual styles loaded)
 		
-		// Load Dashicons only if user is logged in
-		if ( is_user_logged_in() ) {
-			wp_enqueue_style( 'dashicons' );
-		}
+		// Always load Dashicons (used for icon replacements mapped from Font Awesome classes)
+		wp_enqueue_style( 'dashicons' );
 	}
 
 }

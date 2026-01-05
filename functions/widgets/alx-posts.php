@@ -36,19 +36,32 @@ class AlxPosts extends WP_Widget {
 ?>
 
 	<?php
-		$posts = new WP_Query( array(
-			'post_type'				=> array( 'post' ),
-			'posts_per_page'		=> $instance['posts_num'],
-			'cat'					=> $instance['posts_cat_id'],
-			'ignore_sticky_posts'	=> true,
-			'orderby'				=> $instance['posts_orderby'],
-			'order'					=> 'dsc',
-			'date_query' => array(
-				array(
-					'after' => $instance['posts_time'],
+		// Cache widget query for 5 minutes
+		$transient_key = 'alx_posts_' . md5( serialize( array(
+			$instance['posts_num'],
+			$instance['posts_cat_id'],
+			$instance['posts_orderby'],
+			$instance['posts_time']
+		) ) );
+		
+		$posts = get_transient( $transient_key );
+		
+		if ( false === $posts ) {
+			$posts = new WP_Query( array(
+				'post_type'				=> array( 'post' ),
+				'posts_per_page'		=> $instance['posts_num'],
+				'cat'					=> $instance['posts_cat_id'],
+				'ignore_sticky_posts'	=> true,
+				'orderby'				=> $instance['posts_orderby'],
+				'order'					=> 'dsc',
+				'date_query' => array(
+					array(
+						'after' => $instance['posts_time'],
+					),
 				),
-			),
-		) );
+			) );
+			set_transient( $transient_key, $posts, 5 * MINUTE_IN_SECONDS );
+		}
 	?>
 		
 	<ul class="alx-posts group <?php if($instance['posts_thumb']) { echo 'thumbs-enabled'; } ?>">
